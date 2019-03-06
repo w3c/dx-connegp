@@ -131,7 +131,3 @@ b-sparql:endpoint
   dcat:endpointURL b-sparql: ;
   dcat:servesDataset b-series:all ;
 .
-sd:Service
-  rdf:type owl:Class ;
-  rdfs:subClassOf owl:Thing ;
-.
