@@ -23,10 +23,6 @@
     "endpointDescription" : "b-sparql:SPARQL-Service",
     "endpointURL" : "http://linked.bodc.ac.uk/sparql/",
     "servesDataset" : "b-series:all"
-  }, {
-    "@id" : "sd:Service",
-    "@type" : "owl:Class",
-    "subClassOf" : "owl:Thing"
   } ],
   "@context" : {
     "hasPart" : {
