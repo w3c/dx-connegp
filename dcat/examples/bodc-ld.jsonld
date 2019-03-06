@@ -1,0 +1,88 @@
+{
+  "@graph" : [ {
+    "@id" : "b-series:all",
+    "@type" : "dcat:Dataset",
+    "hasPart" : [ "b-series:1000507/", "b-series:1000009/", "b-series:1000384/", "b-series:100013/", "b-series:1000704/", "b-series:1000058/", "b-series:1000095/", "b-series:1000753/", "b-series:1000163/", "b-series:1000600/", "b-series:1000071/", "b-series:1000532/", "b-series:1000777/", "b-series:100074/", "b-series:100062/", "b-series:1000439/", "b-series:100001/", "b-series:1000765/", "b-series:1000673/", "b-series:1000206/", "b-series:1000440/", "b-series:1000323/", "b-series:1000452/", "b-series:1000126/", "b-series:1000360/", "b-series:1000415/", "b-series:1000661/", "b-series:1000347/", "b-series:1000359/", "b-series:1000593/", "b-series:100049/", "b-series:1000685/", "b-series:1000279/", "b-series:1000138/", "b-series:1000255/", "b-series:1000372/", "b-series:1000568/", "b-series:1000476/", "b-series:1000102/", "b-series:100050/", "b-series:1000544/", "b-series:1000396/", "b-series:1000243/", "b-series:1000636/", "b-series:100025/", "b-series:1000716/", "b-series:1000728/", "b-series:1000292/", "b-series:1000175/", "b-series:1000741/", "b-series:1000789/", "b-series:1000231/", "b-series:1000612/", "b-series:1000556/", "b-series:1000520/", "b-series:1000046/", "b-series:1000083/", "b-series:1000280/", "b-series:1000218/", "b-series:1000010/", "b-series:1000335/", "b-series:1000311/", "b-series:1000519/", "b-series:1000199/", "b-series:1000034/", "b-series:1000488/", "b-series:1000427/", "b-series:1000403/", "b-series:1000022/", "b-series:1000581/", "b-series:1000187/", "b-series:1000697/", "b-series:1000648/", "b-series:100037/", "b-series:1000267/", "b-series:1000624/", "b-series:1000464/", "b-series:1000151/", "b-series:1000114/" ]
+  }, {
+    "@id" : "http://linked.bodc.ac.uk/sparql",
+    "@type" : "owl:Ontology",
+    "created" : "2019-03-06",
+    "creator" : "https://orcid.org/0000-0002-3884-3420",
+    "comment" : "Description of the BODC Linked Data SPARQL endpoint",
+    "imports" : [ "http://www.w3.org/ns/sparql-service-description", "http://www.w3.org/ns/dcat", "http://vocab.deri.ie/void" ]
+  }, {
+    "@id" : "b-sparql:SPARQL-Service",
+    "@type" : "sd:Service",
+    "classPartition" : [ "http://ocean-data.org/schema/DeploymentDataset", "http://www.opengis.net/ont/geosparql#Feature", "http://www.w3.org/2006/time#TemporalEntity", "http://www.w3.org/2006/time#GeneralDateTimeDescription", "http://www.w3.org/ns/prov#Organization", "https://www.w3.org/2005/Incubator/ssn/ssnx/ssn#Platform", "http://www.w3.org/ns/prov#Entity", "dcat:Distribution", "http://xmlns.com/foaf/0.1/Organization", "http://www.w3.org/ns/org#Site", "dcat:Dataset", "http://www.w3.org/2006/time#Instance", "http://www.opengis.net/def/sf/Point", "http://www.w3.org/ns/prov#Agent" ],
+    "label" : "BODC SPARQL endpoint"
+  }, {
+    "@id" : "b-sparql:endpoint",
+    "@type" : "dcat:DataDistributionService",
+    "conformsTo" : "https://www.w3.org/TR/sparql11-protocol/",
+    "label" : "BODC Linked Data SPARQL endpoint",
+    "endpointDescription" : "b-sparql:SPARQL-Service",
+    "endpointURL" : "http://linked.bodc.ac.uk/sparql/",
+    "servesDataset" : "b-series:all"
+  }, {
+    "@id" : "sd:Service",
+    "@type" : "owl:Class",
+    "subClassOf" : "owl:Thing"
+  } ],
+  "@context" : {
+    "hasPart" : {
+      "@id" : "http://purl.org/dc/terms/hasPart",
+      "@type" : "@id"
+    },
+    "servesDataset" : {
+      "@id" : "http://www.w3.org/ns/dcat#servesDataset",
+      "@type" : "@id"
+    },
+    "endpointURL" : {
+      "@id" : "http://www.w3.org/ns/dcat#endpointURL",
+      "@type" : "@id"
+    },
+    "endpointDescription" : {
+      "@id" : "http://www.w3.org/ns/dcat#endpointDescription",
+      "@type" : "@id"
+    },
+    "label" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#label"
+    },
+    "conformsTo" : {
+      "@id" : "http://purl.org/dc/terms/conformsTo",
+      "@type" : "@id"
+    },
+    "created" : {
+      "@id" : "http://purl.org/dc/terms/created"
+    },
+    "creator" : {
+      "@id" : "http://purl.org/dc/terms/creator",
+      "@type" : "@id"
+    },
+    "comment" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#comment"
+    },
+    "imports" : {
+      "@id" : "http://www.w3.org/2002/07/owl#imports",
+      "@type" : "@id"
+    },
+    "classPartition" : {
+      "@id" : "http://rdfs.org/ns/void#classPartition",
+      "@type" : "@id"
+    },
+    "subClassOf" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "@type" : "@id"
+    },
+    "sd" : "http://www.w3.org/ns/sparql-service-description#",
+    "void" : "http://rdfs.org/ns/void#",
+    "dct" : "http://purl.org/dc/terms/",
+    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "owl" : "http://www.w3.org/2002/07/owl#",
+    "b-sparql" : "http://linked.bodc.ac.uk/sparql/",
+    "xsd" : "http://www.w3.org/2001/XMLSchema#",
+    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+    "dcat" : "http://www.w3.org/ns/dcat#",
+    "b-series" : "http://linked.bodc.ac.uk/series/"
+  }
+}
