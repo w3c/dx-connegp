@@ -1,3 +1,5 @@
+# Contributing
+
 Contributions to this repository are intended to become part of Recommendation-track documents governed by the
 [W3C Patent Policy](https://www.w3.org/Consortium/Patent-Policy/) and
 [Document License](https://www.w3.org/Consortium/Legal/copyright-documents). To make substantive contributions to specifications, you must either participate
