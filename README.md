@@ -9,6 +9,7 @@ This repository contains the *Content Negotiation by Profile* work of the *Datas
 
 ## Working Documents
 
+- [DXWG Use cases and requirements](https://w3c.github.io/dxwg/ucr/)
 - [Editors' Draft](https://w3c.github.io/dx-connegp/)
   - [Latest publication](https://www.w3.org/TR/dx-prof-conneg/)
   - [Third Public Working Draft](https://www.w3.org/TR/2019/WD-dx-prof-conneg-20191126/)
