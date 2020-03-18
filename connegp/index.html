@@ -905,7 +905,7 @@ Content-Profile: http://example.org/profile/x, \
           content negotiation by profile SHOULD return an HTTP <code>Link</code> header containing information about the
           default and any alternate representations of that
           resource including profiles they conform to. The default representation &ndash; the one that will be returned when no specific representation is requested &ndash;
-          will be identified by <code>rel="canonical"</code>, other representations by
+          SHOULD be identified by <code>rel="canonical"</code>, other representations by
           <code>rel="alternate"</code>.
         </p>
         <p>As an example, consider the resource <code>http://example.org/resource/a</code> available
@@ -1212,10 +1212,21 @@ Link:
         <p>
           	Getting a resource representation conforming to a specific profile is done
 		by issuing an <code>HTTP GET</code> request against the resource
-		and specifying the desired profile URI in an <code>Accept-Profile</code> header. URIs MUST be enclosed in angled brackets, '&lt;' &amp; '&gt;'.
-          	It is possible to specify a range of acceptable profile URIs and, when using multiple URIs, they MUST be delimited by a comma or
+		and specifying the desired profile URI in an <code>Accept-Profile</code> header.
+        </p>
+        <p>
+          A server implementing content negotiation by profile MUST respond with an HTTP Response header containing a
+          <code>Content-Profile</code> header indicating the profile returned.
+        </p>
+        <p>
+          URIs, both in Requests and Responses, MUST be enclosed in angled brackets, '&lt;' &amp; '&gt;'.
+        </p>
+        <p>
+          A range of acceptable profile URIs MAY be supplied, and if they are, they MUST be delimited by a comma or
           be in separate <code>Accept-Profile</code> headers.
-          Preferences may be indicated by using quality indicators (q-values) as an ordering mechanism separated
+        </p>
+        <p>
+          Preferences MAY be indicated by by the Client using quality indicators (q-values) as an ordering mechanism separated
           from the URI by a semi-colon, ';'. An example of a URI (in this case a URN) with a q-value is <code>&lt;urn:example:profile:x&gt;;q=1.0,</code> where the URI
            is <code>&lt;urn:example:profile:x&gt;</code> and the q-value is <code>q=1.0</code>.</p>
         <p><a href="#eg-http-get"></a> shows a simple
@@ -1941,6 +1952,67 @@ Link: &lt;http://www.w3.org/ns/dx/prof/Profile&gt;;
   </section>
   <section id="appendices" class="appendix">
     <h2>Appendices</h2>
+    <section id="reqlist">
+      <h3>Itemized Requirements</h3>
+      <h4>HTTP Headers Functional Profile</h4>
+      <dl>
+        <dt>R.1.1</dt>
+        <dd>
+          From <a href="#http-listprofiles"></a>:<br />
+          a server implementing
+          content negotiation by profile SHOULD return an HTTP <code>Link</code> header containing information about the
+          default and any alternate representations of that
+          resource including profiles they conform to.
+        </dd>
+        <dt>R.1.1.b</dt>
+        <dd>
+          From <a href="#http-listprofiles"></a>:<br />
+          The default representation &ndash; the one that will be returned when no specific representation is requested &ndash;
+          SHOULD be identified by <code>rel="canonical"</code>, other representations by
+          <code>rel="alternate"</code>
+        </dd>
+        <dt>R.1.2.a</dt>
+        <dd>
+          From <a href="#http-getresourcebyprofile"></a>:<br />
+          A server implementing content negotiation by profile MUST respond with an HTTP Response header containing a
+          <code>Content-Profile</code> header indicating the profile returned.
+        </dd>
+        <dt>R.1.2.b</dt>
+        <dd>
+          From <a href="#http-getresourcebyprofile"></a>:<br />
+          URIs, both in Requests and Responses, MUST be enclosed in angled brackets, '&lt;' &amp; '&gt;'.
+        </dd>
+        <dt>R.1.2.c</dt>
+        <dd>
+          From <a href="#http-getresourcebyprofile"></a>:<br />
+          A range of acceptable profile URIs MAY be supplied, and if they are, they MUST be delimited by a comma or
+          be in separate <code>Accept-Profile</code> headers.
+        </dd>
+        <dt>R.1.2.d</dt>
+        <dd>
+          From <a href="#http-getresourcebyprofile"></a>:<br />
+          Preferences MAY be indicated by by the Client using quality indicators (q-values) as an ordering mechanism separated
+          from the URI by a semi-colon, ';'. An example of a URI (in this case a URN) with a q-value is <code>&lt;urn:example:profile:x&gt;;q=1.0,</code> where the URI
+          is <code>&lt;urn:example:profile:x&gt;</code> and the q-value is <code>q=1.0</code>.</p>
+        </dd>
+      </dl>
+      <h4>Query String Arguments Functional Profile</h4>
+      <dl>
+        <dt>R.2.1 list profiles</dt>
+        <dd></dd>
+        <dt>R.2.2 get resource by profile</dt>
+        <dd></dd>
+      </dl>
+      <h4>Query String Arguments Alternate Keywords Functional Profile</h4>
+      <dl>
+        <dt>R.3.1 list profiles</dt>
+        <dd></dd>
+        <dt>R.3.2 get resource by profile</dt>
+        <dd></dd>
+        <dt>R.3.3 key discovery</dt>
+        <dd></dd>
+      </dl>
+    </section>
     <section id="profilesinprof">
       <h3>Profiles Vocabulary descriptions of this specification's Functional Profiles</h3>
       <p>
