@@ -544,7 +544,7 @@ GET /resource/a<strong>?_profile=all</strong> HTTP/1.1
 # header.
 HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Profile: &lt;http://www.w3.org/ns/dx/conneg/profile/qsa>
+Content-Profile: &lt;http://www.w3.org/ns/dx/connegp/profile/qsa>
 # This Link header indicates representations are available that conform to Profile X
 # &amp; Y and that the Profile X-conformant representations are available in HTML
 # &amp; XML Media Types.
@@ -802,7 +802,7 @@ Content-Profile: http://example.org/profile/x, \
         The namespace prefix for them is:
       </p>
       <ul>
-        <li><code>cnpr</code> &rarr; <code>http://www.w3.org/ns/dx/conneg/profile/</code></li>
+        <li><code>cnpr</code> &rarr; <code>http://www.w3.org/ns/dx/connegp/profile/</code></li>
       </ul>
       <figure id="fig-table-profiles">
         <table>
@@ -856,7 +856,7 @@ Content-Profile: http://example.org/profile/x, \
         </figcaption>
       </figure>
       <p>
-        The namespace used for the above functional profiles, <code>http://www.w3.org/ns/dx/conneg/profile/</code>, is part of the Dataset Exchange Working Group's reserved W3C namespace,
+        The namespace used for the above functional profiles, <code>http://www.w3.org/ns/dx/connegp/profile/</code>, is part of the Dataset Exchange Working Group's reserved W3C namespace,
         <code>http://www.w3.org/ns/dx/</code>, which is provisioned for all namespace requirements to do with issues addressed by that Working Group. The <code>/profile/</code> path segment
         indicates a register of profile objects which currently contains just the 4 instances above from <a href="#fig-table-profiles"></a>.
       </p>
@@ -1418,7 +1418,7 @@ GET /resource/a?_profile=all&amp;_mediatype=application/json HTTP/1.1
 
 HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Profile: &lt;http://www.w3.org/ns/dx/conneg/profile/qsa>
+Content-Profile: &lt;http://www.w3.org/ns/dx/connegp/profile/qsa>
 Link:
   &lt;http://example.org/resource/a?_profile=profile-x&amp;_mediatype=application/json>;
           rel="canonical"; type="application/json";
@@ -1715,7 +1715,7 @@ Link:
           To communicate to a client what QSA key/value pair is used for <em>list profiles</em> when the "QSA Alternate
           Keywords Functional Profile" is conformed to, a server SHOULD, following the methods above for
           <em>list profiles</em> communication, indicate that a representation of the resource is available that conforms to the
-          Alternate Profiles Data Model identified by the URI <code>http://www.w3.org/ns/dx/conneg/altr</code>. This is demonstrated
+          Alternate Profiles Data Model identified by the URI <code>http://www.w3.org/ns/dx/connegp/altr</code>. This is demonstrated
           in <a href="#eg-qsa-keydisco-altprofiles"></a> which is an extension to <a href="#eg-qsa-keydiscovery"></a> .
         </p>
         <pre id="eg-qsa-keydisco-altprofiles" class="example nohighlight" aria-busy="false" aria-live="polite"
@@ -1742,14 +1742,14 @@ Link:
 <strong>  &lt;http://example.org/resource/a?view=altrep&format=application/ld+json>;
           rel="alternate";
           type="application/ld+json";
-          profile="http://www.w3.org/ns/dx/conneg/altr"</strong>
+          profile="http://www.w3.org/ns/dx/connegp/altr"</strong>
 
 [default response content]
         </pre>
         <p>
           <a href="#eg-qsa-keydisco-altprofiles"></a> shows that for resource <code>/resource/a</code> there is a
           representation of it that conforms to the specification/profile
-          <code>http://www.w3.org/ns/dx/conneg/altr</code> which is the URI identifying the Alternate Profiles
+          <code>http://www.w3.org/ns/dx/connegp/altr</code> which is the URI identifying the Alternate Profiles
           Data Model defined in <a href="#altr"></a>.
         </p>
         <p>The example also shows the QSA <code>view=altrep</code> can be used to formulate a request for a Alternate
@@ -2054,14 +2054,14 @@ using the Profiles Vocabulary.
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: &lt;http://www.w3.org/2004/02/skos/core#> .
 
-@prefix cnpr: &lt;http://www.w3.org/ns/dx/conneg/profile/> .
+@prefix cnpr: &lt;http://www.w3.org/ns/dx/connegp/profile/> .
 
-&lt;https://www.w3.org/TR/dx-prof-conneg/> a dct:Standard ;
+&lt;https://www.w3.org/TR/dx-connegp/> a dct:Standard ;
     rdfs:label "Content Negotiation by Profile" ;
     rdfs:comment "W3C Recommendation (a standard) for Content Negotiation by Profile"@en .
 
 cnpr:http a prof:Profile ;
-    prof:isProfileOf &lt;https://www.w3.org/TR/dx-prof-conneg/> ;
+    prof:isProfileOf &lt;https://www.w3.org/TR/dx-connegp/> ;
     rdfs:label "HTTP Headers Functional Profile" ;
     rdfs:comment "For conformance with the functional profile of Content Negotiation by
                   Profile presented in § 7.1 Hypertext Transfer Protocol Headers."@en ;
@@ -2077,7 +2077,7 @@ cnpr:qsa a prof:Profile ;
                     recommendations in § 7.2 URL Query String Arguments."@en .
 
 cnpr:qsa-alt a prof:Profile ;
-    prof:isProfileOf &lt;https://www.w3.org/TR/dx-prof-conneg/> ;
+    prof:isProfileOf &lt;https://www.w3.org/TR/dx-connegp/> ;
     rdfs:label "QSA Alternate Keywords Functional Profile" ;
     rdfs:comment "For conformance with the functional profile of Content Negotiation by
                   Profile presented in § 7.2 URL Query String Arguments."@en ;
@@ -2087,7 +2087,7 @@ cnpr:qsa-alt a prof:Profile ;
                     String Arguments."@en .
 
 cnpr:rrd a prof:Profile ;
-    prof:isProfileOf &lt;https://www.w3.org/TR/dx-prof-conneg/> ;
+    prof:isProfileOf &lt;https://www.w3.org/TR/dx-connegp/> ;
     rdfs:label "Resource Representation Description Profile"@en ;
     rdfs:comment "For conformance with Content Negotiation by Profile § 6.2.2 get
                   resource by profile."@en ;
@@ -2120,7 +2120,7 @@ cnpr:rrd a prof:Profile ;
         <code>&lt;http://example.com/system/a&gt; dct:conformsTo &lt;SPEC_OR_PROFILE_URI&gt; .</code>
       </p>
       <p>
-        The <code>&lt;SPEC_OR_PROFILE_URI&gt;</code> may be this specification's URI, <code>https://www.w3.org/TR/dx-prof-conneg/</code>, but in the best case, would be
+        The <code>&lt;SPEC_OR_PROFILE_URI&gt;</code> may be this specification's URI, <code>https://www.w3.org/TR/dx-connegp/</code>, but in the best case, would be
         one of the profile URIs listed in <a href="#functional-profiles-definition"></a> or another functional profile's URI,
         since it is much clearer what is being conformed to when functional profile URIs are cited as they are narrower
         in scope than the specification as a whole.
@@ -2135,7 +2135,7 @@ cnpr:rrd a prof:Profile ;
         <a href="https://www.w3.org/TR/vocab-dcat-2/#ex-service-eea">Example 49</a>.
         Included is the predicate <code>dct:conformsTo</code> used as per [[?VOCAB-DCAT-2]] &amp; [[?DX-PROF]].
         Conformance here is claimed to the <em>QSA Alternate Keywords Functional Profile</em> profile which is indicated by
-        the URI <code>http://www.w3.org/ns/dx/conneg/profile/qsa-alt</code>, identified as per
+        the URI <code>http://www.w3.org/ns/dx/connegp/profile/qsa-alt</code>, identified as per
         <a href="#functional-profiles-definition"></a>.
       </p>
       <div id="system-conforming"
@@ -2151,7 +2151,7 @@ Functional Profile of this specification
                      DCAT-2 recommended properties."@en ;
 
     # URI for the QSA Alternate Keywords Functional Profile
-    <strong>dct:conformsTo &lt;http://www.w3.org/ns/dx/conneg/profile/qsa-alt> ;</strong>
+    <strong>dct:conformsTo &lt;http://www.w3.org/ns/dx/connegp/profile/qsa-alt> ;</strong>
 
     # it's a public service
     dct:accessRights &lt;http://publications.europa.eu/resource/authority/access-right/PUBLIC>
@@ -2181,7 +2181,7 @@ Functional Profile of this specification
         <div id="altr-owl"
              class="codelisting nohighlight" aria-busy="false" aria-live="polite"
              title="Alternate Profiles Data Model as an OWL ontology"><div class="codelisting-title"><a href="#altr-owl">CODE LISTING 3</a>: Alternate Profiles Data Model as an OWL ontology</div>
-@prefix altr: &lt;http://www.w3.org/ns/dx/conneg/altr#> .
+@prefix altr: &lt;http://www.w3.org/ns/dx/connegp/altr#> .
 @prefix dct: &lt;http://purl.org/dc/terms/> .
 @prefix owl: &lt;http://www.w3.org/2002/07/owl#> .
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -2190,7 +2190,7 @@ Functional Profile of this specification
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: &lt;http://www.w3.org/2004/02/skos/core#> .
 
-&lt;http://www.w3.org/ns/dx/conneg/altr>
+&lt;http://www.w3.org/ns/dx/connegp/altr>
     a owl:Ontology ;
     rdfs:label "Alternative Profiles Ontology" ;
     rdfs:comment """This ontology allows for the description of representations
@@ -2263,7 +2263,7 @@ altr:Representation
         owl:allValuesFrom dct:Standard
     ] ;
     dct:source &lt;https://httpwg.org/specs/rfc7230.html> ;
-    rdfs:isDefinedBy &lt;http://www.w3.org/ns/dx/conneg/altr> ;
+    rdfs:isDefinedBy &lt;http://www.w3.org/ns/dx/connegp/altr> ;
     skos:scopeNote "Use this class to indicate instances of representations
                     of resources" .
 
@@ -2330,7 +2330,7 @@ dct:MediaType
         <pre id="eg-altr-ext"
              class="example nohighlight" aria-busy="false" aria-live="polite"
              title="Extended implementation of the Alternative Profiles data model in RDF (turtle) showing Media Type information">
-@prefix altr: &lt;http://www.w3.org/ns/dx/conneg/altr#> .
+@prefix altr: &lt;http://www.w3.org/ns/dx/connegp/altr#> .
 @prefix dct: &lt;http://purl.org/dc/terms/> .
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#> .
@@ -2384,7 +2384,7 @@ dct:MediaType
         <pre id="eg-altr"
              class="example nohighlight" aria-busy="false" aria-live="polite"
              title="Implementation of the Alternative Profiles Data Model in RDF (turtle)">
-@prefix altr: &lt;http://www.w3.org/ns/dx/conneg/altr#> .
+@prefix altr: &lt;http://www.w3.org/ns/dx/connegp/altr#> .
 @prefix dct: &lt;http://purl.org/dc/terms/> .
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#> .
@@ -2485,8 +2485,8 @@ ex:someDataProfile
 ex:connegDataAccessService
     a dcat:DataService ;
     dct:conformsTo
-        &lt;http://www.w3.org/ns/dx/conneg/profile/http> ,
-        &lt;http://www.w3.org/ns/dx/conneg/profile/qsa> ;
+        &lt;http://www.w3.org/ns/dx/connegp/profile/http> ,
+        &lt;http://www.w3.org/ns/dx/connegp/profile/qsa> ;
 
     # Declare that the Dataset may be invoked by URI, its id, using Content
     # Negotiation by Profile
