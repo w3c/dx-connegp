@@ -2056,12 +2056,12 @@ using the Profiles Vocabulary.
 
 @prefix cnpr: &lt;http://www.w3.org/ns/dx/conneg/profile/> .
 
-&lt;https://www.w3.org/TR/dx-prof-conneg/> a dct:Standard ;
+&lt;https://www.w3.org/TR/dx-connegp/> a dct:Standard ;
     rdfs:label "Content Negotiation by Profile" ;
     rdfs:comment "W3C Recommendation (a standard) for Content Negotiation by Profile"@en .
 
 cnpr:http a prof:Profile ;
-    prof:isProfileOf &lt;https://www.w3.org/TR/dx-prof-conneg/> ;
+    prof:isProfileOf &lt;https://www.w3.org/TR/dx-connegp/> ;
     rdfs:label "HTTP Headers Functional Profile" ;
     rdfs:comment "For conformance with the functional profile of Content Negotiation by
                   Profile presented in § 7.1 Hypertext Transfer Protocol Headers."@en ;
@@ -2077,7 +2077,7 @@ cnpr:qsa a prof:Profile ;
                     recommendations in § 7.2 URL Query String Arguments."@en .
 
 cnpr:qsa-alt a prof:Profile ;
-    prof:isProfileOf &lt;https://www.w3.org/TR/dx-prof-conneg/> ;
+    prof:isProfileOf &lt;https://www.w3.org/TR/dx-connegp/> ;
     rdfs:label "QSA Alternate Keywords Functional Profile" ;
     rdfs:comment "For conformance with the functional profile of Content Negotiation by
                   Profile presented in § 7.2 URL Query String Arguments."@en ;
@@ -2087,7 +2087,7 @@ cnpr:qsa-alt a prof:Profile ;
                     String Arguments."@en .
 
 cnpr:rrd a prof:Profile ;
-    prof:isProfileOf &lt;https://www.w3.org/TR/dx-prof-conneg/> ;
+    prof:isProfileOf &lt;https://www.w3.org/TR/dx-connegp/> ;
     rdfs:label "Resource Representation Description Profile"@en ;
     rdfs:comment "For conformance with Content Negotiation by Profile § 6.2.2 get
                   resource by profile."@en ;
@@ -2120,7 +2120,7 @@ cnpr:rrd a prof:Profile ;
         <code>&lt;http://example.com/system/a&gt; dct:conformsTo &lt;SPEC_OR_PROFILE_URI&gt; .</code>
       </p>
       <p>
-        The <code>&lt;SPEC_OR_PROFILE_URI&gt;</code> may be this specification's URI, <code>https://www.w3.org/TR/dx-prof-conneg/</code>, but in the best case, would be
+        The <code>&lt;SPEC_OR_PROFILE_URI&gt;</code> may be this specification's URI, <code>https://www.w3.org/TR/dx-connegp/</code>, but in the best case, would be
         one of the profile URIs listed in <a href="#functional-profiles-definition"></a> or another functional profile's URI,
         since it is much clearer what is being conformed to when functional profile URIs are cited as they are narrower
         in scope than the specification as a whole.
