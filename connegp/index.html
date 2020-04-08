@@ -475,7 +475,7 @@ Preference-Applied: profile="urn:example:schema"
       <p>
         There are two main types of <a>request</a> that a <a>client</a> might make of a <a>server</a> regarding
         content negotiation by profile. A <a>client</a> wishing to negotiate for content via a profile adhering to this
-        specification MUST be able to implement these two request types.</p>
+        specification MUST be able to implement these two request types:</p>
       <ol>
         <li>
           <strong>list profiles</strong><br />
@@ -506,7 +506,7 @@ Preference-Applied: profile="urn:example:schema"
       </ol>
       <p>More detailed descriptions of these requests and their responses are given next.</p>
       <section id="listprofiles">
-        <h4>list profiles</h4>
+        <h4>List Profiles</h4>
         <p>
           A <a>client</a> wishes to know for which <a>data profile</a>s a <a>server</a> is able to deliver conformant
           representations of a <a>resource</a>. The list of profiles may be known either before a <a>request</a> for a
@@ -528,13 +528,13 @@ Preference-Applied: profile="urn:example:schema"
         </p>
         <p>
           <a href="#eg-list-simple"></a> shows a request/response pair of messages conforming to the QSA Functional
-          Profile, where the request is a <em>list profiles</em> request for a particular resource.
+          Profile, where the request is a <strong>list profiles</strong> request for a particular resource.
         </p>
         <pre id="eg-list-simple"
              class="example nohighlight" aria-busy="false" aria-live="polite"
              title="Simple list profiles request & response messages (QSA Functional Profile)">
 # A request for all the profiles to which representations of resource a conform
-GET /resource/a<strong>?_profile=all</strong> HTTP/1.1
+GET /resource/a<strong>?_profile=alt</strong> HTTP/1.1
 
 ---
 
@@ -579,7 +579,7 @@ Link:
         </pre>
       </section>
       <section id="getresourcebyprofile">
-        <h4>get resource by profile</h4>
+        <h4>Get Resource by Profile</h4>
         <p>
           The most basic <a>request</a> of content negotiation by profile is for a <a>client</a> to <a>request</a>
           a representation of a <a>resource</a> that is claimed to conform to a <a>data profile</a>.
@@ -605,7 +605,7 @@ Link:
           in the redirection request (303 response).
         </p>
         <div class="note" title="Redirection to another resource">
-          Since <em>get resource by profile</em> requests are for <a>representations</a> of a <a>resource</a>, and that resources
+          Since <strong>get resource by profile</strong> requests are for <a>representations</a> of a <a>resource</a>, and that resources
           for which there are profile-conformant representations may not be information resources, it is important to
           note that a server's response may take the form of a redirect to another resource. This is as per the
           <a href="https://lists.w3.org/Archives/Public/www-tag/2005Jun/0039.html">W3C's recommendations to handle the
@@ -897,7 +897,7 @@ Content-Profile: http://example.org/profile/x, \
 	      listing the URIs of all profiles to which it knows the representation conforms.
       </p>
       <section id="http-listprofiles">
-        <h3>list profiles</h3>
+        <h3>List Profiles</h3>
         <p>
           The preferred way to retrieve a list of profiles the server supports for a specific resource
 	        is to issue a <code>GET</code> or <code>HEAD</code> request for that resource.
@@ -1208,7 +1208,7 @@ Link:
         </section>
       </section>
       <section id="http-getresourcebyprofile">
-        <h3>get resource by profile</h3>
+        <h3>Get Resource by Profile</h3>
         <p>
           	Getting a resource representation conforming to a specific profile is done
 		by issuing an <code>HTTP GET</code> request against the resource
@@ -1366,11 +1366,11 @@ http://example.com/path/to/resource/a?<strong>_profile=prof-01&amp;_mediatype=te
         </section>
       </section>
       <section id="qsa-listprofiles">
-        <h4>list profiles</h4>
+        <h4>List Profiles</h4>
         <p>
           For conformance to the "QSA Functional Profile", the <code>_profile</code> QSA key SHOULD be supported by the
           <a>server</a> to allow a <a>client</a> to make a <strong>list profiles</strong> <a>request</a>. For this
-          request, the reserved token <code>all</code> SHOULD be used, e.g. <code>_profile=all</code>.
+          request, the reserved token <code>all</code> SHOULD be used, e.g. <code>_profile=alt</code>.
         </p>
         <p>
           For conformance to the "QSA Alternate Keywords Functional Profile", other key/value pairs MAY be used, such as
@@ -1378,7 +1378,7 @@ http://example.com/path/to/resource/a?<strong>_profile=prof-01&amp;_mediatype=te
           as per <a href="#qsa-keydiscovery"></a>.
         </p>
         <p>
-          The <a>server</a>'s <a>response</a> to a <em>list profiles</em> <a>request</a> SHOULD be to present a list
+          The <a>server</a>'s <a>response</a> to a <strong>list profiles</strong> <a>request</a> SHOULD be to present a list
           of all profiles that it supports representations of the resource for and optionally also supported Media Types
           for those representations.
         </p>
@@ -1392,7 +1392,7 @@ http://example.com/path/to/resource/a?<strong>_profile=prof-01&amp;_mediatype=te
         <p>
           Where a server does provide alternate profiles information in an HTTP body, the server MAY allow clients to
           negotiate for particular Media Types of the response by using the same Media Type negotiation method used for
-          the <em>get resource by profile</em> function below.
+          the <strong>get resource by profile</strong> function below.
         </p>
         <p>
           An example <a>request</a> for the alternate profile representations of a <a>resource</a> to be delivered
@@ -1401,7 +1401,7 @@ http://example.com/path/to/resource/a?<strong>_profile=prof-01&amp;_mediatype=te
         </p>
         <pre id="eg-list-profiles-mediatype" class="example nohighlight" aria-busy="false" aria-live="polite"
              title="Requesting 'list profiles' by QSA with both HTTP header and body responses">
-GET /resource/a?_profile=all&amp;_mediatype=application/json HTTP/1.1
+GET /resource/a?_profile=alt&amp;_mediatype=application/json HTTP/1.1
 
 ---
 
@@ -1599,7 +1599,7 @@ GET /resource/X?_profile=Y&amp;_mediatype=Z HTTP/1.1
         </section>
       </section>
       <section id="qsa-getresourcebyprofile">
-        <h4>get resource by profile</h4>
+        <h4>Get Resource by Profile</h4>
         <p>
           To be conformant with the "QSA Functional Profile" profile of this specification, a <a>server</a> MUST allow
           clients to request resources according to profiles they identify with a <code>_profile</code> query string.
@@ -1614,7 +1614,7 @@ GET /resource/X?_profile=Y&amp;_mediatype=Z HTTP/1.1
           <a href="#qsa-keydiscovery"></a>.
         </p>
         <p>
-          A QSA <a>server</a> implementing <em>get resource by profile</em> SHOULD allow a client to indicate a
+          A QSA <a>server</a> implementing <strong>get resource by profile</strong> SHOULD allow a client to indicate a
           preference for representations of the resource according to any one of a number of profiles. Such a request
           MUST indicate profile preference in by inclusion of an ordered list of profile identifiers (URIs or tokens)
           within the value of the QSA key/value pair used to identify profiles. For example, a client preferring
@@ -1643,9 +1643,9 @@ GET /resource/X?_profile=Y&amp;_mediatype=Z HTTP/1.1
         <p>
           Servers claiming conformance to the "QSA Alternate Keywords Functional Profile" MUST implement methods to
           allow clients to discover the QSA key used in place of the "QSA Functional Profile"'s <code>_profile</code>
-          and also the equivalent of the <code>_profile=all</code> that is required to be implemented by any key/value
+          and also the equivalent of the <code>_profile=alt</code> that is required to be implemented by any key/value
           combination. This allows clients with little knowledge of the server to discover how to create
-          <em>list profile</em> and <em>get resource by profile</em> requests.
+          <strong>list profiles</strong> and <strong>get resource by profile</strong> requests.
         </p>
         <p>
           Servers SHOULD also allow clients to discover the QSA keys used to indicate Media Type and other content
@@ -1704,18 +1704,20 @@ Link:
 # by the link header with rel="canonical"
         </pre>
         <p>
-          While the Link header in <a href="#eg-qsa-keydiscovery"></a> above communicates all the information that a <em>list profiles</em> request
+          While the Link header in <a href="#eg-qsa-keydiscovery"></a> above communicates all the information that a <strong>list profiles</strong> request
           does, it is not visible directly in a web browser. <a href="#eg-list-profiles-mediatype"></a> shows a
           requests/response pair that include equivalent Link header and HTTP body information listing profiles, the
           latter of which is visible in a browser but a client formulating this request is dependent on a it knowing
-          that the QSA key/value pair <code>_profile=all</code> is used to trigger this response as opposed to the
+          that the QSA key/value pair <code>_profile=alt</code> is used to trigger this response as opposed to the
           server's default resource representation.
         </p>
         <p>
-          To communicate to a client what QSA key/value pair is used for <em>list profiles</em> when the "QSA Alternate
+          To communicate to a client what QSA key/value pair is used for <strong>list profiles</strong> when the "QSA Alternate
           Keywords Functional Profile" is conformed to, a server SHOULD, following the methods above for
-          <em>list profiles</em> communication, indicate that a representation of the resource is available that conforms to the
-          Alternate Profiles Data Model identified by the URI <code>http://www.w3.org/ns/dx/connegp/altr</code>. This is demonstrated
+
+          <strong>list profiles</strong> communication, indicate that a representation of the resource is available that conforms to the
+          Alternate Profiles Data Model identified by the URI <code>http://www.w3.org/ns/dx/conneg/altr</code>. This is demonstrated
+
           in <a href="#eg-qsa-keydisco-altprofiles"></a> which is an extension to <a href="#eg-qsa-keydiscovery"></a> .
         </p>
         <pre id="eg-qsa-keydisco-altprofiles" class="example nohighlight" aria-busy="false" aria-live="polite"
@@ -1954,12 +1956,23 @@ Link: &lt;http://www.w3.org/ns/dx/prof/Profile&gt;;
     <h2>Appendices</h2>
     <section id="reqlist">
       <h3>Itemized Requirements</h3>
+      <p>
+        The requirements that need to be met for demonstrations of conformance to the Functional Profiles in this
+        specification are given below, per Functional Profile.
+      </p>
+      <p>
+        Systems that test for or demonstrate conformance to this specification should do so with reference to the
+        Requirements IDs given here. For example, when demonstrating conformance to the <a href="#qsa">QSA Functional
+        Profile</a>, the requirement <strong>R.2.1.a</strong> with the requirement text <em>A profile that a
+        resource representation conforms to is indicated by token which MUST be appended to the resource's URI as a
+        Query String Argument.</em> must be met and a server's implementation of that requirement must be demonstrable.
+      </p>
       <h4>HTTP Headers Functional Profile</h4>
       <dl>
-        <dt>R.1.1</dt>
+        <dt>R.1.1.a</dt>
         <dd>
           From <a href="#http-listprofiles"></a>:<br />
-          a server implementing
+          A server implementing
           content negotiation by profile SHOULD return an HTTP <code>Link</code> header containing information about the
           default and any alternate representations of that
           resource including profiles they conform to.
@@ -1998,19 +2011,174 @@ Link: &lt;http://www.w3.org/ns/dx/prof/Profile&gt;;
       </dl>
       <h4>Query String Arguments Functional Profile</h4>
       <dl>
-        <dt>R.2.1 list profiles</dt>
-        <dd></dd>
-        <dt>R.2.2 get resource by profile</dt>
-        <dd></dd>
+        <dt>R.2.1.a</dt>
+        <dd>
+          From <a href="#qsa-uri"></a>:<br />
+          A profile that a resource representation conforms to is indicated by token which MUST be appended to the resource's URI as a Query String Argument.
+        </dd>
+        <dt>R.2.1.b</dt>
+        <dd>
+          From <a href="#qsa-resource-url"></a>:<br />
+          Resource URLs for which QSA-based profile negotiation is taking place SHOULD NOT themselves be QSA values of other resource URIs in any QSA-based system.
+        </dd>
+        <dt>R.2.1.c</dt>
+        <dd>
+          From <a href="#qsa-uri"></a>:<br />
+          [the] token MUST be mappable to a URI within one particular client/server session
+        </dd>
+        <dt>R.2.1.d</dt>
+        <dd>
+          From <a href="#qsa-uri"></a>:<br />
+          Additional aspects of content negotiation MAY be included in such URIs by the use of additional QSA or by any other techniques (for example HTTP headers) but, if they are, they MUST NOT change the actions of the request for content negotiation by profile.
+        </dd>
+        <dt>R.2.2.a</dt>
+        <dd>
+          From <a href="#qsa-key-naming"></a>:<br />
+          To conform to the "QSA Functional Profile", the QSA key <code>_profile</code> MUST be used to indicate a profile token
+        </dd>
+        <dt>R.2.2.b</dt>
+        <dd>
+          From <a href="#qsa-key-naming"></a>:<br />
+          the key <code>_mediatype</code> SHOULD be used to indicate a resource representation's Media Type
+        </dd>
+        <dt>R.2.2.c</dt>
+        <dd>
+          From <a href="#qsa-tokens"></a>:<br />
+          tokens registered at <a href="http://www.iana.org/assignments/media-types">IANA's Media Types list</a> SHOULD be used as tokens for Media Type identifiers
+        </dd>
+        <dt>R.2.3.a</dt>
+        <dd>
+          From <a href="#qsa-listprofiles"></a>:<br />
+          the QSA key/value pair <code>_profile=alt</code> SHOULD be supported by the server to allow a client to make a <strong>list profiles</strong> request
+        </dd>
+        <dt>R.2.3.b</dt>
+        <dd>
+          From <a href="#qsa-listprofiles"></a>:<br />
+          The server's response to a <strong>list profiles</strong> request SHOULD be to present a list of all profiles that it supports representations of the resource for and optionally also supported Media Types for those representations.
+        </dd>
+        <dt>R.2.3.c</dt>
+        <dd>
+          From <a href="#qsa-listprofiles"></a>:<br />
+          The server SHOULD represent the alternate profiles information in the HTTP header of the response, as per the HTTP Headers functional profile (using a Link header)
+        </dd>
+        <dt>R.2.3.d</dt>
+        <dd>
+          From <a href="#qsa-listprofiles"></a>:<br />
+          [the server] MAY also represent the information in the response body in place of the default profile representation of a resource
+        </dd>
+        <dt>R.2.3.e</dt>
+        <dd>
+          From <a href="#qsa-listprofiles"></a>:<br />
+          Where a server does provide alternate profiles information in an HTTP body, the server MAY allow clients to negotiate for particular Media Types of the response by using the same Media Type negotiation method used for the <strong>get resource by profile</strong> function
+        </dd>
+        <dt>R.2.4.a</dt>
+        <dd>
+          From <a href="#qsa-altp"></a>:<br />
+          Implementations of this specification according to the QSA Functional Profiles MUST communicate their alternate representations information as per the Alternate Representations Data Model
+        </dd>
+        <dt>R.2.4.b</dt>
+        <dd>
+          From <a href="#qsa-altp"></a>:<br />
+          They MAY do so using HTTP Link headers, as per the HTTP Headers functional profile, or they MAY use other approaches.
+        </dd>
+        <dt>R.2.4.c</dt>
+        <dd>
+          From <a href="#qsa-altp"></a>:<br />
+          They may do so via HTTP body content, perhaps in HTML or other data models/formats
+        </dd>
       </dl>
       <h4>Query String Arguments Alternate Keywords Functional Profile</h4>
       <dl>
-        <dt>R.3.1 list profiles</dt>
-        <dd></dd>
-        <dt>R.3.2 get resource by profile</dt>
-        <dd></dd>
-        <dt>R.3.3 key discovery</dt>
-        <dd></dd>
+        <dt>R.3.1.a</dt>
+        <dd>
+          From <a href="#qsa-uri"></a>:<br />
+          profile requested for the resource representation is indicated by [a] token ... which MUST be appended to the resource's URI as a Query String Argument.
+        </dd>
+        <dt>R.3.1.b</dt>
+        <dd>
+          From <a href="#qsa-resource-url"></a>:<br />
+          Resource URLs for which QSA-based profile negotiation is taking place SHOULD NOT themselves be QSA values of other resource URIs in any QSA-based system.
+        </dd>
+        <dt>R.3.1.c</dt>
+        <dd>
+          From <a href="#qsa-uri"></a>:<br />
+          [the] token MUST be mappable to a [profile] URI within one particular client/server session
+        </dd>
+        <dt>R.3.1.d</dt>
+        <dd>
+          From <a href="#qsa-uri"></a>:<br />
+          Additional aspects of content negotiation MAY be included in such URIs by the use of additional QSA or by any other techniques (for example HTTP headers) but, if they are, they MUST NOT change the actions of the request for content negotiation by profile.
+        </dd>
+        <dt>R.3.2.a</dt>
+        <dd>
+          From <a href="#qsa-key-naming"></a>:<br />
+          a QSA key MUST be used to indicate a profile token
+        </dd>
+        <dt>R.3.2.b</dt>
+        <dd>
+          From <a href="#qsa-keydiscovery"></a>:<br />
+          [the server] MUST implement methods to allow clients to discover the QSA key used in place of the "QSA Functional Profile"'s <code>_profile</code>
+        </dd>
+        <dt>R.3.2.c</dt>
+        <dd>
+          From <a href="#qsa-key-naming"></a>:<br />
+          a QSA key SHOULD be used to indicate a resource representation's Media Type
+        </dd>
+        <dt>R.3.2.d</dt>
+        <dd>
+          From <a href="#qsa-keydiscovery"></a>:<br />
+          if a QSA key indicating a resource representation's Media Type is implemented, the server MUST implement methods to allow clients to discover the QSA key used in place of the "QSA Functional Profile"'s <code>_mediatype</code>
+        </dd>
+        <dt>R.3.2.e</dt>
+        <dd>
+          From <a href="#qsa-tokens"></a>:<br />
+          tokens registered at <a href="http://www.iana.org/assignments/media-types">IANA's Media Types list</a> SHOULD be used as tokens for Media Type identifiers
+        </dd>
+        <dt>R.3.3.a</dt>
+        <dd>
+          From <a href="#qsa-listprofiles"></a>:<br />
+          the QSA key/value pair <code>x=y</code> where <code>x</code> is the server's equivalent to <code>_profile</code> and <code>y</code> is the server's equivalent to <code>alt</code> SHOULD be supported by the server to allow a client to make a <strong>list profiles</strong> request
+        </dd>
+        <dt>R.3.2.b</dt>
+        <dd>
+          From <a href="#qsa-keydiscovery"></a>:<br />
+          The server MUST implement methods to allow clients to discover the QSA key/value pair used in place of the "QSA Functional Profile"'s <code>_profile=alt</code>
+        </dd>
+        <dt>R.3.3.c</dt>
+        <dd>
+          From <a href="#qsa-listprofiles"></a>:<br />
+          The server's response to a <strong>list profiles</strong> request SHOULD be to present a list of all profiles that it supports representations of the resource for and optionally also supported Media Types for those representations.
+        </dd>
+        <dt>R.3.3.d</dt>
+        <dd>
+          From <a href="#qsa-listprofiles"></a>:<br />
+          The server SHOULD represent the alternate profiles information in the HTTP header of the response, as per the HTTP Headers functional profile (using a Link header)
+        </dd>
+        <dt>R.3.3.e</dt>
+        <dd>
+          From <a href="#qsa-listprofiles"></a>:<br />
+          [the server] MAY also represent the information in the response body in place of the default profile representation of a resource
+        </dd>
+        <dt>R.3.3.f</dt>
+        <dd>
+          From <a href="#qsa-listprofiles"></a>:<br />
+          Where a server does provide alternate profiles information in an HTTP body, the server MAY allow clients to negotiate for particular Media Types of the response by using the same Media Type negotiation method used for the <strong>get resource by profile</strong> function
+        </dd>
+        <dt>R.3.4.a</dt>
+        <dd>
+          From <a href="#qsa-altp"></a>:<br />
+          Implementations of this specification according to the QSA Functional Profiles MUST communicate their alternate representations information as per the Alternate Representations Data Model
+        </dd>
+        <dt>R.3.4.b</dt>
+        <dd>
+          From <a href="#qsa-altp"></a>:<br />
+          They MAY do so using HTTP Link headers, as per the HTTP Headers functional profile, or they MAY use other approaches.
+        </dd>
+        <dt>R.3.4.c</dt>
+        <dd>
+          From <a href="#qsa-altp"></a>:<br />
+          [They may do so] via HTTP body content, perhaps in HTML or other data models/formats
+        </dd>
       </dl>
     </section>
     <section id="profilesinprof">
