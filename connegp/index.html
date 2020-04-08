@@ -534,7 +534,7 @@ Preference-Applied: profile="urn:example:schema"
              class="example nohighlight" aria-busy="false" aria-live="polite"
              title="Simple list profiles request & response messages (QSA Functional Profile)">
 # A request for all the profiles to which representations of resource a conform
-GET /resource/a<strong>?_profile=all</strong> HTTP/1.1
+GET /resource/a<strong>?_profile=alt</strong> HTTP/1.1
 
 ---
 
@@ -1370,7 +1370,7 @@ http://example.com/path/to/resource/a?<strong>_profile=prof-01&amp;_mediatype=te
         <p>
           For conformance to the "QSA Functional Profile", the <code>_profile</code> QSA key SHOULD be supported by the
           <a>server</a> to allow a <a>client</a> to make a <strong>list profiles</strong> <a>request</a>. For this
-          request, the reserved token <code>all</code> SHOULD be used, e.g. <code>_profile=all</code>.
+          request, the reserved token <code>all</code> SHOULD be used, e.g. <code>_profile=alt</code>.
         </p>
         <p>
           For conformance to the "QSA Alternate Keywords Functional Profile", other key/value pairs MAY be used, such as
@@ -1401,7 +1401,7 @@ http://example.com/path/to/resource/a?<strong>_profile=prof-01&amp;_mediatype=te
         </p>
         <pre id="eg-list-profiles-mediatype" class="example nohighlight" aria-busy="false" aria-live="polite"
              title="Requesting 'list profiles' by QSA with both HTTP header and body responses">
-GET /resource/a?_profile=all&amp;_mediatype=application/json HTTP/1.1
+GET /resource/a?_profile=alt&amp;_mediatype=application/json HTTP/1.1
 
 ---
 
@@ -1643,7 +1643,7 @@ GET /resource/X?_profile=Y&amp;_mediatype=Z HTTP/1.1
         <p>
           Servers claiming conformance to the "QSA Alternate Keywords Functional Profile" MUST implement methods to
           allow clients to discover the QSA key used in place of the "QSA Functional Profile"'s <code>_profile</code>
-          and also the equivalent of the <code>_profile=all</code> that is required to be implemented by any key/value
+          and also the equivalent of the <code>_profile=alt</code> that is required to be implemented by any key/value
           combination. This allows clients with little knowledge of the server to discover how to create
           <em>list profile</em> and <em>get resource by profile</em> requests.
         </p>
@@ -1708,7 +1708,7 @@ Link:
           does, it is not visible directly in a web browser. <a href="#eg-list-profiles-mediatype"></a> shows a
           requests/response pair that include equivalent Link header and HTTP body information listing profiles, the
           latter of which is visible in a browser but a client formulating this request is dependent on a it knowing
-          that the QSA key/value pair <code>_profile=all</code> is used to trigger this response as opposed to the
+          that the QSA key/value pair <code>_profile=alt</code> is used to trigger this response as opposed to the
           server's default resource representation.
         </p>
         <p>
