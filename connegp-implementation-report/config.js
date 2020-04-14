@@ -62,6 +62,15 @@ var respecConfig = {
             title: "Indicating and Negotiating Profiles in HTTP",
             date: " 2019-07-11",
             status: "IETF Internet Draft"
+        },
+        "PROF-CNEG-TESTING": {
+            authors: [
+                "R. Atkinson",
+            ],
+            href: "https://github.com/w3c/prof-conneg-testing",
+            title: "Testing suite for conformance to Content Negotiation By Profile",
+            date: " 2020-04-14",
+            status: "Informative"
         }
     }
 };

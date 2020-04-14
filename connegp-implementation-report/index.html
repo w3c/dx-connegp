@@ -68,7 +68,7 @@
           </li>
         </ol>
         <p>
-          We verified the claims made by the various implementations using a test suite which is detailed in
+          We verified the claims made by the various implementations using a test suite which is detailed in [[PROF-CNEG-TESTING]]
         </p>
       </section>
       <!--
@@ -204,10 +204,9 @@
           <tr>
             <td><strong>I3</strong></td>
             <td>OGC Definitions Server</td>
-            <td></td>
+            <td>Semantic publishing infrastructure for the OpenGeospatial Consortium a Standards Development Organisation </td>
             <td><a href="https://orcid.org/0000-0002-7878-2693">Rob Atkinson</a></td>
-            <td></td>
-            <td><a href="https://docs.google.com/spreadsheets/d/10CLXudrMow0QGfo1X_Dzg3SNwIPuXBvMnOORwerxKKI/edit#gid=0">write-up</a></td>
+            <td><a href="https://www.ogc.org/def-server">Documentation</a></td>
           </tr>
           <tr>
             <td><strong>I4</strong></td>
@@ -225,10 +224,55 @@
               </ul>
             </td>
           </tr>
+          <tr>
+            <td><strong>I5</strong></td>
+            <td>Testing client</td>
+            <td>The test suite for this specification represents a separate implementation of a client that uses the List Profiles mechanism to check that resource access conforms to the specific behaviours.</td>
+            <td><a href="https://orcid.org/0000-0002-7878-2693">Rob Atkinson</a></td>
+            <td>[[PROF-CNEG-TESTING]]</td>
+          </tr>
         </tbody>
       </table>
       <section id="claims-per-fp">
         <h3>Implementation claims per Functional Profile</h3>
+        
+        Key:<UL>
+        <LI><strong>S</strong> Implemented by resource providing service</LI>
+        <LI><strong>C</strong> Implemented by resource accessing client</LI>
+        <UL>
+
+        <table id="table-implementations" class="simple">
+        <caption><strong>Table 3:</strong>Implementation claims per Functional Profile</caption>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>I1</th>
+              <th>I2</th>
+              <th>I3</th>
+              <th>I4</th>
+              <th>I5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+             <td>HTTP Headers Functional Profile</td>
+             <td>S</td><td>S</td><td>S</td><td>S</td><td>C</td>
+            </tr>
+            <tr>
+             <td>URL QSA Functional Profile</td>
+             <td>S</td><td>S</td><td>S</td><td>S</td><td>C</td>
+            </tr>
+            <tr>
+              <td>URL QSA Alternate Keywords Functional Profile</td>
+            </tr>
+            <td></td><td></td><td></td><td></td><td></td>
+ 
+            <tr>
+              <td>Resource Representation Description</td>
+              <td>S</td><td>S</td><td>S</td><td>S</td><td>C</td>
+           </tr>
+          </tbody>
+        </table>
       </section>
       <section id="claims-per-instruction">
         <h3>Implementation claims per Normative Instruction</h3>
@@ -241,8 +285,7 @@
       <h2>Acknowledgements</h2>
       <p>
         The editors gratefully acknowledge the contributions made to gathering evidence for [[DX-PROF-CONNEG]] and reviewing
-        this report by <a href="https://www.w3.org/2000/09/dbwg/details?group=99375&amp;public=1">all members of the
-        working group</a>, especially Annette Greiner.
+        this report by <a href="https://www.w3.org/2000/09/dbwg/details?group=99375&amp;public=1">
       </p>
     </section>
   </body>
