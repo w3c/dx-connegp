@@ -1,11 +1,11 @@
 var respecConfig = {
     specStatus: "WD",
     shortName: "dx-connegp",
-    edDraftURI: "https://w3c.github.io/dxwg/connegp/",
+    edDraftURI: "https://w3c.github.io/dx-connegp/connegp/",
     previousPublishDate: "2019-04-30",
     previousMaturity: "PWD",
     testSuiteURI: "https://github.com/w3c/prof-conneg-testing",
-    implementationReportURI: "https://w3c.github.io/dxwg/connegp-implementation-report/",
+    implementationReportURI: "https://w3c.github.io/dx-connegp/connegp-implementation-report/",
     canonicalURI: "TR",
     editors: [{
         name:       "Lars G. Svensson",
@@ -16,7 +16,7 @@ var respecConfig = {
       {
         name:       "Rob Atkinson",
         company:    "Metalinkage, Open Geospatial Consortium",
-        companyURL: "http://www.opengeospatial.org",
+        companyURL: "http://www.ogc.org",
         orcid:      "0000-0002-7878-2693"
       },
       {
@@ -41,8 +41,8 @@ var respecConfig = {
     inlineCSS: "true",
     lint: "false",
     maxTocLevel: 3,
-    issueBase: "https://github.com/w3c/dxwg/issues/",
-    github: "https://github.com/w3c/dxwg/",
+    issueBase: "https://github.com/w3c/dx-connegp/issues/",
+    github: "https://github.com/w3c/dx-connegp/",
     localBiblio: {
         "ARK" : {
            editors: [
