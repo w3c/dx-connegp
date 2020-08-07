@@ -555,15 +555,15 @@ Link: &lt;http://www.w3.org/ns/dx/connegp/profile/qsa>; rel=&quot;profile&quot;
 Link:
   &lt;http://example.org/resource/a?_profile=profile-x&amp;_mediatype=text/html>;
           rel="canonical"; type="text/html";
-          profile="http://otherexample.org/profile/x",
+          format="http://otherexample.org/profile/x",
   &lt;http://example.org/resource/a?_profile=profile-x&amp;_mediatype=text/xml>;
           rel="alternate";
           type="text/xml";
-          profile="http://otherexample.org/profile/x",
+          format="http://otherexample.org/profile/x",
   &lt;http://example.org/resource/a?_profile=profile-y&amp;_mediatype=text/xml>;
           rel="alternate";
           type="text/xml";
-          profile="http://otherexample.org/profile/y"
+          format="http://otherexample.org/profile/y"
 
 &lt;!DOCTYPE html>
 &lt;html>
@@ -939,19 +939,19 @@ Link:
   &lt;http://example.org/resource/a&gt;;
           rel="canonical";
           type="text/turtle";
-          profile="urn:example:profile:x",
+          format="urn:example:profile:x",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="text/turtle";
-          profile="urn:example:profile:y",
+          format="urn:example:profile:y",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="application/xml";
-          profile="urn:example:profile:x",
+          format="urn:example:profile:x",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="application/xml";
-          profile="urn:example:profile:y",
+          format="urn:example:profile:y",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="text/html"
@@ -983,19 +983,19 @@ Link:
   <strong>&lt;http://example.org/resource/a.prof1.ttl&gt;;</strong>
           rel="canonical";
           type="text/turtle";
-          profile="urn:example:profile:x",
+          format="urn:example:profile:x",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="text/turtle";
-          profile="urn:example:profile:y",
+          format="urn:example:profile:y",
   <strong>&lt;http://example.org/resource/a.prof1.xml&gt;;</strong>
           rel="alternate";
           type="application/xml";
-          profile="urn:example:profile:x",
+          format="urn:example:profile:x",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="application/xml";
-          profile="urn:example:profile:y",
+          format="urn:example:profile:y",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="text/html"
@@ -1033,7 +1033,7 @@ URIs for resources conforming to profile urn:example:profile:x]
           <ul>
             <li><em>link target</em> - <code>&lt;http://example.org/resource/a.prof1.ttl&gt;</code></li>
             <li><em>relation type</em> - <code>rel="canonical"</code></li>
-            <li><em>target attributes</em> - <code>type="text/turtle"</code> &amp; <code>profile="urn:example:profile:x"</code></li>
+            <li><em>target attributes</em> - <code>type="text/turtle"</code> &amp; <code>format="urn:example:profile:x"</code></li>
           </ul>
           <p>
             Using these <code>Link</code> HTTP header parts, this HTTP Headers functional profile is able to communicate
@@ -1088,19 +1088,19 @@ Link:
   &lt;http://example.org/resource/a&gt;;
           rel="canonical";
           type="text/turtle";
-          profile="urn:example:profile:x",
+          format="urn:example:profile:x",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="text/turtle";
-          profile="urn:example:profile:y",
+          format="urn:example:profile:y",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="application/xml";
-          profile="urn:example:profile:x",
+          format="urn:example:profile:x",
   &lt;http://example.org/resource/different&gt;;
           rel="alternate";
           type="application/xml";
-          profile="urn:example:profile:y",
+          format="urn:example:profile:y",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="text/html"
@@ -1203,10 +1203,10 @@ Link: &lt;urn:example:profile:x&gt;; rel=&quot;profile&quot;
 Link:
   &lt;http://www.w3.org/ns/dx/prof/Profile&gt;; rel="type"; token="dnb"; anchor=&lt;urn:example:profile:marc21-dnb&gt;,
   &lt;http://www.w3.org/ns/dx/prof/Profile&gt;; rel="type"; token="loc"; anchor=&lt;http://example.org/profiles/marc21-loc&gt;,
-  &lt;http://example.org/resource/a.profdnb.ttl&gt;; rel="canonical"; type="text/turtle"; profile="urn:example:profile:marc21-dnb",
-  &lt;http://example.org/resource/a.profloc.ttl&gt;; rel="alternate"; type="text/turtle"; profile="http://example.org/profiles/marc21-loc",
-  &lt;http://example.org/resource/a.profdnb.xml&gt;; rel="alternate"; type="application/xml"; profile="urn:example:profile:marc21-dnb",
-  &lt;http://example.org/resource/a.profloc.xml&gt;; rel="alternate"; type="application/xml"; profile="http://example.org/profiles/marc21-loc",
+  &lt;http://example.org/resource/a.profdnb.ttl&gt;; rel="canonical"; type="text/turtle"; format="urn:example:profile:marc21-dnb",
+  &lt;http://example.org/resource/a.profloc.ttl&gt;; rel="alternate"; type="text/turtle"; format="http://example.org/profiles/marc21-loc",
+  &lt;http://example.org/resource/a.profdnb.xml&gt;; rel="alternate"; type="application/xml"; format="urn:example:profile:marc21-dnb",
+  &lt;http://example.org/resource/a.profloc.xml&gt;; rel="alternate"; type="application/xml"; format="http://example.org/profiles/marc21-loc",
   &lt;http://example.org/resource/a.html&gt;; rel="alternate"; type="text/html"
 [more response headers]
           </pre>
@@ -1427,15 +1427,15 @@ Link: &lt;http://www.w3.org/ns/dx/connegp/profile/qsa&lt;; rel=&quot;profile&quo
 Link:
   &lt;http://example.org/resource/a?_profile=profile-x&amp;_mediatype=application/json>;
           rel="canonical"; type="application/json";
-          profile="http://otherexample.org/profile/x",
+          format="http://otherexample.org/profile/x",
   &lt;http://example.org/resource/a?_profile=profile-x&amp;_mediatype=text/xml>;
           rel="alternate";
           type="text/xml";
-          profile="http://otherexample.org/profile/x",
+          format="http://otherexample.org/profile/x",
   &lt;http://example.org/resource/a?_profile=profile-y&amp;_mediatype=text/xml>;
           rel="alternate";
           type="text/xml";
-          profile="http://otherexample.org/profile/y"
+          format="http://otherexample.org/profile/y"
 
 {
     "resource": "http://example.org/resource/a",
@@ -1482,19 +1482,19 @@ Link:
   &lt;http://example.org/resource/a&gt;;
           rel="canonical";
           type="text/turtle";
-          profile="urn:example:profile:x",
+          format="urn:example:profile:x",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="text/turtle";
-          profile="urn:example:profile:y",
+          format="urn:example:profile:y",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="application/xml";
-          profile="urn:example:profile:x",
+          format="urn:example:profile:x",
   &lt;http://example.org/resource/different&gt;;
           rel="alternate";
           type="application/xml";
-          profile="urn:example:profile:y",
+          format="urn:example:profile:y",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="text/html"
@@ -1694,15 +1694,15 @@ Link:
   &lt;http://example.org/resource/a?view=profile-x&format=text/html>;
           rel="canonical";
           type="text/html";
-          profile="http://otherexample.org/profile/x",
+          format="http://otherexample.org/profile/x",
   &lt;http://example.org/resource/a?view=profile-x&format=text/turtle>;
           rel="canonical";
           type="text/turtle";
-          profile="http://otherexample.org/profile/x",
+          format="http://otherexample.org/profile/x",
   &lt;http://example.org/resource/a?view=profile-y&amp;format=text/xml>;
           rel="alternate";
-          type="text/xml";
-          profile="http://otherexample.org/profile/y"
+          type="application/xml";
+          format="http://otherexample.org/profile/y"
 
 # Note that here the server does not directly indicate the profile served
 # (there is no Link header with rel=&quot;profile&quot; present) but this can be inferred
@@ -1736,20 +1736,20 @@ HTTP/1.1 200 OK
 Link:
   &lt;http://example.org/resource/a?view=profile-x&format=text/html>;
           rel="canonical";
-          type="text/html";
-          profile="http://otherexample.org/profile/x",
+          type="application/html";
+          format="http://otherexample.org/profile/x",
   &lt;http://example.org/resource/a?view=profile-x&format=text/turtle>;
           rel="canonical";
           type="text/turtle";
-          profile="http://otherexample.org/profile/x",
+          format="http://otherexample.org/profile/x",
   &lt;http://example.org/resource/a?view=profile-y&amp;format=text/xml>;
           rel="alternate";
-          type="text/xml";
-          profile="http://otherexample.org/profile/y"
+          type="application/xml";
+          format="http://otherexample.org/profile/y"
 <strong>  &lt;http://example.org/resource/a?view=altrep&format=application/ld+json>;
           rel="alternate";
           type="application/ld+json";
-          profile="http://www.w3.org/ns/dx/connegp/altr"</strong>
+          format="http://www.w3.org/ns/dx/connegp/altr"</strong>
 
 [default response content]
         </pre>
@@ -2595,13 +2595,13 @@ dct:MediaType
 Link:
   &lt;http://example.org/resource/a>;
           rel="alternate";
-          profile="http://otherexample.org/profile/x",
+          format="http://otherexample.org/profile/x",
   &lt;http://example.org/resource/a>;
           rel="alternate";
-          profile="http://otherexample.org/profile/y",
+          format="http://otherexample.org/profile/y",
   &lt;http://example.org/resource/a>;
           rel="canonical";
-          profile="http://otherexample.org/profile/z"
+          format="http://otherexample.org/profile/z"
 
 ---
 
