@@ -261,7 +261,7 @@ Content-Type: text/turtle;profile="urn:example:profile-2"
     such as JSON-LD's "expanded" (<code>http://www.w3.org/ns/json-ld#expanded</code>) or
     "flattened" (<code>http://www.w3.org/ns/json-ld#flattened</code>).
     In order to signal the use of Media Type-independent profiles,
-    the http header fields <code>Accept-Profile</code> and <code>Content-Profile</code> are to be used.</p>
+    the http header fields <code>Accept-Profile</code> and <code>Link: &lt;...&gt;; rel=&quot;profile&quot;</code> are to be used.</p>
       <h4>Using a Link header with rel="profile" (RFC 6906)</h4>
       <p>The HTTP Link header field [[RFC8288]] relates a web resource (Link Context)
     to a target resource (Link Target)
@@ -287,7 +287,9 @@ HTTP/1.1 200 OK
 Content-Type: text/turtle
 Link: &lt;http://example.com/profile/x&gt;; rel="profile"
       </pre>
-      <p>There is, however, no possibility to convey quality information (q-values) using the "profile" relation.</p>
+      <p>The &quot;profile&quot; relation can be used by a server to indicate the profile of the response body
+      There is, however, no possibility to convey quality information (q-values)
+      in a request using the "profile" relation. </p>
       <h4>Using the Prefer/Preference-Applied header fields (RFC 7240)</h4>
       <p>The http <code>Prefer</code> and <code>Preference-Applied</code> header fields [[RFC7240]]
       can be used to convey information about profile preferences.
@@ -309,7 +311,7 @@ Preference-Applied: profile="urn:example:schema"
       </pre>
       <p>This approach has two disadvantages.
       The first, as with the <code>Link</code> header, is
-      that there is no possibility to work with q-values.
+      that there is no possibility to work with q-values in request headers.
       The second is that the only way for a server to state
       that it ignored the preference indicated by the client
       is to omit sending a <code>Preference-Applied</code> header field.
@@ -323,7 +325,9 @@ Preference-Applied: profile="urn:example:schema"
       with a <code>Prefer: profile=""</code> header in it.
       That solution requires that a client evaluate two different headers
       to find a response to its request for a specific profile,
-      which would make client implementation more complicated.</p>
+      which would make client implementation more complicated.
+      Further, [[RFC7240]] explicitly recommends that implementers
+      &quot;SHOULD NOT use the Prefer header mechanism for content negotiation.&quot;</p>
     </section>
 	  <section id="related-ark">
 		  <h3>Archival Resource Key (ARK)</h3>
@@ -540,26 +544,26 @@ GET /resource/a<strong>?_profile=alt</strong> HTTP/1.1
 
 # The server returns a list of profiles both in its HTTP response header and also
 # in the response body (HTML). Note that the action of returning the response message
-# conforms to the QSA Functional Profile and this is indicated with the Content-Profile
-# header.
+# conforms to the QSA Functional Profile and this is indicated with the Link header
+# combined with the &quot;profile&quot; relation
 HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Profile: &lt;http://www.w3.org/ns/dx/connegp/profile/qsa>
+Link: &lt;http://www.w3.org/ns/dx/connegp/profile/qsa>; rel=&quot;profile&quot;
 # This Link header indicates representations are available that conform to Profile X
 # &amp; Y and that the Profile X-conformant representations are available in HTML
 # &amp; XML Media Types.
 Link:
   &lt;http://example.org/resource/a?_profile=profile-x&amp;_mediatype=text/html>;
           rel="canonical"; type="text/html";
-          profile="http://otherexample.org/profile/x",
+          format="http://otherexample.org/profile/x",
   &lt;http://example.org/resource/a?_profile=profile-x&amp;_mediatype=text/xml>;
           rel="alternate";
           type="text/xml";
-          profile="http://otherexample.org/profile/x",
+          format="http://otherexample.org/profile/x",
   &lt;http://example.org/resource/a?_profile=profile-y&amp;_mediatype=text/xml>;
           rel="alternate";
           type="text/xml";
-          profile="http://otherexample.org/profile/y"
+          format="http://otherexample.org/profile/y"
 
 &lt;!DOCTYPE html>
 &lt;html>
@@ -612,7 +616,7 @@ Link:
             so-called 'httpRange-14' issue</a>. An example of a redirecting response is given in <a href="#eg-range14"></a>.
         </div>
         <p>
-          A simple request/response message pair with <code>Accept-Profile</code> and <code>Content-Profile</code>
+          A simple request/response message pair with <code>Accept-Profile</code> and <code>Link: rel=&quot;profile&quot;</code>
           headers included, according to the <a href="#http">HTTP Headers Functional Profile</a>, is shown in
           <a href="#eg-simple"></a> and an example with a redirect is shown in <a href="#eg-range14"></a>.
           <a href="#eg-narrower-profile-response"></a> shows an HTTP Headers Functional Profile message pair indicating a
@@ -629,7 +633,7 @@ Accept-Profile: &lt;http://example.org/profile/x>
 
 # The server returns a representation of Resource a conforming with Profile x
 HTTP/1.1 200 OK
-Content-Profile: http://example.org/profile/x
+Link: &lt;http://example.org/profile/x&gt;; rel=&quot;profile&quot;
 
 [response body]
         </pre>
@@ -648,7 +652,7 @@ Accept-Profile: &lt;http://example.org/profile/x>
 # conforms
 HTTP/1.1 303 See Other
 Location: http://example.org/info-resource/b
-Content-Profile: http://example.org/profile/x
+Link: &lt;http://example.org/profile/x&gt;; rel=&quot;profile&quot;
 
 ---
 
@@ -660,7 +664,7 @@ GET /info-resource/b HTTP/1.1
 ---
 
 # The final server response with the information resource. Note that this
-# response does not include the profile-indicating Content-Profile header
+# response does not include the profile-indicating Link rel=&quot;profile&quot; header
 HTTP/1.1 200 OK
 
 [response body]
@@ -688,9 +692,9 @@ Accept-Profile: &lt;http://example.org/profile/x>
 
 HTTP/1.1 200 OK
 [other response headers]
-Content-Profile: http://example.org/profile/x, \
-                 http://example.org/profile/y, \
-                 http://example.org/profile/z
+Link: &lt;http://example.org/profile/x&gt;; rel=&quot;profile&quot;, \
+                 &lt;http://example.org/profile/y&gt;; rel=&quot;profile&quot;, \
+                 &lt;http://example.org/profile/z&gt;; rel=&quot;profile&quot;
 [more response headers]
 
 [content conforming to to Profile X, Y & Z]
@@ -707,7 +711,7 @@ Content-Profile: http://example.org/profile/x, \
           example</a> in [[?DX-PROF]]), a response using profile URIs for [[?GeoDCAT-AP]] and [[?STATDCAT-AP]] could be:
         </p>
         <p>
-          <code>Content-Profile: &lt;https://joinup.ec.europa.eu/release/geodcat-ap-v10>, &lt;https://joinup.ec.europa.eu/release/statdcat-ap/101></code>
+          <code>Link: &lt;https://joinup.ec.europa.eu/release/geodcat-ap-v10&gt;; rel=&quot;profile&quot;, &lt;https://joinup.ec.europa.eu/release/statdcat-ap/101&gt;; rel=&quot;profile&quot;</code>
         </p>
       </section>
     </section>
@@ -866,8 +870,8 @@ Content-Profile: http://example.org/profile/x, \
       <p>
         A functional profile of the Abstract Model using Hypertext Transfer Protocol (HTTP) headers is presented here.
         This implementation is based on HTTP content negotiation and uses <code>Link</code> headers formulated in
-        particular ways and two new HTTP headers,
-	      <code>Accept-Profile</code> and <code>Content-Profile</code> that are to be defined in an upcoming
+        particular ways and a new HTTP header,
+	      <code>Accept-Profile</code> that is to be defined in an upcoming
         Internet-Draft [[PROF-IETF]].
       </p>
       <div class="note" title="POST/PUT out of scope">
@@ -876,7 +880,7 @@ Content-Profile: http://example.org/profile/x, \
         the proposed Abstract Model these HTTP methods would implement.
         </p>
         <p>
-          <code>Content-Profile</code> headers may be specified in POST &amp; PUT requests to communicate the conformance of
+		<code>Link</code> headers with <code>rel=&quot;profile&quot;</code> may be specified in POST &amp; PUT requests to communicate the conformance of
           a request message's content.
         </p>
       </div>
@@ -893,7 +897,8 @@ Content-Profile: http://example.org/profile/x, \
 	      If no <code>Accept-Profile</code> header preference is given,
 	      the profile dimension SHOULD be ignored for negotiation purposes.
 	      Nevertheless, in all cases,
-	      the server's response SHOULD contain a <code>Content-Profile</code> header
+	      the server's response SHOULD contain a <code>Link</code> header
+	      with <code>rel=&quot;profile&quot;
 	      listing the URIs of all profiles to which it knows the representation conforms.
       </p>
       <section id="http-listprofiles">
@@ -929,24 +934,24 @@ Accept: text/turtle
 
 HTTP/1.1 200 OK
 Content-Type: text/turtle
-Content-Profile: &lt;urn:example:profile:x&gt;
+Link: &lt;urn:example:profile:x&gt;; rel=&quot;profile&quot;
 Link:
   &lt;http://example.org/resource/a&gt;;
           rel="canonical";
           type="text/turtle";
-          profile="urn:example:profile:x",
+          format="urn:example:profile:x",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="text/turtle";
-          profile="urn:example:profile:y",
+          format="urn:example:profile:y",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="application/xml";
-          profile="urn:example:profile:x",
+          format="urn:example:profile:x",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="application/xml";
-          profile="urn:example:profile:y",
+          format="urn:example:profile:y",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="text/html"
@@ -973,24 +978,24 @@ Accept: text/turtle
 HTTP/1.1 200 OK
 Content-Type: text/turtle
 Content-Location: http://example.org/resource/a.prof1.ttl
-Content-Profile: &lt;urn:example:profile:x>
+Link: &lt;urn:example:profile:x&gt;; rel=&quot;profile&quot;
 Link:
   <strong>&lt;http://example.org/resource/a.prof1.ttl&gt;;</strong>
           rel="canonical";
           type="text/turtle";
-          profile="urn:example:profile:x",
+          format="urn:example:profile:x",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="text/turtle";
-          profile="urn:example:profile:y",
+          format="urn:example:profile:y",
   <strong>&lt;http://example.org/resource/a.prof1.xml&gt;;</strong>
           rel="alternate";
           type="application/xml";
-          profile="urn:example:profile:x",
+          format="urn:example:profile:x",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="application/xml";
-          profile="urn:example:profile:y",
+          format="urn:example:profile:y",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="text/html"
@@ -1028,7 +1033,7 @@ URIs for resources conforming to profile urn:example:profile:x]
           <ul>
             <li><em>link target</em> - <code>&lt;http://example.org/resource/a.prof1.ttl&gt;</code></li>
             <li><em>relation type</em> - <code>rel="canonical"</code></li>
-            <li><em>target attributes</em> - <code>type="text/turtle"</code> &amp; <code>profile="urn:example:profile:x"</code></li>
+            <li><em>target attributes</em> - <code>type="text/turtle"</code> &amp; <code>format="urn:example:profile:x"</code></li>
           </ul>
           <p>
             Using these <code>Link</code> HTTP header parts, this HTTP Headers functional profile is able to communicate
@@ -1083,19 +1088,19 @@ Link:
   &lt;http://example.org/resource/a&gt;;
           rel="canonical";
           type="text/turtle";
-          profile="urn:example:profile:x",
+          format="urn:example:profile:x",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="text/turtle";
-          profile="urn:example:profile:y",
+          format="urn:example:profile:y",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="application/xml";
-          profile="urn:example:profile:x",
+          format="urn:example:profile:x",
   &lt;http://example.org/resource/different&gt;;
           rel="alternate";
           type="application/xml";
-          profile="urn:example:profile:y",
+          format="urn:example:profile:y",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="text/html"
@@ -1194,14 +1199,14 @@ Accept: text/turtle
 HTTP/1.1 200 OK
 Content-Type: text/turtle
 Content-Location: http://example.org/resource/a.profx.ttl
-Content-Profile: &lt;urn:example:profile:x&gt;
+Link: &lt;urn:example:profile:x&gt;; rel=&quot;profile&quot;
 Link:
   &lt;http://www.w3.org/ns/dx/prof/Profile&gt;; rel="type"; token="dnb"; anchor=&lt;urn:example:profile:marc21-dnb&gt;,
   &lt;http://www.w3.org/ns/dx/prof/Profile&gt;; rel="type"; token="loc"; anchor=&lt;http://example.org/profiles/marc21-loc&gt;,
-  &lt;http://example.org/resource/a.profdnb.ttl&gt;; rel="canonical"; type="text/turtle"; profile="urn:example:profile:marc21-dnb",
-  &lt;http://example.org/resource/a.profloc.ttl&gt;; rel="alternate"; type="text/turtle"; profile="http://example.org/profiles/marc21-loc",
-  &lt;http://example.org/resource/a.profdnb.xml&gt;; rel="alternate"; type="application/xml"; profile="urn:example:profile:marc21-dnb",
-  &lt;http://example.org/resource/a.profloc.xml&gt;; rel="alternate"; type="application/xml"; profile="http://example.org/profiles/marc21-loc",
+  &lt;http://example.org/resource/a.profdnb.ttl&gt;; rel="canonical"; type="text/turtle"; format="urn:example:profile:marc21-dnb",
+  &lt;http://example.org/resource/a.profloc.ttl&gt;; rel="alternate"; type="text/turtle"; format="http://example.org/profiles/marc21-loc",
+  &lt;http://example.org/resource/a.profdnb.xml&gt;; rel="alternate"; type="application/xml"; format="urn:example:profile:marc21-dnb",
+  &lt;http://example.org/resource/a.profloc.xml&gt;; rel="alternate"; type="application/xml"; format="http://example.org/profiles/marc21-loc",
   &lt;http://example.org/resource/a.html&gt;; rel="alternate"; type="text/html"
 [more response headers]
           </pre>
@@ -1216,7 +1221,7 @@ Link:
         </p>
         <p>
           A server implementing content negotiation by profile MUST respond with an HTTP Response header containing a
-          <code>Content-Profile</code> header indicating the profile returned.
+		<code>Link</code> header with <code>rel=&quot;profile&quot;</code> indicating the profile returned.
         </p>
         <p>
           URIs, both in Requests and Responses, MUST be enclosed in angled brackets, '&lt;' &amp; '&gt;'.
@@ -1234,7 +1239,7 @@ Link:
           identified by the URIs (URNs, in this example) <code>urn:example:profile:x</code> &amp;
           <code>urn:example:profile:y</code> with 'q' values indicating a higher preference for the first. A response
           is returned by the server which indicates conformance with <code>urn:example:profile:x</code> by inclusion of
-          that identifier in the <code>Content-Profile</code> HTTP header.
+          that identifier in the <code>Link</code> HTTP header with <code>rel=&quot;profile&quot;<code>.
         </p>
         <pre id="eg-http-get" class="example nohighlight" aria-busy="false" aria-live="polite"
              title="Requesting a resource representation conforming to a specific profile using HTTP headers">
@@ -1247,7 +1252,7 @@ Accept-Profile: &lt;urn:example:profile:x>;q=1.0,&lt;urn:example:profile:y>;q=0.
 
 HTTP/1.1 200 OK
 Content-Type: text/turtle
-Content-Profile: &lt;urn:example:profile:x>
+Link: &lt;urn:example:profile:x&lt;; rel=&quot;profile&quot;
 [more response headers]
         </pre>
         <p>
@@ -1418,19 +1423,19 @@ GET /resource/a?_profile=alt&amp;_mediatype=application/json HTTP/1.1
 
 HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Profile: &lt;http://www.w3.org/ns/dx/connegp/profile/qsa>
+Link: &lt;http://www.w3.org/ns/dx/connegp/profile/qsa&lt;; rel=&quot;profile&quot;
 Link:
   &lt;http://example.org/resource/a?_profile=profile-x&amp;_mediatype=application/json>;
           rel="canonical"; type="application/json";
-          profile="http://otherexample.org/profile/x",
+          format="http://otherexample.org/profile/x",
   &lt;http://example.org/resource/a?_profile=profile-x&amp;_mediatype=text/xml>;
           rel="alternate";
           type="text/xml";
-          profile="http://otherexample.org/profile/x",
+          format="http://otherexample.org/profile/x",
   &lt;http://example.org/resource/a?_profile=profile-y&amp;_mediatype=text/xml>;
           rel="alternate";
           type="text/xml";
-          profile="http://otherexample.org/profile/y"
+          format="http://otherexample.org/profile/y"
 
 {
     "resource": "http://example.org/resource/a",
@@ -1477,19 +1482,19 @@ Link:
   &lt;http://example.org/resource/a&gt;;
           rel="canonical";
           type="text/turtle";
-          profile="urn:example:profile:x",
+          format="urn:example:profile:x",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="text/turtle";
-          profile="urn:example:profile:y",
+          format="urn:example:profile:y",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="application/xml";
-          profile="urn:example:profile:x",
+          format="urn:example:profile:x",
   &lt;http://example.org/resource/different&gt;;
           rel="alternate";
           type="application/xml";
-          profile="urn:example:profile:y",
+          format="urn:example:profile:y",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="text/html"
@@ -1626,7 +1631,7 @@ GET /resource/X?_profile=Y&amp;_mediatype=Z HTTP/1.1
         </p>
         <p>
           Servers MUST indicate the profile actually returned by including a
-          <code>Content-Profile</code> HTTP header in the response and MAY also indicate the returned profile in other
+		<code>Link</code> HTTP header with <code>rel=&quot;profile&quot;</code> in the response and MAY also indicate the returned profile in other
           ways. Servers SHOULD support escaped URIs and MAY also support un-escaped URIs identifying profiles, or both.
         </p>
         <p>
@@ -1689,18 +1694,18 @@ Link:
   &lt;http://example.org/resource/a?view=profile-x&format=text/html>;
           rel="canonical";
           type="text/html";
-          profile="http://otherexample.org/profile/x",
+          format="http://otherexample.org/profile/x",
   &lt;http://example.org/resource/a?view=profile-x&format=text/turtle>;
           rel="canonical";
           type="text/turtle";
-          profile="http://otherexample.org/profile/x",
+          format="http://otherexample.org/profile/x",
   &lt;http://example.org/resource/a?view=profile-y&amp;format=text/xml>;
           rel="alternate";
-          type="text/xml";
-          profile="http://otherexample.org/profile/y"
+          type="application/xml";
+          format="http://otherexample.org/profile/y"
 
 # Note that here the server does not directly indicate the profile served
-# (there is no Content-Profile header present) but this can be inferred
+# (there is no Link header with rel=&quot;profile&quot; present) but this can be inferred
 # by the link header with rel="canonical"
         </pre>
         <p>
@@ -1731,20 +1736,20 @@ HTTP/1.1 200 OK
 Link:
   &lt;http://example.org/resource/a?view=profile-x&format=text/html>;
           rel="canonical";
-          type="text/html";
-          profile="http://otherexample.org/profile/x",
+          type="application/html";
+          format="http://otherexample.org/profile/x",
   &lt;http://example.org/resource/a?view=profile-x&format=text/turtle>;
           rel="canonical";
           type="text/turtle";
-          profile="http://otherexample.org/profile/x",
+          format="http://otherexample.org/profile/x",
   &lt;http://example.org/resource/a?view=profile-y&amp;format=text/xml>;
           rel="alternate";
-          type="text/xml";
-          profile="http://otherexample.org/profile/y"
+          type="application/xml";
+          format="http://otherexample.org/profile/y"
 <strong>  &lt;http://example.org/resource/a?view=altrep&format=application/ld+json>;
           rel="alternate";
           type="application/ld+json";
-          profile="http://www.w3.org/ns/dx/connegp/altr"</strong>
+          format="http://www.w3.org/ns/dx/connegp/altr"</strong>
 
 [default response content]
         </pre>
@@ -1988,12 +1993,12 @@ Link: &lt;http://www.w3.org/ns/dx/prof/Profile&gt;;
         <dd>
           From <a href="#http-getresourcebyprofile"></a>:<br />
           A server implementing content negotiation by profile MUST respond with an HTTP Response header containing a
-          <code>Content-Profile</code> header indicating the profile returned.
+		<code>Link</code> header with <code>rel=&quot;profile&quot;</code> indicating the profile returned.
         </dd>
         <dt>R.1.2.b</dt>
         <dd>
           From <a href="#http-getresourcebyprofile"></a>:<br />
-          URIs referenced in <code>Accept-Profile</code> and <code>Content-Profile</code> headers MUST be enclosed in angled brackets, '&lt;' &amp; '&gt;'.
+          URIs referenced in <code>Accept-Profile</code> headers MUST be enclosed in angled brackets, '&lt;' &amp; '&gt;'.
         </dd>
         <dt>R.1.2.c</dt>
         <dd>
@@ -2590,13 +2595,13 @@ dct:MediaType
 Link:
   &lt;http://example.org/resource/a>;
           rel="alternate";
-          profile="http://otherexample.org/profile/x",
+          format="http://otherexample.org/profile/x",
   &lt;http://example.org/resource/a>;
           rel="alternate";
-          profile="http://otherexample.org/profile/y",
+          format="http://otherexample.org/profile/y",
   &lt;http://example.org/resource/a>;
           rel="canonical";
-          profile="http://otherexample.org/profile/z"
+          format="http://otherexample.org/profile/z"
 
 ---
 
