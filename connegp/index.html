@@ -693,8 +693,8 @@ Accept-Profile: &lt;http://example.org/profile/x>
 HTTP/1.1 200 OK
 [other response headers]
 Link: &lt;http://example.org/profile/x&gt;; rel=&quot;profile&quot;, \
-                 &lt;http://example.org/profile/y&gt;; rel=&quot;profile&quot;, \
-                 &lt;http://example.org/profile/z&gt;; rel=&quot;profile&quot;
+      &lt;http://example.org/profile/y&gt;; rel=&quot;profile&quot;, \
+      &lt;http://example.org/profile/z&gt;; rel=&quot;profile&quot;
 [more response headers]
 
 [content conforming to to Profile X, Y & Z]
@@ -898,7 +898,7 @@ Link: &lt;http://example.org/profile/x&gt;; rel=&quot;profile&quot;, \
 	      the profile dimension SHOULD be ignored for negotiation purposes.
 	      Nevertheless, in all cases,
 	      the server's response SHOULD contain a <code>Link</code> header
-	      with <code>rel=&quot;profile&quot;
+        with <code>rel=&quot;profile&quot;</code>
 	      listing the URIs of all profiles to which it knows the representation conforms.
       </p>
       <section id="http-listprofiles">
@@ -934,7 +934,9 @@ Accept: text/turtle
 
 HTTP/1.1 200 OK
 Content-Type: text/turtle
+# This Link header indicates which profile this response conforms to
 Link: &lt;urn:example:profile:x&gt;; rel=&quot;profile&quot;
+# This Link header lists all available profiles
 Link:
   &lt;http://example.org/resource/a&gt;;
           rel="canonical";
@@ -1239,7 +1241,7 @@ Link:
           identified by the URIs (URNs, in this example) <code>urn:example:profile:x</code> &amp;
           <code>urn:example:profile:y</code> with 'q' values indicating a higher preference for the first. A response
           is returned by the server which indicates conformance with <code>urn:example:profile:x</code> by inclusion of
-          that identifier in the <code>Link</code> HTTP header with <code>rel=&quot;profile&quot;<code>.
+          that identifier in the <code>Link</code> HTTP header with <code>rel=&quot;profile&quot;</code>.
         </p>
         <pre id="eg-http-get" class="example nohighlight" aria-busy="false" aria-live="polite"
              title="Requesting a resource representation conforming to a specific profile using HTTP headers">
@@ -1252,7 +1254,7 @@ Accept-Profile: &lt;urn:example:profile:x>;q=1.0,&lt;urn:example:profile:y>;q=0.
 
 HTTP/1.1 200 OK
 Content-Type: text/turtle
-Link: &lt;urn:example:profile:x&lt;; rel=&quot;profile&quot;
+Link: &lt;urn:example:profile:x&gt;; rel=&quot;profile&quot;
 [more response headers]
         </pre>
         <p>
@@ -1423,16 +1425,16 @@ GET /resource/a?_profile=alt&amp;_mediatype=application/json HTTP/1.1
 
 HTTP/1.1 200 OK
 Content-Type: application/json
-Link: &lt;http://www.w3.org/ns/dx/connegp/profile/qsa&lt;; rel=&quot;profile&quot;
-Link:
-  &lt;http://example.org/resource/a?_profile=profile-x&amp;_mediatype=application/json>;
-          rel="canonical"; type="application/json";
+Link: &lt;http://www.w3.org/ns/dx/connegp/profile/qsa&gt;; rel=&quot;profile&quot;,
+      &lt;http://example.org/resource/a?_profile=profile-x&amp;_mediatype=application/json>;
+          rel="canonical";
+          type="application/json";
           format="http://otherexample.org/profile/x",
-  &lt;http://example.org/resource/a?_profile=profile-x&amp;_mediatype=text/xml>;
+      &lt;http://example.org/resource/a?_profile=profile-x&amp;_mediatype=text/xml>;
           rel="alternate";
           type="text/xml";
           format="http://otherexample.org/profile/x",
-  &lt;http://example.org/resource/a?_profile=profile-y&amp;_mediatype=text/xml>;
+      &lt;http://example.org/resource/a?_profile=profile-y&amp;_mediatype=text/xml>;
           rel="alternate";
           type="text/xml";
           format="http://otherexample.org/profile/y"
