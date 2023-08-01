@@ -11,7 +11,10 @@
             dct:format "application/xml" ;
             dct:conformsTo <urn:example:profile:x> ;
         ] ,
-        <http://example.org/resource/different> 
+        <http://example.org/resource/different> ,
+        [
+            dct:format "text/html" ;
+        ] 
 .
 
 
