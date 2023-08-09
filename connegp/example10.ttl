@@ -1,0 +1,24 @@
+<http://example.org/resource/a>
+    altp:hasDefaultRepresentation [
+        dct:format "text/turtle" ;
+        dct:conformsTo <urn:example:profile:x> ;
+            ] ;
+    altp:hasRepresentation [
+            dct:format "text/turtle" ;
+            dct:conformsTo <urn:example:profile:y> ;
+        ] ,
+        [
+            dct:format "application/xml" ;
+            dct:conformsTo <urn:example:profile:x> ;
+        ] ,
+        <http://example.org/resource/different> ,
+        [
+            dct:format "text/html" ;
+        ] 
+.
+
+
+<http://example.org/resource/different> 
+    dct:format "application/xml" ;
+    dct:conformsTo <urn:example:profile:y>
+.

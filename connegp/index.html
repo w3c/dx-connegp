@@ -77,11 +77,6 @@
       Implementers will need to ensure that any Functional Profile
       they define implements the Abstract Model's functions and can deliver alternate representation information as per the Alternate Representations Data Model.
     </p>
-    <p>
-      While this specification only describes HTTP methods for content negotiation by profile via the HTTP Header and URL QSA Functional Profiles, it is expected
-      that implementers will want to implement functionally equivalent profiles for other environments, some of which may
-      be not yet realized future environments.
-    </p>
     <!--
     <p>
       Guidance for the creation of <a>profile</a>s is provided in the [[PROF-GUIDANCE]] document created
@@ -547,7 +542,7 @@ GET /resource/a<strong>?_profile=alt</strong> HTTP/1.1
 # conforms to the QSA Functional Profile and this is indicated with the Link header
 # combined with the &quot;profile&quot; relation
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: text/html
 Link: &lt;http://www.w3.org/ns/dx/connegp/profile/qsa>; rel=&quot;profile&quot;
 # This Link header indicates representations are available that conform to Profile X
 # &amp; Y and that the Profile X-conformant representations are available in HTML
@@ -1113,7 +1108,7 @@ Link:
     altp:hasDefaultRepresentation [
         dct:format "text/turtle" ;
         dct:conformsTo &lt;urn:example:profile:x> ;
-    ] ,
+    ] ;
     altp:hasRepresentation [
         dct:format "text/turtle" ;
         dct:conformsTo &lt;urn:example:profile:y> ;
@@ -1122,10 +1117,11 @@ Link:
         dct:format "application/xml" ;
         dct:conformsTo &lt;urn:example:profile:x> ;
     ] ,
-    &lt;http://example.org/resource/different&gt; ,
+    &lt;http://example.org/resource/different&gt ,
     [
         dct:format "text/html" ;
-    ] .
+    ] 
+.
 
 &lt;http://example.org/resource/different&gt;
     dct:format "application/xml" ;
