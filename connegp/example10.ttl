@@ -1,24 +1,27 @@
+PREFIX altr: <http://www.w3.org/ns/dx/connegp/altr#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
 <http://example.org/resource/a>
     altr:hasDefaultRepresentation [
-        dct:format "text/turtle" ;
-        dct:conformsTo <urn:example:profile:x> ;
-            ] ;
+        dcterms:format "text/turtle" ;
+        dcterms:conformsTo <urn:example:profile:x> ;
+    ] ;
     altr:hasRepresentation [
-            dct:format "text/turtle" ;
-            dct:conformsTo <urn:example:profile:y> ;
-        ] ,
-        [
-            dct:format "application/xml" ;
-            dct:conformsTo <urn:example:profile:x> ;
-        ] ,
-        <http://example.org/resource/different> ,
-        [
-            dct:format "text/html" ;
-        ] 
+        dcterms:format "text/turtle" ;
+        dcterms:conformsTo <urn:example:profile:y> ;
+    ] ,
+    [
+        dcterms:format "application/xml" ;
+        dcterms:conformsTo <urn:example:profile:x> ;
+    ] ,
+    <http://example.org/resource/different> ,
+    [
+        dcterms:format "text/html" ;
+    ]
 .
 
 
 <http://example.org/resource/different> 
-    dct:format "application/xml" ;
-    dct:conformsTo <urn:example:profile:y>
+    dcterms:format "application/xml" ;
+    dcterms:conformsTo <urn:example:profile:y> ;
 .

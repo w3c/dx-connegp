@@ -2352,42 +2352,44 @@ Functional Profile of this specification
         <div id="altr-owl"
              class="codelisting nohighlight" aria-busy="false" aria-live="polite"
              title="Alternate Profiles Data Model as an OWL ontology"><div class="codelisting-title"><a href="#altr-owl">CODE LISTING 3</a>: Alternate Profiles Data Model as an OWL ontology</div>
-@prefix altr: &lt;http://www.w3.org/ns/dx/connegp/altr#> .
-@prefix dct: &lt;http://purl.org/dc/terms/> .
-@prefix owl: &lt;http://www.w3.org/2002/07/owl#> .
-@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix sdo: &lt;http://schema.org/> .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#> .
-@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#> .
+PREFIX altr: &lt;http://www.w3.org/ns/dx/connegp/altr#>
+PREFIX dcterms: &lt;http://purl.org/dc/terms/>
+PREFIX owl: &lt;http://www.w3.org/2002/07/owl#>
+PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sdo: &lt;http://schema.org/>
+PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: &lt;http://www.w3.org/2004/02/skos/core#>
 
 &lt;http://www.w3.org/ns/dx/connegp/altr>
     a owl:Ontology ;
     rdfs:label "Alternative Profiles Ontology" ;
-    rdfs:comment """This ontology allows for the description of representations
-                    of Internet resources.
+    rdfs:comment """This ontology allows for the description of representations of Internet resources.
 
-                    Representations may conform to dct:Standard instances and may
-                    have the format of a particular dct:MediaType."""@en ;
-    dct:created "2019-08-07"^^xsd:date ;
-    dct:modified "2019-08-10"^^xsd:date ;
-    dct:creator [
+Representations may conform to prof:Profile instances and may have the format of a particular dcterms:MediaType."""@en ;
+    dcterms:created "2019-08-07"^^xsd:date ;
+    dcterms:modified "2023-08-23"^^xsd:date ;
+    dcterms:creator [
         a sdo:Person ;
-        sdo:affiliation [
-            sdo:name "SURROUND Australia Pty Ltd" ;
-            sdo:url &lt;https://surroundaustralia.com>
-        ] ;
-        sdo:email &lt;mailto:nicholas.car@surroundaustralia.com> ;
+        sdo:affiliation &lt;https://kurrawong.ai> ;
+        sdo:email &lt;mailto:nick@kurrawong.ai> ;
         sdo:identifier &lt;http://orcid.org/0000-0002-8742-7730> ;
-        sdo:name "Nicholas J. Car"
-    ] .
+        sdo:name "Nicholas J. Car" ;
+    ] ;
+.
 
-dct:conformsTo
+&lt;https://kurrawong.ai>
+    a sdo:Organization ;
+    sdo:name "KurrawongAI" ;
+    sdo:url "https://kurrawong.ai"^^xsd:anyURI ;
+.
+
+dcterms:conformsTo
     a owl:ObjectProperty ;
     rdfs:label "conforms to" ;
-    rdfs:range dct:Standard ;
-    skos:scopeNote "Use this property to indicate the data profile that
-                   the altr:Representation conforms to." .
+    dcterms:source dcterms:conformsTo ;
+    skos:scopeNote "Use this property to indicate a dcterms:Standard that a altr:Representation conforms to." ;
+.
 
 altr:hasRepresentation
     a owl:ObjectProperty ;
@@ -2395,19 +2397,16 @@ altr:hasRepresentation
     skos:definition "Indicates a Representation of a Resource."@en ;
     rdfs:domain rdf:Resource ;
     rdfs:range altr:Representation ;
-    skos:scopeNote "Use this property to indicate the HTTP-delivered
-                    representation of a resource." .
+    skos:scopeNote "Use this property to indicate a the HTTP-delivered representation of a resource." ;
+.
 
 altr:hasDefaultRepresentation
     a owl:ObjectProperty ;
     rdfs:label "has default representation" ;
     skos:definition "Indicates the default Representation of a Resource."@en ;
     rdfs:subPropertyOf altr:hasRepresentation ;
-    skos:scopeNote "Use this property to indicate the default HTTP-delivered
-                    representation of a resource that is obtained when no
-                    further instructions are given to a server to obtain a
-                    resource's representation other than the identification
-                    (URI) of the resource" .
+    skos:scopeNote "Use this property to indicate the default HTTP-delivered representation of a resource that is obtained when no further instructions are given to a server to obtain a resource's representation other than the identification (URI) of the resource" ;
+.
 
 rdf:Resource
     a owl:Class ;
@@ -2416,37 +2415,33 @@ rdf:Resource
     rdfs:subClassOf [
         a owl:Restriction ;
         owl:onProperty altr:hasRepresentation ;
-        owl:allValuesFrom altr:Representation
+        owl:allValuesFrom altr:Representation ;
     ] ;
-    dct:source "http://www.w3.org/2000/01/rdf-schema#Resource" ;
-    skos:scopeNote "In the context of this mode, rdf:Resource instances are
-                    used to identify Internet resources, that is items
-                    identified by a URI." .
+    dcterms:source "http://www.w3.org/2000/01/rdf-schema#Resource" ;
+    skos:scopeNote "In the context of this mode, rdf:Resource instances are used to identify Internet resources, that is items identified by a URI." ;
+.
 
 altr:Representation
     a owl:Class ;
     rdfs:label "Representation" ;
-    skos:definition "An abstraction of the current or desired state of a
-                     thing in HTTP communications."@en ;
+    skos:definition "An abstraction of the current or desired state of a thing in HTTP communications."@en ;
     rdfs:subClassOf [
         a owl:Restriction ;
-        owl:onProperty dct:conformsTo ;
-        owl:allValuesFrom dct:Standard
+        owl:onProperty dcterms:conformsTo ;
+        owl:allValuesFrom dcterms:Standard ;
     ] ;
-    dct:source &lt;https://httpwg.org/specs/rfc7230.html> ;
+    dcterms:source &lt;https://httpwg.org/specs/rfc7230.html> ;
     rdfs:isDefinedBy &lt;http://www.w3.org/ns/dx/connegp/altr> ;
-    skos:scopeNote "Use this class to indicate instances of representations
-                    of resources" .
+    skos:scopeNote "Use this class to indicate instances of representations of resources" ;
+.
 
-dct:Standard
+dcterms:Standard
     a owl:Class ;
     rdfs:label "Standard" ;
-    skos:definition "A basis for comparison; a reference point against which
-                     other things can be evaluated."@en ;
-    dct:source "http://purl.org/dc/terms/Standard" ;
-    skos:scopeNote "In the context of this mode, use this class to indicate
-                    instances of information models that representations of
-                    resources can conform to." .
+    skos:definition "A basis for comparison; a reference point against which other things can be evaluated."@en ;
+    dcterms:source "http://purl.org/dc/terms/Standard" ;
+    skos:scopeNote "In the context of this mode, use this class to indicate instances of information models that representations of resources can conform to." ;
+.
         </div>
       </section>
       <section id="altr-extensions">
