@@ -248,13 +248,13 @@
       <pre id="eg-profile-and-accept" class="example nohighlight" aria-busy="false" aria-live="polite"
            title="Using the HTTP Accept header together with a 'profile' parameter">
 GET /resource/a HTTP/1.1
-Accept: text/turtle;q=0.9;profile="urn:example:profile-1", \
-        text/turtle;q=0.7;profile="urn:example:profile-2"
+Accept: application/ld+json;q=0.9;profile="urn:example:profile-1", \
+        application/ld+json;q=0.7;profile="urn:example:profile-2"
 
 --
 
 HTTP/1.1 200 OK
-Content-Type: text/turtle;profile="urn:example:profile-2"
+Content-Type: application/ld+json;profile="urn:example:profile-2"
       </pre>
       <p>During 2018, DXWG members had a longer discussion with the <a href="https://www.w3.org/2018/json-ld-wg/">JSON-LD WG</a> at the annual forum TPAC in Lyon, France
     and it was concluded that the "profile” parameter in the <code>Accept</code> and <code>Content-Type</code>
