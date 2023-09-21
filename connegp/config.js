@@ -18,7 +18,8 @@ var respecConfig = {
         name:       "Rob Atkinson",
         company:    "Metalinkage, Open Geospatial Consortium",
         companyURL: "http://www.ogc.org",
-        orcid:      "0000-0002-7878-2693"
+        orcid:      "0000-0002-7878-2693",
+        w3cid:      90763
       },
       {
         name:       "Nicholas J. Car",
