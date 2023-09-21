@@ -1,9 +1,10 @@
 var respecConfig = {
-    specStatus: "WD",
-    shortName: "dx-connegp",
+    group: "dx",
+    specStatus: "ED",
+    shortName: "dx-prof-conneg",
     edDraftURI: "https://w3c.github.io/dx-connegp/connegp/",
     previousPublishDate: "2019-04-30",
-    previousMaturity: "PWD",
+    previousMaturity: "WD",
     testSuiteURI: "https://github.com/w3c/prof-conneg-testing",
     implementationReportURI: "https://w3c.github.io/dx-connegp/connegp-implementation-report/",
     canonicalURI: "TR",
@@ -34,10 +35,7 @@ var respecConfig = {
             href:  "https://ruben.verborgh.org/"
     	}]
     }],
-    wg: "Dataset Exchange Working Group",
-    wgURI: "https://www.w3.org/2017/dxwg/",
     wgPublicList: "public-dxwg-comments",
-    wgPatentURI: "https://www.w3.org/2004/01/pp-impl/99375/status",
     inlineCSS: "true",
     lint: "false",
     maxTocLevel: 3,
