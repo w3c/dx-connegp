@@ -21,13 +21,19 @@
       <h3>Overview of DXWG documents on profiles</h3>
       <p>
         This document is one from set of documents on profiles, edited by the W3C Dataset Exchange Working Group (DXWG)
-        and the Internet Engineering Taskforce (IETF). The documents are:
+        and the Internet Engineering Taskforce (IETF). The DXWG documents are:
       </p>
       <ul>
         <li>[[?DX-PROF]] - the <em>Profiles Vocabulary</em>: an RDF vocabulary that describes profiles and related resources</li>
         <li><strong>[PROF-CONNEG] this document, specific guidance on how to negotiate for Internet resource content using profiles</strong></li>
-        <li>[[PROF-IETF]] - <em>Indicating, Discovering, Negotiating, and Writing Profiled Representations</em>: an <a href="http://www.ietf.org">IETF</a> <a href="http://www.ietf.org/standards/ids/">Internet-Draft</a> defining HTTP Headers for HTTP content negotiation by profile</li>
         <li>The DXWG also plans to provide [[PROF-GUIDANCE]] - <em>Profile Guidance</em>: general recommendations and guidance on profiling.</li>
+      </ul>
+      <p>
+	The following document, maintained under the auspicies of the IETF, establishes the technical
+	foundations for this document but is not within the scope of the DXWG:
+      </p>
+      <ul>
+	<li>[[PROF-IETF]] - <em>Indicating and Negotiating Profiles in HTTP</em>: an <a href="http://www.ietf.org">IETF</a> <a href="http://www.ietf.org/standards/ids/">Internet-Draft</a> defining HTTP Headers for HTTP content negotiation by profile</li>
       </ul>
     </section>
   </section>
@@ -76,11 +82,6 @@
     <p>
       Implementers will need to ensure that any Functional Profile
       they define implements the Abstract Model's functions and can deliver alternate representation information as per the Alternate Representations Data Model.
-    </p>
-    <p>
-      While this specification only describes HTTP methods for content negotiation by profile via the HTTP Header and URL QSA Functional Profiles, it is expected
-      that implementers will want to implement functionally equivalent profiles for other environments, some of which may
-      be not yet realized future environments.
     </p>
     <!--
     <p>
@@ -247,13 +248,13 @@
       <pre id="eg-profile-and-accept" class="example nohighlight" aria-busy="false" aria-live="polite"
            title="Using the HTTP Accept header together with a 'profile' parameter">
 GET /resource/a HTTP/1.1
-Accept: text/turtle;q=0.9;profile="urn:example:profile-1", \
-        text/turtle;q=0.7;profile="urn:example:profile-2"
+Accept: application/ld+json;q=0.9;profile="urn:example:profile-1", \
+        application/ld+json;q=0.7;profile="urn:example:profile-2"
 
 --
 
 HTTP/1.1 200 OK
-Content-Type: text/turtle;profile="urn:example:profile-2"
+Content-Type: application/ld+json;profile="urn:example:profile-2"
       </pre>
       <p>During 2018, DXWG members had a longer discussion with the <a href="https://www.w3.org/2018/json-ld-wg/">JSON-LD WG</a> at the annual forum TPAC in Lyon, France
     and it was concluded that the "profile” parameter in the <code>Accept</code> and <code>Content-Type</code>
@@ -547,7 +548,7 @@ GET /resource/a<strong>?_profile=alt</strong> HTTP/1.1
 # conforms to the QSA Functional Profile and this is indicated with the Link header
 # combined with the &quot;profile&quot; relation
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: text/html
 Link: &lt;http://www.w3.org/ns/dx/connegp/profile/qsa>; rel=&quot;profile&quot;
 # This Link header indicates representations are available that conform to Profile X
 # &amp; Y and that the Profile X-conformant representations are available in HTML
@@ -1113,7 +1114,7 @@ Link:
     altp:hasDefaultRepresentation [
         dct:format "text/turtle" ;
         dct:conformsTo &lt;urn:example:profile:x> ;
-    ] ,
+    ] ;
     altp:hasRepresentation [
         dct:format "text/turtle" ;
         dct:conformsTo &lt;urn:example:profile:y> ;
@@ -1122,10 +1123,11 @@ Link:
         dct:format "application/xml" ;
         dct:conformsTo &lt;urn:example:profile:x> ;
     ] ,
-    &lt;http://example.org/resource/different&gt; ,
+    &lt;http://example.org/resource/different&gt ,
     [
         dct:format "text/html" ;
-    ] .
+    ] 
+.
 
 &lt;http://example.org/resource/different&gt;
     dct:format "application/xml" ;
@@ -2670,6 +2672,6 @@ ex:connegDataAccessService
     </section>
   </section>
   <script class="remove" src="config.js"></script>
-  <script class="remove" src="https://www.w3.org/Tools/respec/respec-w3c-common"></script>
+  <script class="remove" src="https://www.w3.org/Tools/respec/respec-w3c"></script>
 </body>
 </html>
