@@ -41,7 +41,7 @@
     <h2>Introduction</h2>
     <p>
       Content delivered by dereferencing Internet identifiers can be the subject of negotiation in different
-      ways. When using the HTTP protocol [[RFC7230]], a client may set one or more request headers:
+      ways. When using the HTTP protocol [[RFC9110]], a client may set one or more request headers:
     </p>
     <ul>
       <li>an <code>Accept</code> header specifying preferred Media Types which the server may or may not supply</li>
@@ -167,11 +167,11 @@
       </dd>
       <dt><dfn>client</dfn></dt>
       <dd>
-        A program that establishes a connection to a <a>server</a> for the purpose of sending one or more HTTP requests. [[RFC7230]]
+        A program that establishes a connection to a <a>server</a> for the purpose of sending one or more HTTP requests. [[RFC9110]]
       </dd>
       <dt><dfn>server</dfn></dt>
       <dd>
-        A program that accepts connections in order to service HTTP <a>requests</a> by sending HTTP <a>responses</a>. [[RFC7230]]
+        A program that accepts connections in order to service HTTP <a>requests</a> by sending HTTP <a>responses</a>. [[RFC9110]]
       </dd>
       <dt><dfn>resource</dfn></dt>
       <dd>
@@ -181,7 +181,7 @@
       <dt><dfn>representation</dfn></dt>
       <dd>
         <p>
-          An abstraction of the current or desired state of a thing in HTTP communications. [[RFC7230]]
+          An abstraction of the current or desired state of a thing in HTTP communications. [[RFC9110]]
         </p>
         <p>
           In this specification, <em>representations</em> are of <a>resources</a>.
@@ -190,9 +190,9 @@
       <dt><dfn>metadata</dfn></dt>
       <dd>Information that is supplied about a resource. [[RFC3986]]</dd>
       <dt><dfn>request</dfn></dt>
-      <dd>A message sent over the Internet, from a <a>client</a> to a <a>server</a>, for a information about a <a>resource</a>. [[RFC7230]]</dd>
+      <dd>A message sent over the Internet, from a <a>client</a> to a <a>server</a>, for a information about a <a>resource</a>. [[RFC9110]]</dd>
       <dt><dfn>response</dfn></dt>
-      <dd>A message sent over the Internet, from a <a>server</a> to a <a>client</a> answering a <a>request</a> for information about a <a>resource</a>. [[RFC7230]]</dd>
+      <dd>A message sent over the Internet, from a <a>server</a> to a <a>client</a> answering a <a>request</a> for information about a <a>resource</a>. [[RFC9110]]</dd>
       <dt><dfn>token</dfn></dt>
       <dd>A short name identifying something. In the context of this document, tokens are sometimes used to identify <a>profiles</a>.</dd>
     </dl>
@@ -736,7 +736,7 @@ Link: &lt;http://example.org/profile/x&gt;; rel=&quot;profile&quot;, \
         to modelling systems implementing this model, depending
         on what is deemed to be relevant to the application profile for which this specification has been created. For
         example, the HTTP Application Profile (<a href="#http"></a>) is limited to text within the constraints of the
-        HTTP specification's headers structure in [[RFC7230]] and thus syntactic communication of this data model in
+        HTTP specification's headers structure in [[RFC9110]] and thus syntactic communication of this data model in
         that environment must be implemented according to its constraints.
       </p>
       <p>
@@ -1343,7 +1343,7 @@ http://example.com/path/to/resource/a?<strong>_profile=prof-01&amp;_mediatype=te
           <div class="note" title="Maximum length of URLs">
             If Query String Arguments use URIs (or URLs) to convey important information, implementers should ensure
             that the total length of the total requesting URI within which the QSAs using URIs/URLs exist does not exceed
-            length restrictions. [[RFC7230]]'s <a data-cite="RFC7230#section-3.1.1">§3.1.1</a> recommends that senders and
+            length restrictions. [[RFC9110]]'s <a data-cite="RFC9110#section-4.1">§4.1</a> recommends that senders and
             recipients support request lines of at least 8,000 octets. Some client and server implementations, however,
             cannot accept URLs longer than 2,000 characters, for example, the Sitemap protocol which has a length limit of
             2,048 characters in a URL. Cf.
@@ -1793,8 +1793,8 @@ Link:
 	<p>
 	  The ABNF for the profile attribute's value is <code>token / quoted-string</code>,
 	  where "token" and "quoted-string" are defined as in
-		<a href="https://tools.ietf.org/html/rfc7230#section-3.2.6">section 3.2.6</a>
-	  of [[RFC7230]]. The rules for <code>link-param</code> values defined in
+		<a href="https://tools.ietf.org/html/rfc9110#section-5.6">section 5.6</a>
+	  of [[RFC9110]]. The rules for <code>link-param</code> values defined in
 		<a href="https://tools.ietf.org/html/rfc8288#section-3">section 3</a> of [[RFC8288]] apply.
 	</p>
 	<pre id="eg-link-attribute-token" class="example nohighlight" aria-busy="false" aria-live="polite"
@@ -2439,7 +2439,7 @@ altr:Representation
         owl:onProperty dct:conformsTo ;
         owl:allValuesFrom dct:Standard
     ] ;
-    dct:source &lt;https://httpwg.org/specs/rfc7230.html> ;
+    dct:source &lt;https://httpwg.org/specs/rfc9110.html> ;
     rdfs:isDefinedBy &lt;http://www.w3.org/ns/dx/connegp/altr> ;
     skos:scopeNote "Use this class to indicate instances of representations
                     of resources" .
