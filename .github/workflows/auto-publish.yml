@@ -1,0 +1,29 @@
+# Example: Override respecConfig for W3C deployment and validators.
+name: Echidna Auto-publish
+on:
+  pull_request:
+    paths: ["connegp/**"]
+  push:
+    branches: [gh-pages]
+    paths: ["connegp/**"]
+jobs:
+  main:
+    name: Echidna Auto-publish WD
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+      - uses: w3c/spec-prod@v2
+        with:
+          TOOLCHAIN: respec
+          SOURCE: connegp/index.html
+          VALIDATE_LINKS: false
+          VALIDATE_MARKUP: true
+          ACTIONS_STEP_DEBUG: true
+          W3C_ECHIDNA_TOKEN: ${{ secrets.ECHIDNA_TOKEN }}
+          W3C_WG_DECISION_URL: https://www.w3.org/2023/08/23-dxwg-minutes.html#r02
+          W3C_BUILD_OVERRIDE: |
+            specStatus: WD
+            shortName: dx-prof-conneg
+
