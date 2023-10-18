@@ -33,7 +33,7 @@
 	foundations for this document but is not within the scope of the DXWG:
       </p>
       <ul>
-	<li>[[PROF-IETF]] - <em>Indicating and Negotiating Profiles in HTTP</em>: an <a href="http://www.ietf.org">IETF</a> <a href="http://www.ietf.org/standards/ids/">Internet-Draft</a> defining HTTP Headers for HTTP content negotiation by profile</li>
+        <li>[[PROF-IETF]] - <em>Indicating, Discovering, Negotiating, and Writing Profiled Representations</em>: an <a href="http://www.ietf.org">IETF</a> <a href="http://www.ietf.org/standards/ids/">Internet-Draft</a> defining HTTP Headers for HTTP content negotiation by profile</li>
       </ul>
     </section>
   </section>
@@ -238,7 +238,7 @@
     <section id="related-http">
       <h3>Existing standards for transporting profile information in HTTP headers</h3>
       <h4>Using Accept/Content Type together with the profile parameter</h4>
-      <p>The HTTP Accept and Content-Type header fields [[RFC7231]]
+      <p>The HTTP Accept and Content-Type header fields [[RFC9110]]
         allow a client to specify acceptable Media Types (<code>Accept</code>)
         and a server to indicate the Media Type of the response's body (<code>Content-Type</code>).
         A Media Type registration can also specify an optional list of Media Type parameters.
@@ -1716,7 +1716,7 @@ Link:
           While the Link header in <a href="#eg-qsa-keydiscovery"></a> above communicates all the information that a <strong>list profiles</strong> request
           does, it is not visible directly in a web browser. <a href="#eg-list-profiles-mediatype"></a> shows a
           requests/response pair that include equivalent Link header and HTTP body information listing profiles, the
-          latter of which is visible in a browser but a client formulating this request is dependent on a it knowing
+          latter of which is visible in a browser but a client formulating this request is dependent on it knowing
           that the QSA key/value pair <code>_profile=alt</code> is used to trigger this response as opposed to the
           server's default resource representation.
         </p>
@@ -2241,36 +2241,36 @@ cnpr:http a prof:Profile ;
     prof:isProfileOf &lt;https://www.w3.org/TR/dx-connegp/> ;
     rdfs:label "HTTP Headers Functional Profile" ;
     rdfs:comment "For conformance with the functional profile of Content Negotiation by
-                  Profile presented in § 7.1 Hypertext Transfer Protocol Headers."@en ;
+                  Profile presented in § 7.2 Hypertext Transfer Protocol Headers."@en ;
     skos:scopeNote "To be used if a resource conforms to the HTTP Headers functional profile"@en .
 
 cnpr:qsa a prof:Profile ;
     prof:isProfileOf cnpr:qsa-alt ;
     rdfs:label "QSA Functional Profile"@en ;
     rdfs:comment "For conformance with the functional profile of Content Negotiation by
-                  Profile presented in § 7.2 URL Query String Arguments."@en ;
+                  Profile presented in § 7.3 URL Query String Arguments."@en ;
     skos:scopeNote "To be used if a resource conforms to the QSA Functional Profile using
                     the Query String Arguments _profile and _mediatype as per the
-                    recommendations in § 7.2 URL Query String Arguments."@en .
+                    recommendations in § 7.3 URL Query String Arguments."@en .
 
 cnpr:qsa-alt a prof:Profile ;
     prof:isProfileOf &lt;https://www.w3.org/TR/dx-connegp/> ;
     rdfs:label "QSA Alternate Keywords Functional Profile" ;
     rdfs:comment "For conformance with the functional profile of Content Negotiation by
-                  Profile presented in § 7.2 URL Query String Arguments."@en ;
+                  Profile presented in § 7.3 URL Query String Arguments."@en ;
     skos:scopeNote "To be used if a resource conforms to the QSA Functional Profile but
                     uses alternate keywords for the Query String Arguments _profile and
-                    _mediatype, as allowed by the recommendations in § 7.2 URL Query
+                    _mediatype, as allowed by the recommendations in § 7.3 URL Query
                     String Arguments."@en .
 
 cnpr:rrd a prof:Profile ;
     prof:isProfileOf &lt;https://www.w3.org/TR/dx-connegp/> ;
     rdfs:label "Resource Representation Description Profile"@en ;
-    rdfs:comment "For conformance with Content Negotiation by Profile § 6.2.2 get
+    rdfs:comment "For conformance with Content Negotiation by Profile § 6.3.2 get
                   resource by profile."@en ;
     skos:scopeNote "To be used if a resource representation is able to indicate which
                     profile(s) it conforms to, in its appropriate functional profile,
-                    as per the abstract specification in § 6.2.2 get resource by
+                    as per the abstract specification in § 6.3.2 get resource by
                     profile."@en .
       </div>
       <figure id="fig-profile-hierarchy">
@@ -2309,7 +2309,7 @@ cnpr:rrd a prof:Profile ;
       <p>
         The code in <a href="#system-conforming">Code Listing 2</a> shows an imaginary Web Service documented using
         [[?VOCAB-DCAT-2]] and borrowing parts from its examples, such as
-        <a href="https://www.w3.org/TR/vocab-dcat-2/#ex-service-eea">Example 49</a>.
+        <a href="https://www.w3.org/TR/vocab-dcat-2/#ex-service-eea">Example 48</a>.
         Included is the predicate <code>dct:conformsTo</code> used as per [[?VOCAB-DCAT-2]] &amp; [[?DX-PROF]].
         Conformance here is claimed to the <em>QSA Alternate Keywords Functional Profile</em> profile which is indicated by
         the URI <code>http://www.w3.org/ns/dx/connegp/profile/qsa-alt</code>, identified as per

@@ -48,9 +48,9 @@ var respecConfig = {
                "J. Kunze",
                "R. Rodgers"
             ],
-            href: "https://tools.ietf.org/id/draft-kunze-ark-15.txt",
+            href: "https://datatracker.ietf.org/doc/draft-kunze-ark/37/",
             title: "The ARK Identifier Scheme" ,
-            date: "2008-05-22",
+            date: "2023-04-25",
             status: "Internet-Draft"
         },
         "PROF-GUIDANCE": {
@@ -68,11 +68,12 @@ var respecConfig = {
         "PROF-IETF": {
             authors: [
                 "L. Svensson",
-                "R. Verborgh"
+                "R. Verborgh",
+                "H. Van de Sompel"
             ],
-            href: "https://profilenegotiation.github.io/I-D-Profile-Negotiation/I-D-Profile-Negotiation",
-            title: "Indicating and Negotiating Profiles in HTTP",
-            date: " 2019-07-11",
+            href: "https://datatracker.ietf.org/doc/draft-svensson-profiled-representations/01/",
+            title: "Indicating, Discovering, Negotiating, and Writing Profiled Representations",
+            date: " 2021-03-09",
             status: "IETF Internet Draft"
         }
     }
