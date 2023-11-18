@@ -55,13 +55,13 @@ var respecConfig = {
         },
         "PROF-IETF": {
             authors: [
-                "L. Svensson",
+                "L.G. Svensson",
                 "R. Verborgh",
                 "H. Van de Sompel"
             ],
-            href: "https://datatracker.ietf.org/doc/draft-svensson-profiled-representations/01/",
+            href: "https://profilenegotiation.github.io/I-D-Profile-Negotiation/I-D-Profile-Negotiation",
             title: "Indicating, Discovering, Negotiating, and Writing Profiled Representations",
-            date: " 2021-03-09",
+            date: " 2023-07-26",
             status: "IETF Internet Draft"
         },
         "PROF-CNEG-TESTING": {
