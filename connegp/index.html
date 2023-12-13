@@ -201,7 +201,7 @@
     <h2>Motivation</h2>
     <p>
       In many cases, there are several ways to describe a resource within the scope of a single Media Type.
-      For instance, XML documents, while conforming to the <code>text/xml</code> Media Type, may adhere to one of
+      For instance, XML documents, while conforming to the <code>application/xml</code> Media Type, may adhere to one of
       several DTDs or XML Schemas. RDF documents, with a choice of Media Type serializations such as
       <code>text/turtle</code>, <code>application/rdf+xml</code> and others, have a large number of vocabularies
       (classes and properties) available to use for their content's information model. When a client initiates a request
@@ -557,13 +557,13 @@ Link:
   &lt;http://example.org/resource/a?_profile=profile-x&amp;_mediatype=text/html>;
           rel="canonical"; type="text/html";
           formats="http://otherexample.org/profile/x",
-  &lt;http://example.org/resource/a?_profile=profile-x&amp;_mediatype=text/xml>;
+  &lt;http://example.org/resource/a?_profile=profile-x&amp;_mediatype=application/xml>;
           rel="alternate";
-          type="text/xml";
+          type="application/xml";
           formats="http://otherexample.org/profile/x",
-  &lt;http://example.org/resource/a?_profile=profile-y&amp;_mediatype=text/xml>;
+  &lt;http://example.org/resource/a?_profile=profile-y&amp;_mediatype=application/xml>;
           rel="alternate";
-          type="text/xml";
+          type="application/xml";
           formats="http://otherexample.org/profile/y"
 
 &lt;!DOCTYPE html>
@@ -576,8 +576,8 @@ Link:
     &lt;h1>Profiles available for Resource X&lt;/h1>
     &lt;ul>
       &lt;li>&lt;a href="?_profile=profile-x&_mediatype=text/html">X, in HTML&lt;/a>&lt;/li>
-      &lt;li>&lt;a href="?_profile=profile-x&_mediatype=text/xml">X, in XML&lt;/a>&lt;/li>
-      &lt;li>&lt;a href="?_profile=profile-y&_mediatype=text/xml">Y, in XML&lt;/a>&lt;/li>
+      &lt;li>&lt;a href="?_profile=profile-x&_mediatype=application/xml">X, in XML&lt;/a>&lt;/li>
+      &lt;li>&lt;a href="?_profile=profile-y&_mediatype=application/xml">Y, in XML&lt;/a>&lt;/li>
     &lt;/ul>
   &lt;/body>
 &lt;/html>
@@ -1432,13 +1432,13 @@ Link: &lt;http://www.w3.org/ns/dx/connegp/profile/qsa&gt;; rel=&quot;profile&quo
           rel="canonical";
           type="application/json";
           formats="http://otherexample.org/profile/x",
-      &lt;http://example.org/resource/a?_profile=profile-x&amp;_mediatype=text/xml>;
+      &lt;http://example.org/resource/a?_profile=profile-x&amp;_mediatype=application/xml>;
           rel="alternate";
-          type="text/xml";
+          type="application/xml";
           formats="http://otherexample.org/profile/x",
-      &lt;http://example.org/resource/a?_profile=profile-y&amp;_mediatype=text/xml>;
+      &lt;http://example.org/resource/a?_profile=profile-y&amp;_mediatype=application/xml>;
           rel="alternate";
-          type="text/xml";
+          type="application/xml";
           formats="http://otherexample.org/profile/y"
 
 {
@@ -1447,12 +1447,12 @@ Link: &lt;http://www.w3.org/ns/dx/connegp/profile/qsa&gt;; rel=&quot;profile&quo
         {
             "token": "profile-x",
             "uri": "http://otherexample.org/profile/x",
-            "media_types": ["application/json", "text/xml"]
+            "media_types": ["application/json", "application/xml"]
         },
         {
             "token": "profile-y",
             "uri": "http://otherexample.org/profile/y",
-            "media_types": ["text/xml"]
+            "media_types": ["application/xml"]
         }
     ]
 }
@@ -1703,7 +1703,7 @@ Link:
           rel="alternate";
           type="text/turtle";
           formats="http://otherexample.org/profile/x",
-  &lt;http://example.org/resource/a?view=profile-y&amp;format=text/xml>;
+  &lt;http://example.org/resource/a?view=profile-y&amp;format=application/xml>;
           rel="alternate";
           type="application/xml";
           formats="http://otherexample.org/profile/y"
@@ -1746,7 +1746,7 @@ Link:
           rel="alternate";
           type="text/turtle";
           formats="http://otherexample.org/profile/x",
-  &lt;http://example.org/resource/a?view=profile-y&amp;format=text/xml>;
+  &lt;http://example.org/resource/a?view=profile-y&amp;format=application/xml>;
           rel="alternate";
           type="application/xml";
           formats="http://otherexample.org/profile/y"
