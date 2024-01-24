@@ -26,6 +26,14 @@ var respecConfig = {
         companyURL: "https://surroundaustralia.com",
         orcid: "0000-0002-8742-7730",
         w3cid: 70131
+    },
+    {
+        name: "Yousouf Taghzouti",
+        mailto: "yousouf.taghzouti@emse.fr",
+        company: "Mines Saint-Étienne, Institut Mines-Télécom",
+        companyURL: "https://www.mines-stetienne.fr/",
+        orcid: "0000-0003-4509-9537",
+        w3cid: 143054
     }],
     wg: "Dataset Exchange Working Group",
     wgURI: "https://www.w3.org/2017/dxwg/",
@@ -72,6 +80,16 @@ var respecConfig = {
             title: "Testing suite for conformance to Content Negotiation By Profile",
             date: " 2020-04-14",
             status: "Informative"
+        },
+        "DECENTRALISED-CN": {
+            authors: [
+                "Y. Taghzouti",
+                "A. Zimmermann",
+                "M. Lefrançois"
+            ],
+            href: "https://dmkg-workshop.github.io/papers/paper9797.pdf",
+            title: "Content Negotiation in a Decentralised Semantic Context Utilising Equivalence Links",
+            date: "May 2023",
         }
     }
 };
