@@ -1,9 +1,10 @@
 var respecConfig = {
-    specStatus: "WD",
-    shortName: "dx-connegp",
+    group: "dx",
+    specStatus: "ED",
+    shortName: "dx-prof-conneg",
     edDraftURI: "https://w3c.github.io/dx-connegp/connegp/",
     previousPublishDate: "2019-04-30",
-    previousMaturity: "PWD",
+    previousMaturity: "WD",
     testSuiteURI: "https://github.com/w3c/prof-conneg-testing",
     implementationReportURI: "https://w3c.github.io/dx-connegp/connegp-implementation-report/",
     canonicalURI: "TR",
@@ -17,7 +18,8 @@ var respecConfig = {
         name:       "Rob Atkinson",
         company:    "Metalinkage, Open Geospatial Consortium",
         companyURL: "http://www.ogc.org",
-        orcid:      "0000-0002-7878-2693"
+        orcid:      "0000-0002-7878-2693",
+        w3cid:      90763
       },
       {
         name:       "Nicholas J. Car",
@@ -26,6 +28,14 @@ var respecConfig = {
         companyURL: "https://kurrawong.ai",
         orcid:      "0000-0002-8742-7730",
         w3cid:      70131
+    },
+    {
+        name: "Yousouf Taghzouti",
+        mailto: "yousouf.taghzouti@emse.fr",
+        company: "Mines Saint-Étienne, Institut Mines-Télécom",
+        companyURL: "https://www.mines-stetienne.fr/",
+        orcid: "0000-0003-4509-9537",
+        w3cid: 143054
     }],
     otherLinks: [{
     	key: "Contributors",
@@ -34,10 +44,7 @@ var respecConfig = {
             href:  "https://ruben.verborgh.org/"
     	}]
     }],
-    wg: "Dataset Exchange Working Group",
-    wgURI: "https://www.w3.org/2017/dxwg/",
     wgPublicList: "public-dxwg-comments",
-    wgPatentURI: "https://www.w3.org/2004/01/pp-impl/99375/status",
     inlineCSS: "true",
     lint: "false",
     maxTocLevel: 3,
@@ -49,9 +56,9 @@ var respecConfig = {
                "J. Kunze",
                "R. Rodgers"
             ],
-            href: "https://tools.ietf.org/id/draft-kunze-ark-15.txt",
+            href: "https://datatracker.ietf.org/doc/draft-kunze-ark/37/",
             title: "The ARK Identifier Scheme" ,
-            date: "2008-05-22",
+            date: "2023-04-25",
             status: "Internet-Draft"
         },
         "PROF-GUIDANCE": {
@@ -69,11 +76,12 @@ var respecConfig = {
         "PROF-IETF": {
             authors: [
                 "L. Svensson",
-                "R. Verborgh"
+                "R. Verborgh",
+                "H. Van de Sompel"
             ],
-            href: "https://profilenegotiation.github.io/I-D-Profile-Negotiation/I-D-Profile-Negotiation",
-            title: "Indicating and Negotiating Profiles in HTTP",
-            date: " 2019-07-11",
+            href: "https://datatracker.ietf.org/doc/draft-svensson-profiled-representations/01/",
+            title: "Indicating, Discovering, Negotiating, and Writing Profiled Representations",
+            date: " 2021-03-09",
             status: "IETF Internet Draft"
         }
     }

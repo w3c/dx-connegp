@@ -21,13 +21,19 @@
       <h3>Overview of DXWG documents on profiles</h3>
       <p>
         This document is one from set of documents on profiles, edited by the W3C Dataset Exchange Working Group (DXWG)
-        and the Internet Engineering Taskforce (IETF). The documents are:
+        and the Internet Engineering Taskforce (IETF). The DXWG documents are:
       </p>
       <ul>
         <li>[[?DX-PROF]] - the <em>Profiles Vocabulary</em>: an RDF vocabulary that describes profiles and related resources</li>
         <li><strong>[PROF-CONNEG] this document, specific guidance on how to negotiate for Internet resource content using profiles</strong></li>
-        <li>[[PROF-IETF]] - <em>Indicating and Negotiating Profiles in HTTP</em>: an <a href="http://www.ietf.org">IETF</a> <a href="http://www.ietf.org/standards/ids/">Internet-Draft</a> defining HTTP Headers for HTTP content negotiation by profile</li>
         <li>The DXWG also plans to provide [[PROF-GUIDANCE]] - <em>Profile Guidance</em>: general recommendations and guidance on profiling.</li>
+      </ul>
+      <p>
+	The following document, maintained under the auspicies of the IETF, establishes the technical
+	foundations for this document but is not within the scope of the DXWG:
+      </p>
+      <ul>
+        <li>[[PROF-IETF]] - <em>Indicating, Discovering, Negotiating, and Writing Profiled Representations</em>: an <a href="http://www.ietf.org">IETF</a> <a href="http://www.ietf.org/standards/ids/">Internet-Draft</a> defining HTTP Headers for HTTP content negotiation by profile</li>
       </ul>
     </section>
   </section>
@@ -35,7 +41,7 @@
     <h2>Introduction</h2>
     <p>
       Content delivered by dereferencing Internet identifiers can be the subject of negotiation in different
-      ways. When using the HTTP protocol [[RFC7230]], a client may set one or more request headers:
+      ways. When using the HTTP protocol [[RFC9110]], a client may set one or more request headers:
     </p>
     <ul>
       <li>an <code>Accept</code> header specifying preferred Media Types which the server may or may not supply</li>
@@ -161,11 +167,11 @@
       </dd>
       <dt><dfn>client</dfn></dt>
       <dd>
-        A program that establishes a connection to a <a>server</a> for the purpose of sending one or more HTTP requests. [[RFC7230]]
+        A program that establishes a connection to a <a>server</a> for the purpose of sending one or more HTTP requests. [[RFC9110]]
       </dd>
       <dt><dfn>server</dfn></dt>
       <dd>
-        A program that accepts connections in order to service HTTP <a>requests</a> by sending HTTP <a>responses</a>. [[RFC7230]]
+        A program that accepts connections in order to service HTTP <a>requests</a> by sending HTTP <a>responses</a>. [[RFC9110]]
       </dd>
       <dt><dfn>resource</dfn></dt>
       <dd>
@@ -175,7 +181,7 @@
       <dt><dfn>representation</dfn></dt>
       <dd>
         <p>
-          An abstraction of the current or desired state of a thing in HTTP communications. [[RFC7230]]
+          An abstraction of the current or desired state of a thing in HTTP communications. [[RFC9110]]
         </p>
         <p>
           In this specification, <em>representations</em> are of <a>resources</a>.
@@ -184,9 +190,9 @@
       <dt><dfn>metadata</dfn></dt>
       <dd>Information that is supplied about a resource. [[RFC3986]]</dd>
       <dt><dfn>request</dfn></dt>
-      <dd>A message sent over the Internet, from a <a>client</a> to a <a>server</a>, for a information about a <a>resource</a>. [[RFC7230]]</dd>
+      <dd>A message sent over the Internet, from a <a>client</a> to a <a>server</a>, for a information about a <a>resource</a>. [[RFC9110]]</dd>
       <dt><dfn>response</dfn></dt>
-      <dd>A message sent over the Internet, from a <a>server</a> to a <a>client</a> answering a <a>request</a> for information about a <a>resource</a>. [[RFC7230]]</dd>
+      <dd>A message sent over the Internet, from a <a>server</a> to a <a>client</a> answering a <a>request</a> for information about a <a>resource</a>. [[RFC9110]]</dd>
       <dt><dfn>token</dfn></dt>
       <dd>A short name identifying something. In the context of this document, tokens are sometimes used to identify <a>profiles</a>.</dd>
     </dl>
@@ -218,7 +224,7 @@
     <h2>Motivation</h2>
     <p>
       In many cases, there are several ways to describe a resource within the scope of a single Media Type.
-      For instance, XML documents, while conforming to the <code>text/xml</code> Media Type, may adhere to one of
+      For instance, XML documents, while conforming to the <code>application/xml</code> Media Type, may adhere to one of
       several DTDs or XML Schemas. RDF documents, with a choice of Media Type serializations such as
       <code>text/turtle</code>, <code>application/rdf+xml</code> and others, have a large number of vocabularies
       (classes and properties) available to use for their content's information model. When a client initiates a request
@@ -255,7 +261,7 @@
     <section id="related-http">
       <h3>Existing standards for transporting profile information in HTTP headers</h3>
       <h4>Using Accept/Content Type together with the profile parameter</h4>
-      <p>The HTTP Accept and Content-Type header fields [[RFC7231]]
+      <p>The HTTP Accept and Content-Type header fields [[RFC9110]]
         allow a client to specify acceptable Media Types (<code>Accept</code>)
         and a server to indicate the Media Type of the response's body (<code>Content-Type</code>).
         A Media Type registration can also specify an optional list of Media Type parameters.
@@ -573,15 +579,15 @@ Link: &lt;http://www.w3.org/ns/dx/connegp/profile/qsa>; rel=&quot;profile&quot;
 Link:
   &lt;http://example.org/resource/a?_profile=profile-x&amp;_mediatype=text/html>;
           rel="canonical"; type="text/html";
-          format="http://otherexample.org/profile/x",
-  &lt;http://example.org/resource/a?_profile=profile-x&amp;_mediatype=text/xml>;
+          formats="http://otherexample.org/profile/x",
+  &lt;http://example.org/resource/a?_profile=profile-x&amp;_mediatype=application/xml>;
           rel="alternate";
-          type="text/xml";
-          format="http://otherexample.org/profile/x",
-  &lt;http://example.org/resource/a?_profile=profile-y&amp;_mediatype=text/xml>;
+          type="application/xml";
+          formats="http://otherexample.org/profile/x",
+  &lt;http://example.org/resource/a?_profile=profile-y&amp;_mediatype=application/xml>;
           rel="alternate";
-          type="text/xml";
-          format="http://otherexample.org/profile/y"
+          type="application/xml";
+          formats="http://otherexample.org/profile/y"
 
 &lt;!DOCTYPE html>
 &lt;html>
@@ -593,8 +599,8 @@ Link:
     &lt;h1>Profiles available for Resource X&lt;/h1>
     &lt;ul>
       &lt;li>&lt;a href="?_profile=profile-x&_mediatype=text/html">X, in HTML&lt;/a>&lt;/li>
-      &lt;li>&lt;a href="?_profile=profile-x&_mediatype=text/xml">X, in XML&lt;/a>&lt;/li>
-      &lt;li>&lt;a href="?_profile=profile-y&_mediatype=text/xml">Y, in XML&lt;/a>&lt;/li>
+      &lt;li>&lt;a href="?_profile=profile-x&_mediatype=application/xml">X, in XML&lt;/a>&lt;/li>
+      &lt;li>&lt;a href="?_profile=profile-y&_mediatype=application/xml">Y, in XML&lt;/a>&lt;/li>
     &lt;/ul>
   &lt;/body>
 &lt;/html>
@@ -753,7 +759,7 @@ Link: &lt;http://example.org/profile/x&gt;; rel=&quot;profile&quot;, \
         to modelling systems implementing this model, depending
         on what is deemed to be relevant to the application profile for which this specification has been created. For
         example, the HTTP Application Profile (<a href="#http"></a>) is limited to text within the constraints of the
-        HTTP specification's headers structure in [[RFC7230]] and thus syntactic communication of this data model in
+        HTTP specification's headers structure in [[RFC9110]] and thus syntactic communication of this data model in
         that environment must be implemented according to its constraints.
       </p>
       <p>
@@ -959,19 +965,19 @@ Link:
   &lt;http://example.org/resource/a&gt;;
           rel="canonical";
           type="text/turtle";
-          format="urn:example:profile:x",
+          formats="urn:example:profile:x",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="text/turtle";
-          format="urn:example:profile:y",
+          formats="urn:example:profile:y",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="application/xml";
-          format="urn:example:profile:x",
+          formats="urn:example:profile:x",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="application/xml";
-          format="urn:example:profile:y",
+          formats="urn:example:profile:y",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="text/html"
@@ -1003,19 +1009,19 @@ Link:
   <strong>&lt;http://example.org/resource/a.prof1.ttl&gt;;</strong>
           rel="canonical";
           type="text/turtle";
-          format="urn:example:profile:x",
+          formats="urn:example:profile:x",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="text/turtle";
-          format="urn:example:profile:y",
+          formats="urn:example:profile:y",
   <strong>&lt;http://example.org/resource/a.prof1.xml&gt;;</strong>
           rel="alternate";
           type="application/xml";
-          format="urn:example:profile:x",
+          formats="urn:example:profile:x",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="application/xml";
-          format="urn:example:profile:y",
+          formats="urn:example:profile:y",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="text/html"
@@ -1053,7 +1059,7 @@ URIs for resources conforming to profile urn:example:profile:x]
           <ul>
             <li><em>link target</em> - <code>&lt;http://example.org/resource/a.prof1.ttl&gt;</code></li>
             <li><em>relation type</em> - <code>rel="canonical"</code></li>
-            <li><em>target attributes</em> - <code>type="text/turtle"</code> &amp; <code>format="urn:example:profile:x"</code></li>
+            <li><em>target attributes</em> - <code>type="text/turtle"</code> &amp; <code>formats="urn:example:profile:x"</code></li>
           </ul>
           <p>
             Using these <code>Link</code> HTTP header parts, this HTTP Headers functional profile is able to communicate
@@ -1108,19 +1114,19 @@ Link:
   &lt;http://example.org/resource/a&gt;;
           rel="canonical";
           type="text/turtle";
-          format="urn:example:profile:x",
+          formats="urn:example:profile:x",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="text/turtle";
-          format="urn:example:profile:y",
+          formats="urn:example:profile:y",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="application/xml";
-          format="urn:example:profile:x",
+          formats="urn:example:profile:x",
   &lt;http://example.org/resource/different&gt;;
           rel="alternate";
           type="application/xml";
-          format="urn:example:profile:y",
+          formats="urn:example:profile:y",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="text/html"
@@ -1224,10 +1230,10 @@ Link: &lt;urn:example:profile:x&gt;; rel=&quot;profile&quot;
 Link:
   &lt;http://www.w3.org/ns/dx/prof/Profile&gt;; rel="type"; token="dnb"; anchor=&lt;urn:example:profile:marc21-dnb&gt;,
   &lt;http://www.w3.org/ns/dx/prof/Profile&gt;; rel="type"; token="loc"; anchor=&lt;http://example.org/profiles/marc21-loc&gt;,
-  &lt;http://example.org/resource/a.profdnb.ttl&gt;; rel="canonical"; type="text/turtle"; format="urn:example:profile:marc21-dnb",
-  &lt;http://example.org/resource/a.profloc.ttl&gt;; rel="alternate"; type="text/turtle"; format="http://example.org/profiles/marc21-loc",
-  &lt;http://example.org/resource/a.profdnb.xml&gt;; rel="alternate"; type="application/xml"; format="urn:example:profile:marc21-dnb",
-  &lt;http://example.org/resource/a.profloc.xml&gt;; rel="alternate"; type="application/xml"; format="http://example.org/profiles/marc21-loc",
+  &lt;http://example.org/resource/a.profdnb.ttl&gt;; rel="canonical"; type="text/turtle"; formats="urn:example:profile:marc21-dnb",
+  &lt;http://example.org/resource/a.profloc.ttl&gt;; rel="alternate"; type="text/turtle"; formats="http://example.org/profiles/marc21-loc",
+  &lt;http://example.org/resource/a.profdnb.xml&gt;; rel="alternate"; type="application/xml"; formats="urn:example:profile:marc21-dnb",
+  &lt;http://example.org/resource/a.profloc.xml&gt;; rel="alternate"; type="application/xml"; formats="http://example.org/profiles/marc21-loc",
   &lt;http://example.org/resource/a.html&gt;; rel="alternate"; type="text/html"
 [more response headers]
           </pre>
@@ -1360,7 +1366,7 @@ http://example.com/path/to/resource/a?<strong>_profile=prof-01&amp;_mediatype=te
           <div class="note" title="Maximum length of URLs">
             If Query String Arguments use URIs (or URLs) to convey important information, implementers should ensure
             that the total length of the total requesting URI within which the QSAs using URIs/URLs exist does not exceed
-            length restrictions. [[RFC7230]]'s <a data-cite="RFC7230#section-3.1.1">§3.1.1</a> recommends that senders and
+            length restrictions. [[RFC9110]]'s <a data-cite="RFC9110#section-4.1">§4.1</a> recommends that senders and
             recipients support request lines of at least 8,000 octets. Some client and server implementations, however,
             cannot accept URLs longer than 2,000 characters, for example, the Sitemap protocol which has a length limit of
             2,048 characters in a URL. Cf.
@@ -1396,7 +1402,7 @@ http://example.com/path/to/resource/a?<strong>_profile=prof-01&amp;_mediatype=te
         <p>
           For conformance to the "QSA Functional Profile", the <code>_profile</code> QSA key SHOULD be supported by the
           <a>server</a> to allow a <a>client</a> to make a <strong>list profiles</strong> <a>request</a>. For this
-          request, the reserved token <code>all</code> SHOULD be used, e.g. <code>_profile=alt</code>.
+          request, the reserved token <code>alt</code> SHOULD be used, e.g. <code>_profile=alt</code>.
         </p>
         <p>
           For conformance to the "QSA Alternate Keywords Functional Profile", other key/value pairs MAY be used, such as
@@ -1448,15 +1454,15 @@ Link: &lt;http://www.w3.org/ns/dx/connegp/profile/qsa&gt;; rel=&quot;profile&quo
       &lt;http://example.org/resource/a?_profile=profile-x&amp;_mediatype=application/json>;
           rel="canonical";
           type="application/json";
-          format="http://otherexample.org/profile/x",
-      &lt;http://example.org/resource/a?_profile=profile-x&amp;_mediatype=text/xml>;
+          formats="http://otherexample.org/profile/x",
+      &lt;http://example.org/resource/a?_profile=profile-x&amp;_mediatype=application/xml>;
           rel="alternate";
-          type="text/xml";
-          format="http://otherexample.org/profile/x",
-      &lt;http://example.org/resource/a?_profile=profile-y&amp;_mediatype=text/xml>;
+          type="application/xml";
+          formats="http://otherexample.org/profile/x",
+      &lt;http://example.org/resource/a?_profile=profile-y&amp;_mediatype=application/xml>;
           rel="alternate";
-          type="text/xml";
-          format="http://otherexample.org/profile/y"
+          type="application/xml";
+          formats="http://otherexample.org/profile/y"
 
 {
     "resource": "http://example.org/resource/a",
@@ -1464,12 +1470,12 @@ Link: &lt;http://www.w3.org/ns/dx/connegp/profile/qsa&gt;; rel=&quot;profile&quo
         {
             "token": "profile-x",
             "uri": "http://otherexample.org/profile/x",
-            "media_types": ["application/json", "text/xml"]
+            "media_types": ["application/json", "application/xml"]
         },
         {
             "token": "profile-y",
             "uri": "http://otherexample.org/profile/y",
-            "media_types": ["text/xml"]
+            "media_types": ["application/xml"]
         }
     ]
 }
@@ -1503,19 +1509,19 @@ Link:
   &lt;http://example.org/resource/a&gt;;
           rel="canonical";
           type="text/turtle";
-          format="urn:example:profile:x",
+          formats="urn:example:profile:x",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="text/turtle";
-          format="urn:example:profile:y",
+          formats="urn:example:profile:y",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="application/xml";
-          format="urn:example:profile:x",
+          formats="urn:example:profile:x",
   &lt;http://example.org/resource/different&gt;;
           rel="alternate";
           type="application/xml";
-          format="urn:example:profile:y",
+          formats="urn:example:profile:y",
   &lt;http://example.org/resource/a&gt;;
           rel="alternate";
           type="text/html"
@@ -1715,15 +1721,15 @@ Link:
   &lt;http://example.org/resource/a?view=profile-x&format=text/html>;
           rel="canonical";
           type="text/html";
-          format="http://otherexample.org/profile/x",
+          formats="http://otherexample.org/profile/x",
   &lt;http://example.org/resource/a?view=profile-x&format=text/turtle>;
-          rel="canonical";
+          rel="alternate";
           type="text/turtle";
-          format="http://otherexample.org/profile/x",
-  &lt;http://example.org/resource/a?view=profile-y&amp;format=text/xml>;
+          formats="http://otherexample.org/profile/x",
+  &lt;http://example.org/resource/a?view=profile-y&amp;format=application/xml>;
           rel="alternate";
           type="application/xml";
-          format="http://otherexample.org/profile/y"
+          formats="http://otherexample.org/profile/y"
 
 # Note that here the server does not directly indicate the profile served
 # (there is no Link header with rel=&quot;profile&quot; present) but this can be inferred
@@ -1733,7 +1739,7 @@ Link:
           While the Link header in <a href="#eg-qsa-keydiscovery"></a> above communicates all the information that a <strong>list profiles</strong> request
           does, it is not visible directly in a web browser. <a href="#eg-list-profiles-mediatype"></a> shows a
           requests/response pair that include equivalent Link header and HTTP body information listing profiles, the
-          latter of which is visible in a browser but a client formulating this request is dependent on a it knowing
+          latter of which is visible in a browser but a client formulating this request is dependent on it knowing
           that the QSA key/value pair <code>_profile=alt</code> is used to trigger this response as opposed to the
           server's default resource representation.
         </p>
@@ -1758,19 +1764,19 @@ Link:
   &lt;http://example.org/resource/a?view=profile-x&format=text/html>;
           rel="canonical";
           type="application/html";
-          format="http://otherexample.org/profile/x",
+          formats="http://otherexample.org/profile/x",
   &lt;http://example.org/resource/a?view=profile-x&format=text/turtle>;
-          rel="canonical";
+          rel="alternate";
           type="text/turtle";
-          format="http://otherexample.org/profile/x",
-  &lt;http://example.org/resource/a?view=profile-y&amp;format=text/xml>;
+          formats="http://otherexample.org/profile/x",
+  &lt;http://example.org/resource/a?view=profile-y&amp;format=application/xml>;
           rel="alternate";
           type="application/xml";
-          format="http://otherexample.org/profile/y"
+          formats="http://otherexample.org/profile/y"
 <strong>  &lt;http://example.org/resource/a?view=altrep&format=application/ld+json>;
           rel="alternate";
           type="application/ld+json";
-          format="http://www.w3.org/ns/dx/connegp/altr"</strong>
+          formats="http://www.w3.org/ns/dx/connegp/altr"</strong>
 
 [default response content]
         </pre>
@@ -1810,8 +1816,8 @@ Link:
 	<p>
 	  The ABNF for the profile attribute's value is <code>token / quoted-string</code>,
 	  where "token" and "quoted-string" are defined as in
-		<a href="https://tools.ietf.org/html/rfc7230#section-3.2.6">section 3.2.6</a>
-	  of [[RFC7230]]. The rules for <code>link-param</code> values defined in
+		<a href="https://tools.ietf.org/html/rfc9110#section-5.6">section 5.6</a>
+	  of [[RFC9110]]. The rules for <code>link-param</code> values defined in
 		<a href="https://tools.ietf.org/html/rfc8288#section-3">section 3</a> of [[RFC8288]] apply.
 	</p>
 	<pre id="eg-link-attribute-token" class="example nohighlight" aria-busy="false" aria-live="polite"
@@ -2257,36 +2263,36 @@ cnpr:http a prof:Profile ;
     prof:isProfileOf &lt;https://www.w3.org/TR/dx-connegp/> ;
     rdfs:label "HTTP Headers Functional Profile" ;
     rdfs:comment "For conformance with the functional profile of Content Negotiation by
-                  Profile presented in § 7.1 Hypertext Transfer Protocol Headers."@en ;
+                  Profile presented in § 7.2 Hypertext Transfer Protocol Headers."@en ;
     skos:scopeNote "To be used if a resource conforms to the HTTP Headers functional profile"@en .
 
 cnpr:qsa a prof:Profile ;
     prof:isProfileOf cnpr:qsa-alt ;
     rdfs:label "QSA Functional Profile"@en ;
     rdfs:comment "For conformance with the functional profile of Content Negotiation by
-                  Profile presented in § 7.2 URL Query String Arguments."@en ;
+                  Profile presented in § 7.3 URL Query String Arguments."@en ;
     skos:scopeNote "To be used if a resource conforms to the QSA Functional Profile using
                     the Query String Arguments _profile and _mediatype as per the
-                    recommendations in § 7.2 URL Query String Arguments."@en .
+                    recommendations in § 7.3 URL Query String Arguments."@en .
 
 cnpr:qsa-alt a prof:Profile ;
     prof:isProfileOf &lt;https://www.w3.org/TR/dx-connegp/> ;
     rdfs:label "QSA Alternate Keywords Functional Profile" ;
     rdfs:comment "For conformance with the functional profile of Content Negotiation by
-                  Profile presented in § 7.2 URL Query String Arguments."@en ;
+                  Profile presented in § 7.3 URL Query String Arguments."@en ;
     skos:scopeNote "To be used if a resource conforms to the QSA Functional Profile but
                     uses alternate keywords for the Query String Arguments _profile and
-                    _mediatype, as allowed by the recommendations in § 7.2 URL Query
+                    _mediatype, as allowed by the recommendations in § 7.3 URL Query
                     String Arguments."@en .
 
 cnpr:rrd a prof:Profile ;
     prof:isProfileOf &lt;https://www.w3.org/TR/dx-connegp/> ;
     rdfs:label "Resource Representation Description Profile"@en ;
-    rdfs:comment "For conformance with Content Negotiation by Profile § 6.2.2 get
+    rdfs:comment "For conformance with Content Negotiation by Profile § 6.3.2 get
                   resource by profile."@en ;
     skos:scopeNote "To be used if a resource representation is able to indicate which
                     profile(s) it conforms to, in its appropriate functional profile,
-                    as per the abstract specification in § 6.2.2 get resource by
+                    as per the abstract specification in § 6.3.2 get resource by
                     profile."@en .
       </div>
       <figure id="fig-profile-hierarchy">
@@ -2451,7 +2457,7 @@ altr:Representation
         owl:onProperty dcterms:conformsTo ;
         owl:allValuesFrom dcterms:Standard ;
     ] ;
-    dcterms:source &lt;https://httpwg.org/specs/rfc7230.html> ;
+    dct:source &lt;https://httpwg.org/specs/rfc9110.html> ;
     rdfs:isDefinedBy &lt;http://www.w3.org/ns/dx/connegp/altr> ;
     skos:scopeNote "Use this class to indicate instances of representations of resources" ;
 .
@@ -2607,13 +2613,13 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#>
 Link:
   &lt;http://example.org/resource/a>;
           rel="alternate";
-          format="http://otherexample.org/profile/x",
+          formats="http://otherexample.org/profile/x",
   &lt;http://example.org/resource/a>;
           rel="alternate";
-          format="http://otherexample.org/profile/y",
+          formats="http://otherexample.org/profile/y",
   &lt;http://example.org/resource/a>;
           rel="canonical";
-          format="http://otherexample.org/profile/z"
+          formats="http://otherexample.org/profile/z"
 
 ---
 
