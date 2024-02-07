@@ -17,17 +17,17 @@ var respecConfig = {
         name: "Rob Atkinson",
         company: "Metalinkage, Open Geospatial Consortium",
         companyURL: "http://www.opengeospatial.org/",
-        orcid: "0000-0002-7878-2693"
+        orcid:      "0000-0002-7878-2693"
     },
     {
-        name: "Nicholas J. Car",
-        mailto: "nicholas.car@surroundaustralia.com",
-        company: "SURROUND Australia Pty Ltd and before at CSIRO",
-        companyURL: "https://surroundaustralia.com",
-        orcid: "0000-0002-8742-7730",
-        w3cid: 70131
-    },
-    {
+        name:       "Nicholas J. Car",
+        mailto:     "nick@kurrawong.ai",
+        company:    "KurrawongAI, previously SURROUND Australia and before CSIRO",
+        companyURL: "https://kurrawong.ai",
+        orcid:      "0000-0002-8742-7730",
+        w3cid:      70131
+     },
+     {
         name: "Yousouf Taghzouti",
         mailto: "yousouf.taghzouti@emse.fr",
         company: "Mines Saint-Étienne, Institut Mines-Télécom",

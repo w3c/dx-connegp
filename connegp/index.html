@@ -197,6 +197,29 @@
       <dd>A short name identifying something. In the context of this document, tokens are sometimes used to identify <a>profiles</a>.</dd>
     </dl>
   </section>
+  <section id="namespaces">
+    <h2>Namespaces</h2>
+    <p>
+      A full set of namespaces and prefixes used in this specification is given in the table below.
+    </p>
+    <table id="namespaces-table">
+      <thead>
+        <tr><th>Prefix</th><th>Namespace</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>altr</td><td>http://www.w3.org/ns/dx/connegp/altr#</td></tr>
+        <tr><td>dcat</td><td>http://www.w3.org/ns/dcat#</td></tr>
+        <tr><td>dcterms</td><td>http://purl.org/dc/terms/</td></tr>
+        <tr><td>ex</td><td>http://example.com/</td></tr>
+        <tr><td>owl</td><td>http://www.w3.org/2002/07/owl#</td></tr>
+        <tr><td>prof</td><td>http://www.w3.org/ns/dx/prof/</td></tr>
+        <tr><td>rdfs</td><td>http://www.w3.org/2000/01/rdf-schema#</td></tr>
+        <tr><td>sdo</td><td>https://schema.org/</td></tr>
+        <tr><td>skos</td><td>http://www.w3.org/2004/02/skos/core#</td></tr>
+        <tr><td>xsd</td><td>http://www.w3.org/2001/XMLSchema#</td></tr>
+      </tbody>
+    </table>
+  </section>
   <section id="motivation" class="informative">
     <h2>Motivation</h2>
     <p>
@@ -1055,22 +1078,22 @@ URIs for resources conforming to profile urn:example:profile:x]
                 <th>Alternate Representations Data Model Element</th><th>Link Header Element</th>
               </tr>
               <tr>
-                <td><code>rdf:Resource</code></td><td>the <em>link context</em> URI indicates an instance of rdf:Resource</td>
+                <td><code>rdfs:Resource</code></td><td>the <em>link context</em> URI indicates an instance of rdfs:Resource</td>
               </tr>
               <tr>
-                <td><code>altp:Representation</code></td><td>the <em>link target</em> URI indicates an instance altp:Representation</td>
+                <td><code>altr:Representation</code></td><td>the <em>link target</em> URI indicates an instance altr:Representation</td>
               </tr>
               <tr>
-                <td><code>dct:Standard</code></td><td>a <em>target attribute</em> of <code>profile</code> indicates the URI of an instance of dct:Standard, if present</td>
+                <td><code>dcterms:Standard</code></td><td>a <em>target attribute</em> of <code>profile</code> indicates the URI of an instance of dcterms:Standard, if present</td>
               </tr>
               <tr>
-                <td><code>dct:conformsTo</code></td><td>the implicit relation between the <em>link target</em> URI and the <em>target attribute</em> <code>profile</code> URI</td>
+                <td><code>dcterms:conformsTo</code></td><td>the implicit relation between the <em>link target</em> URI and the <em>target attribute</em> <code>profile</code> URI</td>
               </tr>
               <tr>
-                <td><code>altp:hasRepresentation</code></td><td>the implicit relation between the <em>link context</em> URI and the <em>link target</em> URI where a <em>relation type</em> of <code>alternate</code> is given</td>
+                <td><code>altr:hasRepresentation</code></td><td>the implicit relation between the <em>link context</em> URI and the <em>link target</em> URI where a <em>relation type</em> of <code>alternate</code> is given</td>
               </tr>
               <tr>
-                <td><code>altp:hasDefaultRepresentation</code></td><td>the implicit relation between the <em>link context</em> URI and the <em>link target</em> URI where a <em>relation type</em> of <code>canonical</code> is given</td>
+                <td><code>altr:hasDefaultRepresentation</code></td><td>the implicit relation between the <em>link context</em> URI and the <em>link target</em> URI where a <em>relation type</em> of <code>canonical</code> is given</td>
               </tr>
             </table>
             <figcaption>
@@ -1085,7 +1108,7 @@ URIs for resources conforming to profile urn:example:profile:x]
                class="example nohighlight" aria-busy="false" aria-live="polite"
                title="HTTP Link header mapping to Alternate Profiles Data Model">
 # Link headers from previous example with one altered to show Blank Node v.
-# absolute URIs for altp:Representation class instance
+# absolute URIs for altr:Representation class instance
 # (&lt;http://example.org/resource/a&gt;; &rarr; &lt;http://example.org/resource/different&gt;;)
 Link:
   &lt;http://example.org/resource/a&gt;;
@@ -1111,27 +1134,27 @@ Link:
 # Link headers above represented in Alternate Profiles Data Model
 # as an OWL ontology
 &lt;http://example.org/resource/a&gt;
-    altp:hasDefaultRepresentation [
-        dct:format "text/turtle" ;
-        dct:conformsTo &lt;urn:example:profile:x> ;
+    altr:hasDefaultRepresentation [
+        dcterms:format "text/turtle" ;
+        dcterms:conformsTo &lt;urn:example:profile:x> ;
     ] ;
-    altp:hasRepresentation [
-        dct:format "text/turtle" ;
-        dct:conformsTo &lt;urn:example:profile:y> ;
+    altr:hasRepresentation [
+        dcterms:format "text/turtle" ;
+        dcterms:conformsTo &lt;urn:example:profile:y> ;
     ] ,
     [
-        dct:format "application/xml" ;
-        dct:conformsTo &lt;urn:example:profile:x> ;
+        dcterms:format "application/xml" ;
+        dcterms:conformsTo &lt;urn:example:profile:x> ;
     ] ,
     &lt;http://example.org/resource/different&gt ,
     [
-        dct:format "text/html" ;
+        dcterms:format "text/html" ;
     ] 
 .
 
 &lt;http://example.org/resource/different&gt;
-    dct:format "application/xml" ;
-    dct:conformsTo &lt;urn:example:profile:y> .
+    dcterms:format "application/xml" ;
+    dcterms:conformsTo &lt;urn:example:profile:y> .
         </pre>
         </section>
         <section id="http-tokens">
@@ -1177,7 +1200,7 @@ Link:
 # The profile URI in the "anchor" element is linked to the token "igsn-r1"
 
 # Further, the relation "type" is used to inform
-# that the anchor resource is of type "dct:Standard"
+# that the anchor resource is of type "dcterms:Standard"
 
 Link: &lt;http://www.w3.org/ns/dx/prof/Profile&gt;;
   rel="type";
@@ -1802,7 +1825,7 @@ Link:
 # The profile URI in the "anchor" element is linked to the token "igsn-r1"
 
 # Further, the relation "type" is used to inform
-# that the anchor resource is of type "dct:Standard"
+# that the anchor resource is of type "dcterms:Standard"
 
 Link: &lt;http://www.w3.org/ns/dx/prof/Profile&gt;;
   rel="type";
@@ -2199,7 +2222,7 @@ Link: &lt;http://www.w3.org/ns/dx/prof/Profile&gt;;
       </p>
       <p>
         The RDF (turtle syntax) code in <a href="#profiles-in-prof">Code Listing 1</a> defines <em>Content Negotiation
-        by Profile</em> as a <code><a href="http://purl.org/dc/terms/Standard">dct:Standard</a></code>, the definition
+        by Profile</em> as a <code><a href="http://purl.org/dc/terms/Standard">dcterms:Standard</a></code>, the definition
         of which in [[?DX-PROF]] matches the definition of <a>specification</a> in this document. Note that, since this
         document is describing behaviours, this specification is a <a>functional specification</a>. The 4 profiles of it are
         then, as per regular PROF modelling, termed <code><a href="https://www.w3.org/TR/dx-prof/#Class:Profile">
@@ -2225,15 +2248,14 @@ Link: &lt;http://www.w3.org/ns/dx/prof/Profile&gt;;
 as listed in <a href="#functional-profiles-definition"></a>,
 using the Profiles Vocabulary.
 </div>
-@prefix dct: &lt;http://purl.org/dc/terms/> .
-@prefix prof: &lt;http://www.w3.org/ns/dx/prof/> .
-@prefix role: &lt;http://www.w3.org/ns/dx/prof/role/> .
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#> .
-@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#> .
+PREFIX dcterms: &lt;http://purl.org/dc/terms/>
+PREFIX prof: &lt;http://www.w3.org/ns/dx/prof/>
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: &lt;http://www.w3.org/2004/02/skos/core#>
 
-@prefix cnpr: &lt;http://www.w3.org/ns/dx/connegp/profile/> .
+PREFIX cnpr: &lt;http://www.w3.org/ns/dx/connegp/profile/>
 
-&lt;https://www.w3.org/TR/dx-connegp/> a dct:Standard ;
+&lt;https://www.w3.org/TR/dx-connegp/> a dcterms:Standard ;
     rdfs:label "Content Negotiation by Profile" ;
     rdfs:comment "W3C Recommendation (a standard) for Content Negotiation by Profile"@en .
 
@@ -2289,12 +2311,12 @@ cnpr:rrd a prof:Profile ;
         With the identification of functional profiles of this specification given in <a href="#functional-profiles-definition"></a> and
         their relations described using the Profiles Vocabulary [[?DX-PROF]] in this appendix, it is possible for
         systems to show conformance to this specification or any functional profile of it using [[?DX-PROF]] mechanisms.
-        This is done using the [[DCTERMS]] predicate <code><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#terms-conformsTo">dct:conformsTo</a></code>
+        This is done using the [[DCTERMS]] predicate <code><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#terms-conformsTo">dcterms:conformsTo</a></code>
         so that, for example, a system identified with the URI <code>&lt;http://example.org/system/a&gt;</code> claiming to
         conform to a specification or functional profile identified by URI &lt;SPEC_OR_PROFILE_URI&gt; would do so like this:
       </p>
       <p>
-        <code>&lt;http://example.com/system/a&gt; dct:conformsTo &lt;SPEC_OR_PROFILE_URI&gt; .</code>
+        <code>&lt;http://example.com/system/a&gt; dcterms:conformsTo &lt;SPEC_OR_PROFILE_URI&gt; .</code>
       </p>
       <p>
         The <code>&lt;SPEC_OR_PROFILE_URI&gt;</code> may be this specification's URI, <code>https://www.w3.org/TR/dx-connegp/</code>, but in the best case, would be
@@ -2304,13 +2326,13 @@ cnpr:rrd a prof:Profile ;
       </p>
       <p>
         A system wishing to claim conformance to multiple conformance targets - the <a>specification</a> or
-        <a>functional profiles</a> of it - may do so with multiple uses of <code>dct:conformsTo</code>.
+        <a>functional profiles</a> of it - may do so with multiple uses of <code>dcterms:conformsTo</code>.
       </p>
       <p>
         The code in <a href="#system-conforming">Code Listing 2</a> shows an imaginary Web Service documented using
         [[?VOCAB-DCAT-2]] and borrowing parts from its examples, such as
-        <a href="https://www.w3.org/TR/vocab-dcat-2/#ex-service-eea">Example 48</a>.
-        Included is the predicate <code>dct:conformsTo</code> used as per [[?VOCAB-DCAT-2]] &amp; [[?DX-PROF]].
+        <a href="https://www.w3.org/TR/vocab-dcat-2/#ex-service-eea">Example 49</a>.
+        Included is the predicate <code>dcterms:conformsTo</code> used as per [[?VOCAB-DCAT-2]] &amp; [[?DX-PROF]].
         Conformance here is claimed to the <em>QSA Alternate Keywords Functional Profile</em> profile which is indicated by
         the URI <code>http://www.w3.org/ns/dx/connegp/profile/qsa-alt</code>, identified as per
         <a href="#functional-profiles-definition"></a>.
@@ -2322,16 +2344,16 @@ Functional Profile of this specification
 </div>
 &lt;http://example.com/service/xx>
     a dcat:DataService ;
-    dct:title "Web Service XX" ;
-    dct:description "A dummy Web Service claiming conformance to a profile of the Content
+    dcterms:title "Web Service XX" ;
+    dcterms:description "A dummy Web Service claiming conformance to a profile of the Content
                      Negotiation by Profile specification also annotated with other
                      DCAT-2 recommended properties."@en ;
 
     # URI for the QSA Alternate Keywords Functional Profile
-    <strong>dct:conformsTo &lt;http://www.w3.org/ns/dx/connegp/profile/qsa-alt> ;</strong>
+    <strong>dcterms:conformsTo &lt;http://www.w3.org/ns/dx/connegp/profile/qsa-alt> ;</strong>
 
     # it's a public service
-    dct:accessRights &lt;http://publications.europa.eu/resource/authority/access-right/PUBLIC>
+    dcterms:accessRights &lt;http://publications.europa.eu/resource/authority/access-right/PUBLIC>
 
     # where the service actually is, online
     dcat:endpointURL &lt;http://example.com/service/v2/xx> ;
@@ -2358,101 +2380,95 @@ Functional Profile of this specification
         <div id="altr-owl"
              class="codelisting nohighlight" aria-busy="false" aria-live="polite"
              title="Alternate Profiles Data Model as an OWL ontology"><div class="codelisting-title"><a href="#altr-owl">CODE LISTING 3</a>: Alternate Profiles Data Model as an OWL ontology</div>
-@prefix altr: &lt;http://www.w3.org/ns/dx/connegp/altr#> .
-@prefix dct: &lt;http://purl.org/dc/terms/> .
-@prefix owl: &lt;http://www.w3.org/2002/07/owl#> .
-@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix sdo: &lt;http://schema.org/> .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#> .
-@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#> .
+PREFIX altr: &lt;http://www.w3.org/ns/dx/connegp/altr#>
+PREFIX dcterms: &lt;http://purl.org/dc/terms/>
+PREFIX owl: &lt;http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sdo: &lt;https://schema.org/>
+PREFIX skos: &lt;http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#>
 
 &lt;http://www.w3.org/ns/dx/connegp/altr>
     a owl:Ontology ;
     rdfs:label "Alternative Profiles Ontology" ;
-    rdfs:comment """This ontology allows for the description of representations
-                    of Internet resources.
+    rdfs:comment """This ontology allows for the description of representations of Internet resources.
 
-                    Representations may conform to dct:Standard instances and may
-                    have the format of a particular dct:MediaType."""@en ;
-    dct:created "2019-08-07"^^xsd:date ;
-    dct:modified "2019-08-10"^^xsd:date ;
-    dct:creator [
+Representations may conform to prof:Profile instances and may have the format of a particular dcterms:MediaType."""@en ;
+    dcterms:created "2019-08-07"^^xsd:date ;
+    dcterms:modified "2023-08-23"^^xsd:date ;
+    dcterms:creator [
         a sdo:Person ;
-        sdo:affiliation [
-            sdo:name "SURROUND Australia Pty Ltd" ;
-            sdo:url &lt;https://surroundaustralia.com>
-        ] ;
-        sdo:email &lt;mailto:nicholas.car@surroundaustralia.com> ;
+        sdo:affiliation &lt;https://kurrawong.ai> ;
+        sdo:email &lt;mailto:nick@kurrawong.ai> ;
         sdo:identifier &lt;http://orcid.org/0000-0002-8742-7730> ;
-        sdo:name "Nicholas J. Car"
-    ] .
+        sdo:name "Nicholas J. Car" ;
+    ] ;
+.
 
-dct:conformsTo
+&lt;https://kurrawong.ai>
+    a sdo:Organization ;
+    sdo:name "KurrawongAI" ;
+    sdo:url "https://kurrawong.ai"^^xsd:anyURI ;
+.
+
+dcterms:conformsTo
     a owl:ObjectProperty ;
     rdfs:label "conforms to" ;
-    rdfs:range dct:Standard ;
-    skos:scopeNote "Use this property to indicate the data profile that
-                   the altr:Representation conforms to." .
+    dcterms:source dcterms:conformsTo ;
+    skos:scopeNote "Use this property to indicate a dcterms:Standard that a altr:Representation conforms to." ;
+.
 
 altr:hasRepresentation
     a owl:ObjectProperty ;
     rdfs:label "has representation" ;
     skos:definition "Indicates a Representation of a Resource."@en ;
-    rdfs:domain rdf:Resource ;
+    rdfs:domain rdfs:Resource ;
     rdfs:range altr:Representation ;
-    skos:scopeNote "Use this property to indicate the HTTP-delivered
-                    representation of a resource." .
+    skos:scopeNote "Use this property to indicate a the HTTP-delivered representation of a resource." ;
+.
 
 altr:hasDefaultRepresentation
     a owl:ObjectProperty ;
     rdfs:label "has default representation" ;
     skos:definition "Indicates the default Representation of a Resource."@en ;
     rdfs:subPropertyOf altr:hasRepresentation ;
-    skos:scopeNote "Use this property to indicate the default HTTP-delivered
-                    representation of a resource that is obtained when no
-                    further instructions are given to a server to obtain a
-                    resource's representation other than the identification
-                    (URI) of the resource" .
+    skos:scopeNote "Use this property to indicate the default HTTP-delivered representation of a resource that is obtained when no further instructions are given to a server to obtain a resource's representation other than the identification (URI) of the resource" ;
+.
 
-rdf:Resource
+rdfs:Resource
     a owl:Class ;
     rdfs:label "Resource" ;
     skos:definition "The class resource, everything."@en ;
     rdfs:subClassOf [
         a owl:Restriction ;
         owl:onProperty altr:hasRepresentation ;
-        owl:allValuesFrom altr:Representation
+        owl:allValuesFrom altr:Representation ;
     ] ;
-    dct:source "http://www.w3.org/2000/01/rdf-schema#Resource" ;
-    skos:scopeNote "In the context of this mode, rdf:Resource instances are
-                    used to identify Internet resources, that is items
-                    identified by a URI." .
+    dcterms:source "http://www.w3.org/2000/01/rdf-schema#Resource" ;
+    skos:scopeNote "In the context of this mode, rdfs:Resource instances are used to identify Internet resources, that is items identified by a URI." ;
+.
 
 altr:Representation
     a owl:Class ;
     rdfs:label "Representation" ;
-    skos:definition "An abstraction of the current or desired state of a
-                     thing in HTTP communications."@en ;
+    skos:definition "An abstraction of the current or desired state of a thing in HTTP communications."@en ;
     rdfs:subClassOf [
         a owl:Restriction ;
-        owl:onProperty dct:conformsTo ;
-        owl:allValuesFrom dct:Standard
+        owl:onProperty dcterms:conformsTo ;
+        owl:allValuesFrom dcterms:Standard ;
     ] ;
     dct:source &lt;https://httpwg.org/specs/rfc9110.html> ;
     rdfs:isDefinedBy &lt;http://www.w3.org/ns/dx/connegp/altr> ;
-    skos:scopeNote "Use this class to indicate instances of representations
-                    of resources" .
+    skos:scopeNote "Use this class to indicate instances of representations of resources" ;
+.
 
-dct:Standard
+dcterms:Standard
     a owl:Class ;
     rdfs:label "Standard" ;
-    skos:definition "A basis for comparison; a reference point against which
-                     other things can be evaluated."@en ;
-    dct:source "http://purl.org/dc/terms/Standard" ;
-    skos:scopeNote "In the context of this mode, use this class to indicate
-                    instances of information models that representations of
-                    resources can conform to." .
+    skos:definition "A basis for comparison; a reference point against which other things can be evaluated."@en ;
+    dcterms:source "http://purl.org/dc/terms/Standard" ;
+    skos:scopeNote "In the context of this mode, use this class to indicate instances of information models that representations of resources can conform to." ;
+.
         </div>
       </section>
       <section id="altr-extensions">
@@ -2460,9 +2476,9 @@ dct:Standard
         <p>
           The <a href="#altr">Alternate Profiles Data Model</a> may be extended to include additional information of use in
           content negotiation by profile situations. One obviously useful extension is the inclusion of information about
-          other dimensions of content negotiation, particularly Media Type. <a href="#altr-ontology-ext-1">Code Listing 3</a>
-          includes RDF definitions of Dublin Core Term's [[DCTERMS]] <code>dct:format</code> property and
-          <code>dct:MediaType</code> class for Media Type indications that could be added to the Data Model, as
+          other dimensions of content negotiation, particularly Media Type. <a href="#altr-ontology-ext-1">Code Listing 4</a>
+          includes RDF definitions of Dublin Core Term's [[DCTERMS]] <code>dcterms:format</code> property and
+          <code>dcterms:MediaType</code> class for Media Type indications that could be added to the Data Model, as
           represented in OWL in <a href="#altr-owl">Code Listing 4</a>. <a href="#eg-altr-ext"></a> gives an example of this
           extended model's use following on from the content in <a href="#eg-altr"></a>.
         </p>
@@ -2470,19 +2486,19 @@ dct:Standard
              class="codelisting nohighlight" aria-busy="false" aria-live="polite"
              title="Alternate Profiles Data Model as an OWL ontology"><div class="codelisting-title"><a href="#altr-ontology-ext-1">CODE LISTING 4</a>: Suggested extension to this specification's Alternate Profiles Data Model in OWL to
 cater for Media Type representations</div>
-@prefix ex: &lt;http://example.org/altr-ext#> .
-@prefix dct: &lt;http://purl.org/dc/terms/> .
-@prefix owl: &lt;http://www.w3.org/2002/07/owl#> .
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#> .
-@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#> .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
+PREFIX ex: &lt;http://example.org/>
+PREFIX dcterms: &lt;http://purl.org/dc/terms/>
+PREFIX owl: &lt;http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: &lt;http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#>
 
-dct:format
+dcterms:format
     a owl:ObjectProperty ;
     rdfs:label "format" ;
     skos:definition "The file format, physical medium, or dimensions of the resource."@en ;
-    dct:source dct:format ;
-    rdfs:range dct:MediaType ;
+    dcterms:source dcterms:format ;
+    rdfs:range dcterms:MediaType ;
     skos:scopeNote "Use this property to indicate an IANA Media Type of a resource's
                     representation " .
 
@@ -2496,59 +2512,58 @@ ex:isProfilesDefault
                     representations that conforms to a profile is the default for get
                     resource by profile requests." .
 
-dct:MediaType
+dcterms:MediaType
     a owl:Class ;
     rdfs:label "Media Type" ;
     skos:definition "A file format or physical medium."@en ;
-    dct:source "http://purl.org/dc/terms/MediaType" ;
+    dcterms:source "http://purl.org/dc/terms/MediaType" ;
     skos:scopeNote "In the context of this mode, use this class to indicate
                     the IANA Media Type of a resource's representation." .
         </div>
         <pre id="eg-altr-ext"
              class="example nohighlight" aria-busy="false" aria-live="polite"
              title="Extended implementation of the Alternative Profiles data model in RDF (turtle) showing Media Type information">
-@prefix altr: &lt;http://www.w3.org/ns/dx/connegp/altr#> .
-@prefix dct: &lt;http://purl.org/dc/terms/> .
-@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
+PREFIX altr: &lt;http://www.w3.org/ns/dx/connegp/altr#>
+PREFIX dcterms: &lt;http://purl.org/dc/terms/>
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#>
 
 # This Resource A has 5 Representations, the 3rd of which is the default.
 # Some of the Representations conform to the same Standard but are formatted
 # according to different Media Types. Some Representations contain no Media
 # Type information.
 &lt;http://example.org/resource/a>
-    a rdf:Resource ;
+    a rdfs:Resource ;
     rdfs:label "Resources A" ;
     altr:hasRepresentation :rep-1 , :rep-2 , :rep-3 , :rep-4 , :rep-5 ;
     altr:hasDefaultRepresentation :rep-3 .
 
 :rep-1
     a altr:Representation ;
-    dct:conformsTo &lt;http://otherexample.org/profile/x> ;
-    dct:format "application/xml" .
+    dcterms:conformsTo &lt;http://otherexample.org/profile/x> ;
+    dcterms:format "application/xml" .
 
 :rep-2
     a altr:Representation ;
-    dct:conformsTo &lt;http://otherexample.org/profile/y> .
+    dcterms:conformsTo &lt;http://otherexample.org/profile/y> .
 
 # This representation is the default for the set of representations
 # that conform to &lt;http://otherexample.org/profile/z>
 :rep-3
     a altr:Representation ;
-    dct:conformsTo &lt;http://otherexample.org/profile/z> .
-    dct:format "text/html" ;
+    dcterms:conformsTo &lt;http://otherexample.org/profile/z> .
+    dcterms:format "text/html" ;
     ex:isProfilesDefault "true" .
 
 :rep-4
     a altr:Representation ;
-    dct:conformsTo &lt;http://otherexample.org/profile/z> ;
-    dct:format "text/turtle" .
+    dcterms:conformsTo &lt;http://otherexample.org/profile/z> ;
+    dcterms:format "text/turtle" .
 
 :rep-5
     a altr:Representation ;
-    dct:conformsTo &lt;http://otherexample.org/profile/z> ;
-    dct:format "application/ld+json" .
+    dcterms:conformsTo &lt;http://otherexample.org/profile/z> ;
+    dcterms:format "application/ld+json" .
   </pre>
       </section>
       <section>
@@ -2561,14 +2576,13 @@ dct:MediaType
         <pre id="eg-altr"
              class="example nohighlight" aria-busy="false" aria-live="polite"
              title="Implementation of the Alternative Profiles Data Model in RDF (turtle)">
-@prefix altr: &lt;http://www.w3.org/ns/dx/connegp/altr#> .
-@prefix dct: &lt;http://purl.org/dc/terms/> .
-@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#> .
+PREFIX altr: &lt;http://www.w3.org/ns/dx/connegp/altr#>
+PREFIX dcterms: &lt;http://purl.org/dc/terms/>
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#>
 
 # This Resource A has 3 Representations, the 3rd of which is the default
 &lt;http://example.org/resource/a>
-    a rdf:Resource ;
+    a rdfs:Resource ;
     rdfs:label "Resources A" ;
     altr:hasRepresentation :rep-1 , :rep-2 , :rep-3 ;
     altr:hasDefaultRepresentation :rep-3 .
@@ -2576,15 +2590,15 @@ dct:MediaType
 # Each Representation and the Standard each conforms to, X, Y & Z
 :rep-1
     a altr:Representation ;
-    dct:conformsTo &lt;http://otherexample.org/profile/x> .
+    dcterms:conformsTo &lt;http://otherexample.org/profile/x> .
 
 :rep-2
     a altr:Representation ;
-    dct:conformsTo &lt;http://otherexample.org/profile/y> .
+    dcterms:conformsTo &lt;http://otherexample.org/profile/y> .
 
 :rep-3
     a altr:Representation ;
-    dct:conformsTo &lt;http://otherexample.org/profile/z> .
+    dcterms:conformsTo &lt;http://otherexample.org/profile/z> .
       </pre>
         <pre id="eg-altr-multi"
              class="example nohighlight" aria-busy="false" aria-live="polite"
@@ -2627,19 +2641,19 @@ Link:
     <section id="dcat-usage-example">
       <h2>Describing DCAT Distributions support of Content Negotiation by Profile</h2>
       <p>
-        A DCAT [[VOCAB-DCAT-2]] <code>dcat:Dataset</code> may be accessible via a <code>dcat:DataService</code>, and that service may support one or more functional profiles of this specification. In this case, support should be declared by the service's reference to relevant functional profiles using the predicate <code>dct:conformsTo</code>, as illustrated in <a href="#dcat-example">Code Listing 5</a>.
+        A DCAT [[VOCAB-DCAT-2]] <code>dcat:Dataset</code> may be accessible via a <code>dcat:DataService</code>, and that service may support one or more functional profiles of this specification. In this case, support should be declared by the service's reference to relevant functional profiles using the predicate <code>dcterms:conformsTo</code>, as illustrated in <a href="#dcat-example">Code Listing 5</a>.
       </p>
       <p>
-        Note that DCAT 2 provides no canonical means to specify if a data service allows individual data items in the dataset it provides access to, to be accessed by identifier, so this example relates to the dataset distributed as a whole. The use of <code>dct:conformsTo</code> would nevertheless apply to data services which declare a mechanism to access individual items. This mechanism may be identified via the <code>dcat:endpointDescription</code>.
+        Note that DCAT 2 provides no canonical means to specify if a data service allows individual data items in the dataset it provides access to, to be accessed by identifier, so this example relates to the dataset distributed as a whole. The use of <code>dcterms:conformsTo</code> would nevertheless apply to data services which declare a mechanism to access individual items. This mechanism may be identified via the <code>dcat:endpointDescription</code>.
       </p>
       <div class="issue" data-number="1146"></div>
       <div id="dcat-example"
            class="codelisting nohighlight" aria-busy="false" aria-live="polite"
            title="Example of describing a dataset supporting Conneg-by-P in DCAT"><div class="codelisting-title"><a href="#dcat-example">CODE LISTING 5</a>: Describing a DCAT Data Service supporting Content Negotiation by Profile</div>
-@prefix ex: &lt;http://example.org#> .
-@prefix dcat: &lt;http://www.w3.org/ns/dcat#> .
-@prefix dct: &lt;http://purl.org/dc/terms/> .
-@prefix prof: &lt;http://www.w3.org/ns/dx/prof/> .
+PREFIX ex: &lt;http://example.org#>
+PREFIX dcat: &lt;http://www.w3.org/ns/dcat#>
+PREFIX dcterms: &lt;http://purl.org/dc/terms/>
+PREFIX prof: &lt;http://www.w3.org/ns/dx/prof/>
 
 # A Dataset has a Distribution
 :aDataset dcat:distribution :aDatasetDistribution .
@@ -2654,14 +2668,14 @@ ex:someDataProfile
 # Negotiation by Profile. The Distribution's content conforms to the Profile above
 :aDatasetDistribution
     a dcat:Distribution ;
-    dct:conformsTo ex:someDataProfile ;
+    dcterms:conformsTo ex:someDataProfile ;
     dcat:accessService ex:connegDataAccessService .
 
 # The Service used to access the Dataset's Distribution. The Service itself conforms
 # to two functional profiles of Content Negotiation by Profile
 ex:connegDataAccessService
     a dcat:DataService ;
-    dct:conformsTo
+    dcterms:conformsTo
         &lt;http://www.w3.org/ns/dx/connegp/profile/http> ,
         &lt;http://www.w3.org/ns/dx/connegp/profile/qsa> ;
 
