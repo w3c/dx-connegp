@@ -1078,7 +1078,7 @@ URIs for resources conforming to profile urn:example:profile:x]
                 <th>Alternate Representations Data Model Element</th><th>Link Header Element</th>
               </tr>
               <tr>
-                <td><code>rdfs:Resources</code></td><td>the <em>link context</em> URI indicates an instance of rdfs:Resources</td>
+                <td><code>rdfs:Resource</code></td><td>the <em>link context</em> URI indicates an instance of rdfs:Resource</td>
               </tr>
               <tr>
                 <td><code>altr:Representation</code></td><td>the <em>link target</em> URI indicates an instance altr:Representation</td>
@@ -2422,7 +2422,7 @@ altr:hasRepresentation
     a owl:ObjectProperty ;
     rdfs:label "has representation" ;
     skos:definition "Indicates a Representation of a Resource."@en ;
-    rdfs:domain rdfs:Resources ;
+    rdfs:domain rdfs:Resource ;
     rdfs:range altr:Representation ;
     skos:scopeNote "Use this property to indicate a the HTTP-delivered representation of a resource." ;
 .
@@ -2435,7 +2435,7 @@ altr:hasDefaultRepresentation
     skos:scopeNote "Use this property to indicate the default HTTP-delivered representation of a resource that is obtained when no further instructions are given to a server to obtain a resource's representation other than the identification (URI) of the resource" ;
 .
 
-rdfs:Resources
+rdfs:Resource
     a owl:Class ;
     rdfs:label "Resource" ;
     skos:definition "The class resource, everything."@en ;
@@ -2445,7 +2445,7 @@ rdfs:Resources
         owl:allValuesFrom altr:Representation ;
     ] ;
     dcterms:source "http://www.w3.org/2000/01/rdf-schema#Resource" ;
-    skos:scopeNote "In the context of this mode, rdfs:Resources instances are used to identify Internet resources, that is items identified by a URI." ;
+    skos:scopeNote "In the context of this mode, rdfs:Resource instances are used to identify Internet resources, that is items identified by a URI." ;
 .
 
 altr:Representation
@@ -2533,7 +2533,7 @@ PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#>
 # according to different Media Types. Some Representations contain no Media
 # Type information.
 &lt;http://example.org/resource/a>
-    a rdfs:Resources ;
+    a rdfs:Resource ;
     rdfs:label "Resources A" ;
     altr:hasRepresentation :rep-1 , :rep-2 , :rep-3 , :rep-4 , :rep-5 ;
     altr:hasDefaultRepresentation :rep-3 .
@@ -2582,7 +2582,7 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#>
 
 # This Resource A has 3 Representations, the 3rd of which is the default
 &lt;http://example.org/resource/a>
-    a rdfs:Resources ;
+    a rdfs:Resource ;
     rdfs:label "Resources A" ;
     altr:hasRepresentation :rep-1 , :rep-2 , :rep-3 ;
     altr:hasDefaultRepresentation :rep-3 .

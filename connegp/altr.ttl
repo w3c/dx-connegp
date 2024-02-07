@@ -41,7 +41,7 @@ altr:hasRepresentation
     a owl:ObjectProperty ;
     rdfs:label "has representation" ;
     skos:definition "Indicates a Representation of a Resource."@en ;
-    rdfs:domain rdfs:Resources ;
+    rdfs:domain rdfs:Resource ;
     rdfs:range altr:Representation ;
     skos:scopeNote "Use this property to indicate a the HTTP-delivered representation of a resource." ;
 .
@@ -54,7 +54,7 @@ altr:hasDefaultRepresentation
     skos:scopeNote "Use this property to indicate the default HTTP-delivered representation of a resource that is obtained when no further instructions are given to a server to obtain a resource's representation other than the identification (URI) of the resource" ;
 .
 
-rdfs:Resources
+rdfs:Resource
     a owl:Class ;
     rdfs:label "Resource" ;
     skos:definition "The class resource, everything."@en ;
@@ -64,7 +64,7 @@ rdfs:Resources
         owl:allValuesFrom altr:Representation ;
     ] ;
     dcterms:source "http://www.w3.org/2000/01/rdf-schema#Resource" ;
-    skos:scopeNote "In the context of this mode, rdfs:Resources instances are used to identify Internet resources, that is items identified by a URI." ;
+    skos:scopeNote "In the context of this mode, rdfs:Resource instances are used to identify Internet resources, that is items identified by a URI." ;
 .
 
 altr:Representation
