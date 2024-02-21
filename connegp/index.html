@@ -628,6 +628,12 @@ Link:
           might conform to more general specifications or other profiles via a hierarchy (i.e. transitively).
         </p>
         <p>
+          As specified in [[RFC9110]], If the <code>HEAD</code> method is used in a request that specifies preferences in the
+          profile, media type, or other negotiation dimension, then the response should be the same as for a <code>GET</code> method,
+          including headers and status code, except that the body MUST be empty. It is important to note that headers,
+          for which the value is determined only while generating the response content, MAY be omitted.
+        </p>
+        <p>
           If a server redirects to another resource it MUST indicate the selected choice of profile from the list
           requested by the client and SHOULD indicate a specific narrower profile expected to be returned (if known)
           in the redirection request (303 response).
