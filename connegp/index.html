@@ -2383,10 +2383,11 @@ Functional Profile of this specification
 PREFIX altr: &lt;http://www.w3.org/ns/dx/connegp/altr#>
 PREFIX dcterms: &lt;http://purl.org/dc/terms/>
 PREFIX owl: &lt;http://www.w3.org/2002/07/owl#>
-PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX sdo: &lt;https://schema.org/>
-PREFIX skos: &lt;http://www.w3.org/2004/02/skos/core#>
 PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: &lt;http://www.w3.org/2004/02/skos/core#>
 
 &lt;http://www.w3.org/ns/dx/connegp/altr>
     a owl:Ontology ;
@@ -2395,7 +2396,7 @@ PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#>
 
 Representations may conform to prof:Profile instances and may have the format of a particular dcterms:MediaType."""@en ;
     dcterms:created "2019-08-07"^^xsd:date ;
-    dcterms:modified "2023-08-23"^^xsd:date ;
+    dcterms:modified "2024-02-07"^^xsd:date ;
     dcterms:creator [
         a sdo:Person ;
         sdo:affiliation &lt;https://kurrawong.ai> ;
@@ -2431,6 +2432,7 @@ altr:hasDefaultRepresentation
     a owl:ObjectProperty ;
     rdfs:label "has default representation" ;
     skos:definition "Indicates the default Representation of a Resource."@en ;
+    rdfs:domain altr:Representation ;
     rdfs:subPropertyOf altr:hasRepresentation ;
     skos:scopeNote "Use this property to indicate the default HTTP-delivered representation of a resource that is obtained when no further instructions are given to a server to obtain a resource's representation other than the identification (URI) of the resource" ;
 .
@@ -2439,25 +2441,15 @@ rdfs:Resource
     a owl:Class ;
     rdfs:label "Resource" ;
     skos:definition "The class resource, everything."@en ;
-    rdfs:subClassOf [
-        a owl:Restriction ;
-        owl:onProperty altr:hasRepresentation ;
-        owl:allValuesFrom altr:Representation ;
-    ] ;
     dcterms:source "http://www.w3.org/2000/01/rdf-schema#Resource" ;
-    skos:scopeNote "In the context of this mode, rdfs:Resource instances are used to identify Internet resources, that is items identified by a URI." ;
+    skos:scopeNote "In the context of the Alternative Profiles Ontology, rdfs:Resource instances are used to identify Internet resources, that is items identified by a URI." ;
 .
 
 altr:Representation
     a owl:Class ;
     rdfs:label "Representation" ;
     skos:definition "An abstraction of the current or desired state of a thing in HTTP communications."@en ;
-    rdfs:subClassOf [
-        a owl:Restriction ;
-        owl:onProperty dcterms:conformsTo ;
-        owl:allValuesFrom dcterms:Standard ;
-    ] ;
-    dct:source &lt;https://httpwg.org/specs/rfc9110.html> ;
+    dcterms:source &lt;https://httpwg.org/specs/rfc7230.html> ;
     rdfs:isDefinedBy &lt;http://www.w3.org/ns/dx/connegp/altr> ;
     skos:scopeNote "Use this class to indicate instances of representations of resources" ;
 .
@@ -2467,8 +2459,9 @@ dcterms:Standard
     rdfs:label "Standard" ;
     skos:definition "A basis for comparison; a reference point against which other things can be evaluated."@en ;
     dcterms:source "http://purl.org/dc/terms/Standard" ;
-    skos:scopeNote "In the context of this mode, use this class to indicate instances of information models that representations of resources can conform to." ;
+    skos:scopeNote "In the context of the Alternative Profiles Ontology, use this class to indicate instances of information models that representations of resources can conform to." ;
 .
+
         </div>
       </section>
       <section id="altr-extensions">
@@ -2484,7 +2477,7 @@ dcterms:Standard
         </p>
         <div id="altr-ontology-ext-1"
              class="codelisting nohighlight" aria-busy="false" aria-live="polite"
-             title="Alternate Profiles Data Model as an OWL ontology"><div class="codelisting-title"><a href="#altr-ontology-ext-1">CODE LISTING 4</a>: Suggested extension to this specification's Alternate Profiles Data Model in OWL to
+             title="Alternate Profiles Data Model extension"><div class="codelisting-title"><a href="#altr-ontology-ext-1">CODE LISTING 4</a>: Suggested extension to this specification's Alternate Profiles Data Model in OWL to
 cater for Media Type representations</div>
 PREFIX ex: &lt;http://example.org/>
 PREFIX dcterms: &lt;http://purl.org/dc/terms/>
@@ -2502,11 +2495,12 @@ dcterms:format
     skos:scopeNote "Use this property to indicate an IANA Media Type of a resource's
                     representation " .
 
-ex:isProfilesDefault
+ex:defaultFormat
     a owl:DataTypeProperty ;
-    rdfs:label "is profile's default" ;
-    skos:definition "Indicates the default Representation for Resource for the specified
+    rdfs:label "default format" ;
+    skos:definition "Indicates the default Representation of a Resource for the specified
                      Standard."@en ;
+    rdfs:domain
     rdfs:range xsd:boolean ;
     skos:scopeNote "Use this property to indicate which of more than one resource
                     representations that conforms to a profile is the default for get
