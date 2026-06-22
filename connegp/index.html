@@ -801,38 +801,27 @@ Link: &lt;http://example.org/profile/x&gt;; rel=&quot;profile&quot;, \
     <section id="functional-profiles-definition">
       <h3>Functional Profiles of this specification</h3>
       <p>
-        This section illustrates a few <a>functional profiles</a> of this
-        <a>specification</a>'s <a href="#abstractmodel">Abstract Model</a> for different system environments. They
-        may be conformed to by systems operating within different environments
-        wishing to conform to this specification. Conforming to the profiles
-        illustrated here is not mandatory; conformance to any profile that conforms to the
+        This section defines <a>functional profiles</a> of this
+        <a>specification</a>'s <a href="#abstractmodel">Abstract Model</a> for different system environments.  Other profiles may be defined, 
+	and conformance to any profile that conforms to the
         Abstract Model fulfills conformance to this specification.
       </p>
       <p>
         This specification provides functional profiles of the abstract model for two environments: HTTP Header and human browser (URL Query String
-        Arguments). It also provides a functional profile that has the single function to respond with which profile(s)
-        a server response conforms to, and which can be used in multiple environments.
+        Arguments). 
       </p>
-      <div class="issue" data-number="1022"></div>
+      <p>	    
+	In addition the Resource Representation Description (<code><span style="white-space: nowrap">cnpr:rrd</span></code>) Profile may be used to declare
+	that a server will indicate which profile(s) a server response to a GetResource request conforms to.
+      </p>
       <p>
         For the human browser environment, two functional profiles are presented to demonstrate different modes of use.
         Further functional profiles of this specification MAY be implemented either for other environments and or even for
         constrained scenarios within these environments, and implementers are encouraged create additional profiles conforming to this
         specification.
       </p>
-      <p class="note" title="Conformance to multiple functional profiles">
-        The functional profiles provided here are conformant with the Abstract
-        Model. Systems may implement one or more of the profiles provided in
-        this document or may develop other functional profiles that conform to
-        the abstract model. Conformance to one of the profiles provided here
-        guarantees conformance to the abstract model, but conformance can be
-        achieved with other functional profiles also. Implementers of Content
-        Negotiation by Profile need not ensure systems conform to multiple
-        functional profiles of this specification; they need only conform to the
-        functional profile(s) relevant to their environment.
-      </p>
       <p>
-        The functional profiles of this specification provided here are listed in <a href="#fig-table-profiles"></a>.
+        The functional profiles of this specification pre-defined here are listed in <a href="#fig-table-profiles"></a>.
         The namespace prefix for them is:
       </p>
       <ul>
@@ -878,7 +867,7 @@ Link: &lt;http://example.org/profile/x&gt;; rel=&quot;profile&quot;, \
             <td>Resource Representation Description</td>
             <td>For conformance with <a href="#getresourcebyprofile"></a>.</td>
             <td>
-              To be used if a resource representation is able to indicate which profile(s) it conforms to, in its appropriate functional profile, as per the abstract specification in
+              To be used if a resource representation is able to indicate which profile(s) it conforms to, as per the abstract specification in
               <a href="#getresourcebyprofile"></a>.
             </td>
           </tr>
