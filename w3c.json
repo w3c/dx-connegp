@@ -1,7 +1,7 @@
 {
-  "group": "wg/dx",
+  "group": ["wg/dx", "tf/dx-prof"],
   "contacts": [
-    "plehegar"
+    "pchampin"
   ],
   "policy": "open",
   "repo-type": "rec-track"
