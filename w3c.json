@@ -1,5 +1,5 @@
 {
-  "group": ["wg/dx", "tf/dx-prof"],
+  "group": ["wg/dx", "tf/dx-tf-prof"],
   "contacts": [
     "pchampin"
   ],
