@@ -11,7 +11,7 @@ jobs:
     name: Echidna Auto-publish WD
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
         with:
           submodules: true
       - uses: w3c/spec-prod@v2
