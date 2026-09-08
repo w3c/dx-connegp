@@ -27,11 +27,11 @@ var respecConfig = {
         orcid:      "0000-0002-8742-7730",
         w3cid:      70131
      },
-     {
+    {
         name: "Yousouf Taghzouti",
-        mailto: "yousouf.taghzouti@emse.fr",
-        company: "Mines Saint-Étienne, Institut Mines-Télécom",
-        companyURL: "https://www.mines-stetienne.fr/",
+        company: "Inria",
+        companyURL: "https://www.inria.fr/",
+        mailto: "yousouf.taghzouti@inria.fr",
         orcid: "0000-0003-4509-9537",
         w3cid: 143054
     }],
