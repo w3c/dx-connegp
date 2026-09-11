@@ -43,7 +43,11 @@ var respecConfig = {
 	    data: [{
             value: "Ruben Verborgh",
             href:  "https://ruben.verborgh.org/"
-    	}]
+    	},
+		{
+			value: "Herbert Van de Sompel",
+			href: "https://hvdsomp.info/"
+		}]
     }],
     wgPublicList: "public-dxwg-comments",
     inlineCSS: "true",
