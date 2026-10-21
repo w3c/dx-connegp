@@ -2326,9 +2326,9 @@ cnpr:rrd a prof:Profile ;
       </p>
       <p>
         The code in <a href="#system-conforming">Code Listing 2</a> shows an imaginary Web Service documented using
-        [[?VOCAB-DCAT-2]] and borrowing parts from its examples, such as
-        <a href="https://www.w3.org/TR/vocab-dcat-2/#ex-service-eea">Example 49</a>.
-        Included is the predicate <code>dcterms:conformsTo</code> used as per [[?VOCAB-DCAT-2]] &amp; [[?DX-PROF]].
+        [[?VOCAB-DCAT-3]] and borrowing parts from its examples, such as
+        <a href="https://www.w3.org/TR/vocab-dcat-3/#ex-service-eea">Example 60</a>.
+        Included is the predicate <code>dcterms:conformsTo</code> used as per [[?VOCAB-DCAT-3]] &amp; [[?DX-PROF]].
         Conformance here is claimed to the <em>QSA Alternate Keywords Functional Profile</em> profile which is indicated by
         the URI <code>http://www.w3.org/ns/dx/connegp/profile/qsa-alt</code>, identified as per
         <a href="#functional-profiles-definition"></a>.
@@ -2343,7 +2343,7 @@ Functional Profile of this specification
     dcterms:title "Web Service XX" ;
     dcterms:description "A dummy Web Service claiming conformance to a profile of the Content
                      Negotiation by Profile specification also annotated with other
-                     DCAT-2 recommended properties."@en ;
+                     DCAT-3 recommended properties."@en ;
 
     # URI for the QSA Alternate Keywords Functional Profile
     <strong>dcterms:conformsTo &lt;http://www.w3.org/ns/dx/connegp/profile/qsa-alt> ;</strong>
@@ -2631,7 +2631,7 @@ Link:
     <section id="dcat-usage-example">
       <h2>Describing DCAT Distributions support of Content Negotiation by Profile</h2>
       <p>
-        A DCAT [[VOCAB-DCAT-2]] <code>dcat:Dataset</code> may be accessible via a <code>dcat:DataService</code>, and that service may support one or more functional profiles of this specification. In this case, support should be declared by the service's reference to relevant functional profiles using the predicate <code>dcterms:conformsTo</code>, as illustrated in <a href="#dcat-example">Code Listing 5</a>.
+        A DCAT [[VOCAB-DCAT-3]] <code>dcat:Dataset</code> may be accessible via a <code>dcat:DataService</code>, and that service may support one or more functional profiles of this specification. In this case, support should be declared by the service's reference to relevant functional profiles using the predicate <code>dcterms:conformsTo</code>, as illustrated in <a href="#dcat-example">Code Listing 5</a>.
       </p>
       <p>
         Note that DCAT 2 provides no canonical means to specify if a data service allows individual data items in the dataset it provides access to, to be accessed by identifier, so this example relates to the dataset distributed as a whole. The use of <code>dcterms:conformsTo</code> would nevertheless apply to data services which declare a mechanism to access individual items. This mechanism may be identified via the <code>dcat:endpointDescription</code>.
