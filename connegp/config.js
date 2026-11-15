@@ -89,5 +89,48 @@ var respecConfig = {
             date: " 2021-03-09",
             status: "IETF Internet Draft"
         }
-    }
+    },
+    preProcess: [disableMailtoFeedbackLink],
+
 };
+
+function disableMailtoFeedbackLink(config, doc) {
+
+    const selector = 'a[href^="mailto:public-dxwg-comments"]';
+
+    // Function to perform the replacement safely once the element appears
+    const processLink = () => {
+        const mailtoLink = doc.querySelector(selector);
+        if (mailtoLink && !mailtoLink.dataset.processed) {
+            mailtoLink.dataset.processed = "true"; // Prevent duplicate execution
+
+            const span = doc.createElement("span");
+            span.textContent = "public-dxwg-comments@w3.org";
+
+            const note = doc.createElement("em");
+            note.textContent = " (list deactivated)";
+            note.style.color = "#b50000";
+
+            mailtoLink.before(span);
+            mailtoLink.before(note);
+            mailtoLink.remove();
+            return true;
+        }
+        return false;
+    };
+
+    // 1. Try immediately in case it is already rendered
+    if (processLink()) return;
+
+    // 2. Otherwise, observe the DOM until ReSpec injects the element
+    const observer = new MutationObserver((mutations, obs) => {
+        if (processLink()) {
+            obs.disconnect(); // Stop observing once successfully processed
+        }
+    });
+
+    observer.observe(doc.body, {
+        childList: true,
+        subtree: true
+    });
+}
