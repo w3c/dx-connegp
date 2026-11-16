@@ -90,7 +90,7 @@ var respecConfig = {
             status: "IETF Internet Draft"
         }
     },
-    preProcess: [disableMailtoFeedbackLink],
+    postProcess: [disableMailtoFeedbackLink],
 
 };
 
@@ -98,39 +98,18 @@ function disableMailtoFeedbackLink(config, doc) {
 
     const selector = 'a[href^="mailto:public-dxwg-comments"]';
 
-    // Function to perform the replacement safely once the element appears
-    const processLink = () => {
-        const mailtoLink = doc.querySelector(selector);
-        if (mailtoLink && !mailtoLink.dataset.processed) {
-            mailtoLink.dataset.processed = "true"; // Prevent duplicate execution
+    const mailtoLink = doc.querySelector(selector);
+    if (mailtoLink) {
 
-            const span = doc.createElement("span");
-            span.textContent = "public-dxwg-comments@w3.org";
+        const span = doc.createElement("span");
+        span.textContent = "public-dxwg-comments@w3.org";
 
-            const note = doc.createElement("em");
-            note.textContent = " (list deactivated)";
-            note.style.color = "#b50000";
+        const note = doc.createElement("em");
+        note.textContent = " (list deactivated)";
+        note.style.color = "#b50000";
 
-            mailtoLink.before(span);
-            mailtoLink.before(note);
-            mailtoLink.remove();
-            return true;
-        }
-        return false;
-    };
-
-    // 1. Try immediately in case it is already rendered
-    if (processLink()) return;
-
-    // 2. Otherwise, observe the DOM until ReSpec injects the element
-    const observer = new MutationObserver((mutations, obs) => {
-        if (processLink()) {
-            obs.disconnect(); // Stop observing once successfully processed
-        }
-    });
-
-    observer.observe(doc.body, {
-        childList: true,
-        subtree: true
-    });
+        mailtoLink.before(span);
+        mailtoLink.before(note);
+        mailtoLink.remove();
+    }
 }
