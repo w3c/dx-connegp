@@ -89,5 +89,27 @@ var respecConfig = {
             date: " 2021-03-09",
             status: "IETF Internet Draft"
         }
-    }
+    },
+    postProcess: [disableMailtoFeedbackLink],
+
 };
+
+function disableMailtoFeedbackLink(config, doc) {
+
+    const selector = 'a[href^="mailto:public-dxwg-comments"]';
+
+    const mailtoLink = doc.querySelector(selector);
+    if (mailtoLink) {
+
+        const span = doc.createElement("span");
+        span.textContent = "public-dxwg-comments@w3.org";
+
+        const note = doc.createElement("em");
+        note.textContent = " (list deactivated)";
+        note.style.color = "#b50000";
+
+        mailtoLink.before(span);
+        mailtoLink.before(note);
+        mailtoLink.remove();
+    }
+}
