@@ -36,18 +36,20 @@ var respecConfig = {
         mailto: "yousouf.taghzouti@inria.fr",
         orcid: "0000-0003-4509-9537",
         w3cid: 143054
-    }
+    },
+	{
+		name: "Herbert Van de Sompel",
+		company: "SURF bv",
+		companyURL: "https://www.surf.nl/",
+		orcid: "0000-0002-0715-6126"
+	}
 ],
     otherLinks: [{
     	key: "Contributors",
 	    data: [{
             value: "Ruben Verborgh",
             href:  "https://ruben.verborgh.org/"
-    	},
-		{
-			value: "Herbert Van de Sompel",
-			href: "https://hvdsomp.info/"
-		}]
+    	}]
     }],
     wgPublicList: "public-dxwg-comments",
     inlineCSS: "true",
